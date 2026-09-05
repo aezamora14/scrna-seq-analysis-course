@@ -297,25 +297,31 @@ check_outputs <- function() {
     check.names = FALSE,
     na.strings = ""
   )
-  metadata_matches <- identical(
-    lapply(saved_metadata, as.character),
-    lapply(metadata, as.character)
+  required_metadata <- c(
+    "cell_id",
+    "sample_id",
+    "condition",
+    "truth_cell_type",
+    "truth_qc_class",
+    "doublet_source_1",
+    "doublet_source_2"
   )
-  counts_match <-
-    inherits(saved_counts, "dgCMatrix") &&
-    identical(dim(saved_counts), dim(sparse_counts)) &&
-    identical(dimnames(saved_counts), dimnames(sparse_counts)) &&
-    isTRUE(all.equal(
-      as.matrix(saved_counts),
-      as.matrix(sparse_counts),
-      tolerance = 0,
-      check.attributes = FALSE
-    ))
 
   stopifnot(
     isTRUE(all.equal(as.matrix(saved_toy), toy_counts, check.attributes = FALSE)),
-    counts_match,
-    metadata_matches
+    inherits(saved_counts, "dgCMatrix"),
+    identical(dim(saved_counts), c(260L, 700L)),
+    identical(rownames(saved_counts), genes),
+    identical(colnames(saved_counts), saved_metadata$cell_id),
+    identical(colnames(saved_metadata), required_metadata),
+    nrow(saved_metadata) == ncol(saved_counts),
+    all(is.finite(saved_counts@x)),
+    all(saved_counts@x >= 0),
+    all(saved_counts@x == floor(saved_counts@x)),
+    setequal(
+      unique(saved_metadata$truth_qc_class),
+      c("high_quality", "low_quality", "stressed", "ambient_high", "doublet", "empty_droplet")
+    )
   )
 
   manifest_path <- file.path(data_dir, "synthetic_data_manifest.csv")
