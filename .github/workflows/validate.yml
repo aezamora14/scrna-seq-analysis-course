@@ -21,6 +21,31 @@ jobs:
           r-version: "4.5.1"
           use-public-rspm: true
 
+      - name: Install Linux system libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends \
+            cmake \
+            libcairo2-dev \
+            libcurl4-openssl-dev \
+            libfontconfig1-dev \
+            libfreetype6-dev \
+            libfribidi-dev \
+            libgit2-dev \
+            libglpk-dev \
+            libharfbuzz-dev \
+            libjpeg-dev \
+            libpng-dev \
+            libssl-dev \
+            libtiff-dev \
+            libxml2-dev \
+            libxt-dev \
+            libbz2-dev \
+            liblzma-dev \
+            libzstd-dev \
+            pandoc \
+            zlib1g-dev
+
       - name: Set up renv
         uses: r-lib/actions/setup-renv@v2
 
