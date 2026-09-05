@@ -301,10 +301,20 @@ check_outputs <- function() {
     lapply(saved_metadata, as.character),
     lapply(metadata, as.character)
   )
+  counts_match <-
+    inherits(saved_counts, "dgCMatrix") &&
+    identical(dim(saved_counts), dim(sparse_counts)) &&
+    identical(dimnames(saved_counts), dimnames(sparse_counts)) &&
+    isTRUE(all.equal(
+      as.matrix(saved_counts),
+      as.matrix(sparse_counts),
+      tolerance = 0,
+      check.attributes = FALSE
+    ))
 
   stopifnot(
     isTRUE(all.equal(as.matrix(saved_toy), toy_counts, check.attributes = FALSE)),
-    identical(saved_counts, sparse_counts),
+    counts_match,
     metadata_matches
   )
 
