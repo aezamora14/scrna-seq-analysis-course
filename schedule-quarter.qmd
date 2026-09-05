@@ -1,8 +1,8 @@
 ---
-title: "Quarter pacing: foundational block"
+title: "Quarter pacing: Modules 1–7"
 ---
 
-This page schedules the currently implemented foundational block within a 10-week quarter. Later weeks are intentionally not scaffolded in this release.
+This 10-week plan combines class meetings with separate lab preparation. PCA receives two weeks; use the semester plan if learners need more R practice.
 
 | Week | Preparation (60–90 min) | Class meeting (150–180 min) | Product |
 |---|---|---|---|
@@ -11,5 +11,10 @@ This page schedules the currently implemented foundational block within a 10-wee
 | 3 | Module 2 threshold sections | Permissive/moderate/aggressive QC lab and downstream comparison | QC sensitivity report |
 | 4 | Module 3 conceptual and hand-calculation sections | Manual normalization, Seurat reproduction, scale-factor perturbation | Normalization worksheet |
 | 5 | Module 3 SCTransform section | LogNormalize-versus-SCTransform comparison and synthesis discussion | Foundational analysis audit |
+| 6 | Module 4 | HVG arithmetic, mean–variance trend, feature-count sensitivity | Feature-selection report |
+| 7 | Module 5 | Scaling, reference population, regression | Scaling and regression comparison |
+| 8 | Module 6 geometry | Loadings, scores, orthogonality, reconstruction | Manual projection and geometry |
+| 9 | Module 6 population comparison | Whole-immune versus T-cell PCA; variance and interpretation | PC evidence table |
+| 10 | Module 7 | Fixed-resolution dims experiment and cross-module synthesis | Defended representation choice |
 
-Weeks 6–10 are reserved for later modules and a capstone after those modules are developed.
+Allow the modules' stated lab time outside the class meeting. No later module is required by this plan.

@@ -58,7 +58,11 @@ jobs:
           Rscript scripts/generate_synthetic_data.R --check
 
       - name: Run R smoke tests
-        run: Rscript scripts/smoke_test_modules_01_03.R
+        run: |
+          Rscript scripts/smoke_test_modules_01_03.R
+          Rscript scripts/generate_representation_data.R --check
+          Rscript scripts/smoke_test_modules_04_07.R
+          Rscript scripts/smoke_test_lesson_code.R
 
       - name: Validate source repository
         run: |

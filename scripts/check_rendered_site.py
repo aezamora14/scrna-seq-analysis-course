@@ -18,9 +18,9 @@ class LinkParser(HTMLParser):
         self.hrefs: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
-        if tag != "a":
+        if tag not in ("a", "img"):
             return
-        href = dict(attrs).get("href")
+        href = dict(attrs).get("href" if tag == "a" else "src")
         if href:
             self.hrefs.append(href)
 
@@ -59,6 +59,7 @@ required_pages = [
     SITE / "modules/03-normalization/index.html",
     SITE / "labs/index.html",
 ]
+required_pages += [SITE / p for p in ['modules/04-variable-features/index.html', 'modules/05-scaling-regression/index.html', 'modules/06-pca/index.html', 'modules/07-choosing-dimensions/index.html']]
 missing_pages = [str(path.relative_to(SITE)) for path in required_pages if not path.exists()]
 if missing_pages:
     raise SystemExit(f"Missing rendered pages: {missing_pages}")

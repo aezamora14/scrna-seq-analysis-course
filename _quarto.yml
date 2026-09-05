@@ -43,6 +43,16 @@ website:
             text: "2. Quality control"
           - href: modules/03-normalization/index.qmd
             text: "3. Normalization"
+      - section: "Representation modules"
+        contents:
+          - href: modules/04-variable-features/index.qmd
+            text: "4. Highly variable genes"
+          - href: modules/05-scaling-regression/index.qmd
+            text: "5. Scaling and regression"
+          - href: modules/06-pca/index.qmd
+            text: "6. PCA in depth"
+          - href: modules/07-choosing-dimensions/index.qmd
+            text: "7. Choosing PCA dimensions"
       - section: "Course resources"
         contents:
           - labs/index.qmd

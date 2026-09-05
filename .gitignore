@@ -10,3 +10,5 @@ outputs/
 renv/library/
 renv/staging/
 renv/python/
+
+/.quarto/

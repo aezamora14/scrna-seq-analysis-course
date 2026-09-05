@@ -1,5 +1,5 @@
 ---
-title: "Semester pacing: foundational block"
+title: "Semester pacing: Modules 1–7"
 ---
 
 This page schedules the currently implemented material within a 14–16 week semester. It does not create placeholder lessons for future modules.
@@ -15,5 +15,12 @@ This page schedules the currently implemented material within a 14–16 week sem
 | 7 | Module 3 through hand calculations | Library-size correction and log transformation | Hand-calculation worksheet |
 | 8 | Module 3 perturbations | Raw/normalized comparison and scale-factor exercise | Normalization interpretation memo |
 | 9 | Module 3 model-based section | Optional SCTransform comparison; foundational synthesis | Foundational analysis audit |
+| 10 | Module 4 | Mean–variance calculations and HVG comparisons | Feature-selection report |
+| 11 | Module 5 scaling | Manual scaling and reference-population comparison | Scaling worksheet |
+| 12 | Module 5 regression | Controlled regression and biological consequences | Regression decision memo |
+| 13 | Module 6 geometry | Loadings, scores, orthogonality, and reconstruction | PCA arithmetic |
+| 14 | Module 6 interpretation | Loading programs and T-cell subset comparison | PC evidence table |
+| 15 | Module 7 | Dimension sensitivity at fixed resolution | Cluster stability report |
+| 16 | Cross-module synthesis | Justify the full representation workflow | Reproducible analysis narrative |
 
-Remaining semester weeks are intentionally left for later development rather than linked to empty modules.
+For 14 weeks, combine Weeks 1–2 and Weeks 8–9 while retaining the stated independent lab time. No later module is required.

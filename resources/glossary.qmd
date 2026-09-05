@@ -1,5 +1,5 @@
 ---
-title: "Glossary for Modules 1–3"
+title: "Glossary for Modules 1–7"
 ---
 
 **Barcode**  
@@ -28,3 +28,17 @@ A unique molecular identifier used to collapse reads likely derived from the sam
 
 **Normalization**  
 A transformation intended to make expression values more comparable across cells with different observed library sizes. It does not make cells biological replicates or remove every technical effect.
+
+## Representation terms
+
+| Term | Meaning |
+|---|---|
+| HVG | Gene with high variability relative to an expected mean–variance relationship in the included cells |
+| Centering | Subtracting a variable's reference mean |
+| Scaling | Dividing centered values by a reference standard deviation in this workflow |
+| Loading | A gene's weight on a fitted PC |
+| PC score | A cell's projection onto that PC |
+| Orthogonality | Zero dot product between mathematical directions |
+| dims | PC coordinates selected for a downstream computation |
+| resolution | Parameter controlling partitioning of a selected graph |
+| ARI | Chance-adjusted agreement between two partitions, not biological accuracy |

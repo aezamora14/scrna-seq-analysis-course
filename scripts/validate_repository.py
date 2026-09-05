@@ -34,6 +34,8 @@ REQUIRED_FILES = [
     "data/synthetic_data_manifest.csv",
 ]
 
+REQUIRED_FILES += ['modules/04-variable-features/index.qmd', 'modules/05-scaling-regression/index.qmd', 'modules/06-pca/index.qmd', 'modules/07-choosing-dimensions/index.qmd', 'labs/04-variable-features-lab.R', 'labs/05-scaling-regression-lab.R', 'labs/06-pca-lab.R', 'labs/07-choosing-dimensions-lab.R', 'scripts/smoke_test_modules_04_07.R', 'scripts/generate_representation_figures.R']
+
 PUBLIC_FORBIDDEN_PATHS = [
     "instructor",
     "solutions",
@@ -53,10 +55,15 @@ expected_modules = [
     "01-count-matrix",
     "02-quality-control",
     "03-normalization",
+    "04-variable-features",
+    "05-scaling-regression",
+    "06-pca",
+    "07-choosing-dimensions",
+
 ]
 if module_dirs != expected_modules:
     raise SystemExit(
-        f"Expected only Modules 1–3; found module directories: {module_dirs}"
+        f"Expected only Modules 1–7; found module directories: {module_dirs}"
     )
 
 edition = (ROOT / "COURSE_EDITION").read_text(encoding="utf-8").strip()
@@ -139,7 +146,7 @@ if large_files:
     raise SystemExit(f"Files larger than 20 MiB found: {large_files}")
 
 print(
-    "Repository validation passed: only Modules 1–3 are present; "
+    "Repository validation passed: only Modules 1–7 are present; "
     f"{len(qmd_files)} Quarto sources, data checksums, links, math, and "
     f"{edition}-edition content boundaries are valid."
 )

@@ -2,13 +2,13 @@
 
 This is the public student edition of a graduate-level computational course in single-cell RNA sequencing analysis. The course emphasizes how analytical decisions change measurements, visualizations, retained biology, and scientific conclusions.
 
-The current release fully implements three foundational modules:
+The current release fully implements seven modules:
 
 1. **What scRNA-seq count matrices actually measure**
 2. **Quality control as a biological and statistical decision**
 3. **Normalization and interpretation of expression values**
 
-Later modules have intentionally not been scaffolded yet. Depth, executable exercises, and validation take priority over placeholder content.
+Modules after 7 have intentionally not been scaffolded yet. Depth, executable exercises, and validation take priority over placeholder content.
 
 ## Learning approach
 
@@ -25,7 +25,7 @@ Students repeatedly compare analyses that differ by one choice, then answer:
 
 ## Repository structure
 
-- `modules/` — fully developed student lessons for Modules 1–3
+- `modules/` — fully developed student lessons for Modules 1–7
 - `labs/` — runnable student lab scripts
 - `data/` — deterministic, controlled teaching datasets
 - `scripts/` — setup, data generation, figure generation, validation, and smoke tests
@@ -85,3 +85,20 @@ The bundled dataset is synthetic and deliberately contains known cell population
 ## License and disclaimer
 
 Course code and synthetic data are for education. The synthetic data do not represent patients or clinical samples and must not be interpreted as biological evidence.
+
+## Representation modules
+
+- Highly variable genes: `modules/04-variable-features/index.qmd`
+- Scaling and regression: `modules/05-scaling-regression/index.qmd`
+- PCA in depth: `modules/06-pca/index.qmd`
+- Choosing PCA dimensions: `modules/07-choosing-dimensions/index.qmd`
+
+Run `Rscript scripts/generate_representation_data.R --check` and `Rscript scripts/smoke_test_modules_04_07.R`. Rebuild figures with `Rscript scripts/generate_representation_figures.R`.
+
+### Preview with RStudio's bundled Quarto on macOS
+
+If `quarto` is not on PATH, run this from the repository root:
+
+```bash
+/Applications/RStudio.app/Contents/Resources/app/quarto/bin/quarto preview
+```

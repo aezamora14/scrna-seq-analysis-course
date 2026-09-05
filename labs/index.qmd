@@ -11,3 +11,8 @@ Run each lab from the repository root. The scripts are complete and executable; 
 ::: {.callout-important}
 Code execution is necessary but not sufficient. For every comparison, document what changed, what did not change, why, and whether the biological conclusion changed.
 :::
+
+4. [Module 4: Highly variable genes](04-variable-features-lab.R)
+5. [Module 5: Scaling and regression](05-scaling-regression-lab.R)
+6. [Module 6: PCA in depth](06-pca-lab.R)
+7. [Module 7: Choosing PCA dimensions](07-choosing-dimensions-lab.R)

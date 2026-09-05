@@ -4,11 +4,15 @@
 
 Maintain a graduate-level, semester-capable scRNA-seq analysis course. This repository is the **public student edition**. It must never contain instructor notes, solutions, answer keys, expected answers, private rubrics, grading guidance, or hidden annotations.
 
-Only Modules 1–3 are implemented in the current release:
+Only Modules 1–7 are implemented in the current release:
 
 1. count matrices and measurement;
 2. quality control;
-3. normalization.
+3. normalization;
+4. highly variable genes;
+5. scaling and regression;
+6. PCA;
+7. choosing PCA dimensions.
 
 Do not create placeholder modules or empty navigation entries for later topics.
 

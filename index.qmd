@@ -10,7 +10,7 @@ Single-cell RNA-seq analysis is not a sequence of neutral software commands. Dec
 This graduate-level course teaches students to connect each computational operation to the measurement problem it addresses. Every module uses controlled data so that the consequences of an analysis choice can be observed rather than accepted on authority.
 
 ::: {.callout-important title="Current course release"}
-Modules 1–3 are fully implemented and tested. Later modules have deliberately not been created yet.
+Modules 1–7 cover measurement through PCA dimension selection. Later modules have deliberately not been created yet.
 :::
 
 ## Implemented modules
@@ -26,6 +26,22 @@ Cell- and sample-level QC distributions, mitochondrial and ribosomal percentages
 ### [Module 3 — Normalization](modules/03-normalization/index.qmd)
 
 Library-size correction, scale factors, log transformation, manual calculations, raw-versus-normalized comparisons, limitations of normalization, and an optional LogNormalize-versus-SCTransform comparison.
+
+### [Module 4 — Highly variable genes](modules/04-variable-features/index.qmd)
+
+Controlled calculations, parameter comparisons, interpretation, and biological consequences.
+
+### [Module 5 — Scaling and regression](modules/05-scaling-regression/index.qmd)
+
+Controlled calculations, parameter comparisons, interpretation, and biological consequences.
+
+### [Module 6 — PCA in depth](modules/06-pca/index.qmd)
+
+Controlled calculations, parameter comparisons, interpretation, and biological consequences.
+
+### [Module 7 — Choosing PCA dimensions](modules/07-choosing-dimensions/index.qmd)
+
+Controlled calculations, parameter comparisons, interpretation, and biological consequences.
 
 ## How to work through a module
 
