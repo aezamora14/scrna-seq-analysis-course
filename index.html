@@ -359,12 +359,47 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Course resources</span></a>
+ <span class="menu-text">Representation modules</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modules/04-variable-features/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Highly variable genes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modules/05-scaling-regression/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Scaling and regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modules/06-pca/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. PCA in depth</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modules/07-choosing-dimensions/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7. Choosing PCA dimensions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Course resources</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./labs/index.html" class="sidebar-item-text sidebar-link">
@@ -374,7 +409,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./resources/glossary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Glossary for Modules 1–3</span></a>
+ <span class="menu-text">Glossary for Modules 1–7</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -401,6 +436,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#module-1-what-scrna-seq-data-actually-are" id="toc-module-1-what-scrna-seq-data-actually-are" class="nav-link" data-scroll-target="#module-1-what-scrna-seq-data-actually-are">Module 1 — What scRNA-seq data actually are</a></li>
   <li><a href="#module-2-quality-control" id="toc-module-2-quality-control" class="nav-link" data-scroll-target="#module-2-quality-control">Module 2 — Quality control</a></li>
   <li><a href="#module-3-normalization" id="toc-module-3-normalization" class="nav-link" data-scroll-target="#module-3-normalization">Module 3 — Normalization</a></li>
+  <li><a href="#module-4-highly-variable-genes" id="toc-module-4-highly-variable-genes" class="nav-link" data-scroll-target="#module-4-highly-variable-genes">Module 4 — Highly variable genes</a></li>
+  <li><a href="#module-5-scaling-and-regression" id="toc-module-5-scaling-and-regression" class="nav-link" data-scroll-target="#module-5-scaling-and-regression">Module 5 — Scaling and regression</a></li>
+  <li><a href="#module-6-pca-in-depth" id="toc-module-6-pca-in-depth" class="nav-link" data-scroll-target="#module-6-pca-in-depth">Module 6 — PCA in depth</a></li>
+  <li><a href="#module-7-choosing-pca-dimensions" id="toc-module-7-choosing-pca-dimensions" class="nav-link" data-scroll-target="#module-7-choosing-pca-dimensions">Module 7 — Choosing PCA dimensions</a></li>
   </ul></li>
   <li><a href="#how-to-work-through-a-module" id="toc-how-to-work-through-a-module" class="nav-link" data-scroll-target="#how-to-work-through-a-module">How to work through a module</a></li>
   <li><a href="#start-here" id="toc-start-here" class="nav-link" data-scroll-target="#start-here">Start here</a></li>
@@ -444,7 +483,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Modules 1–3 are fully implemented and tested. Later modules have deliberately not been created yet.</p>
+<p>Modules 1–7 cover measurement through PCA dimension selection. Later modules have deliberately not been created yet.</p>
 </div>
 </div>
 </section>
@@ -461,6 +500,22 @@ ul.task-list li input[type="checkbox"] {
 <section id="module-3-normalization" class="level3">
 <h3 class="anchored" data-anchor-id="module-3-normalization"><a href="./modules/03-normalization/index.html">Module 3 — Normalization</a></h3>
 <p>Library-size correction, scale factors, log transformation, manual calculations, raw-versus-normalized comparisons, limitations of normalization, and an optional LogNormalize-versus-SCTransform comparison.</p>
+</section>
+<section id="module-4-highly-variable-genes" class="level3">
+<h3 class="anchored" data-anchor-id="module-4-highly-variable-genes"><a href="./modules/04-variable-features/index.html">Module 4 — Highly variable genes</a></h3>
+<p>Controlled calculations, parameter comparisons, interpretation, and biological consequences.</p>
+</section>
+<section id="module-5-scaling-and-regression" class="level3">
+<h3 class="anchored" data-anchor-id="module-5-scaling-and-regression"><a href="./modules/05-scaling-regression/index.html">Module 5 — Scaling and regression</a></h3>
+<p>Controlled calculations, parameter comparisons, interpretation, and biological consequences.</p>
+</section>
+<section id="module-6-pca-in-depth" class="level3">
+<h3 class="anchored" data-anchor-id="module-6-pca-in-depth"><a href="./modules/06-pca/index.html">Module 6 — PCA in depth</a></h3>
+<p>Controlled calculations, parameter comparisons, interpretation, and biological consequences.</p>
+</section>
+<section id="module-7-choosing-pca-dimensions" class="level3">
+<h3 class="anchored" data-anchor-id="module-7-choosing-pca-dimensions"><a href="./modules/07-choosing-dimensions/index.html">Module 7 — Choosing PCA dimensions</a></h3>
+<p>Controlled calculations, parameter comparisons, interpretation, and biological consequences.</p>
 </section>
 </section>
 <section id="how-to-work-through-a-module" class="level2">

@@ -38,20 +38,248 @@
   {
     "objectID": "schedule-semester.html",
     "href": "schedule-semester.html",
-    "title": "Semester pacing: foundational block",
+    "title": "Semester pacing: Modules 1–7",
     "section": "",
-    "text": "This page schedules the currently implemented material within a 14–16 week semester. It does not create placeholder lessons for future modules.\n\n\n\n\n\n\n\n\n\nWeek\nPreparation (60–90 min)\nClass meeting (150–180 min)\nProduct\n\n\n\n\n1\nSetup and reproducibility reading\nEnvironment clinic; R sparse-matrix refresher\nVerified local environment\n\n\n2\nModule 1 through matrix anatomy\nDroplets, barcodes, reads, UMIs, cell/gene access patterns\nMatrix anatomy worksheet\n\n\n3\nModule 1 zeros and artifacts\nUndersampling lab; ambient RNA, empty droplets, doublets\nSampling-zero explanation\n\n\n4\nModule 2 metrics\nQC plots by cell and sample; complexity interpretation\nQC figure set\n\n\n5\nModule 2 thresholds\nThreshold sensitivity lab; population retention analysis\nQC decision table\n\n\n6\nModule 2 downstream consequences\nPCA/clustering comparison and biological discussion\nQC sensitivity report\n\n\n7\nModule 3 through hand calculations\nLibrary-size correction and log transformation\nHand-calculation worksheet\n\n\n8\nModule 3 perturbations\nRaw/normalized comparison and scale-factor exercise\nNormalization interpretation memo\n\n\n9\nModule 3 model-based section\nOptional SCTransform comparison; foundational synthesis\nFoundational analysis audit\n\n\n\nRemaining semester weeks are intentionally left for later development rather than linked to empty modules."
+    "text": "This page schedules the currently implemented material within a 14–16 week semester. It does not create placeholder lessons for future modules.\n\n\n\n\n\n\n\n\n\nWeek\nPreparation (60–90 min)\nClass meeting (150–180 min)\nProduct\n\n\n\n\n1\nSetup and reproducibility reading\nEnvironment clinic; R sparse-matrix refresher\nVerified local environment\n\n\n2\nModule 1 through matrix anatomy\nDroplets, barcodes, reads, UMIs, cell/gene access patterns\nMatrix anatomy worksheet\n\n\n3\nModule 1 zeros and artifacts\nUndersampling lab; ambient RNA, empty droplets, doublets\nSampling-zero explanation\n\n\n4\nModule 2 metrics\nQC plots by cell and sample; complexity interpretation\nQC figure set\n\n\n5\nModule 2 thresholds\nThreshold sensitivity lab; population retention analysis\nQC decision table\n\n\n6\nModule 2 downstream consequences\nPCA/clustering comparison and biological discussion\nQC sensitivity report\n\n\n7\nModule 3 through hand calculations\nLibrary-size correction and log transformation\nHand-calculation worksheet\n\n\n8\nModule 3 perturbations\nRaw/normalized comparison and scale-factor exercise\nNormalization interpretation memo\n\n\n9\nModule 3 model-based section\nOptional SCTransform comparison; foundational synthesis\nFoundational analysis audit\n\n\n10\nModule 4\nMean–variance calculations and HVG comparisons\nFeature-selection report\n\n\n11\nModule 5 scaling\nManual scaling and reference-population comparison\nScaling worksheet\n\n\n12\nModule 5 regression\nControlled regression and biological consequences\nRegression decision memo\n\n\n13\nModule 6 geometry\nLoadings, scores, orthogonality, and reconstruction\nPCA arithmetic\n\n\n14\nModule 6 interpretation\nLoading programs and T-cell subset comparison\nPC evidence table\n\n\n15\nModule 7\nDimension sensitivity at fixed resolution\nCluster stability report\n\n\n16\nCross-module synthesis\nJustify the full representation workflow\nReproducible analysis narrative\n\n\n\nFor 14 weeks, combine Weeks 1–2 and Weeks 8–9 while retaining the stated independent lab time. No later module is required."
   },
   {
     "objectID": "labs/index.html",
     "href": "labs/index.html",
     "title": "Student labs",
     "section": "",
-    "text": "Run each lab from the repository root. The scripts are complete and executable; the assessed work is the interpretation you add to your own Quarto notebook or course submission.\n\nModule 1 lab: count matrices\nModule 2 lab: quality control\nModule 3 lab: normalization\n\n\n\n\n\n\n\nImportant\n\n\n\nCode execution is necessary but not sufficient. For every comparison, document what changed, what did not change, why, and whether the biological conclusion changed.",
+    "text": "Run each lab from the repository root. The scripts are complete and executable; the assessed work is the interpretation you add to your own Quarto notebook or course submission.\n\nModule 1 lab: count matrices\nModule 2 lab: quality control\nModule 3 lab: normalization\n\n\n\n\n\n\n\nImportant\n\n\n\nCode execution is necessary but not sufficient. For every comparison, document what changed, what did not change, why, and whether the biological conclusion changed.\n\n\n\nModule 4: Highly variable genes\nModule 5: Scaling and regression\nModule 6: PCA in depth\nModule 7: Choosing PCA dimensions",
     "crumbs": [
       "Home",
       "Course resources",
       "Student labs"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html",
+    "href": "modules/03-normalization/index.html",
+    "title": "Module 3 — Normalization",
+    "section": "",
+    "text": "By the end of this module, you should be able to:\n\nexplain why raw UMI counts are not directly comparable across cells with different observed library sizes;\ncalculate library-size-normalized and log-normalized expression manually;\nreproduce Seurat’s LogNormalize calculation in base R;\ndistinguish raw counts, counts per scale factor, and log-normalized values;\nexplain what normalization does not correct;\nevaluate how the scale factor and log transform change numerical values;\npreserve raw counts while storing normalized values in a separate Seurat layer; and\ncompare the goals and caveats of LogNormalize and SCTransform without treating either as universally superior.\n\nSuggested time: 75–90 minutes of conceptual work plus 90–120 minutes of computation.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#learning-objectives",
+    "href": "modules/03-normalization/index.html#learning-objectives",
+    "title": "Module 3 — Normalization",
+    "section": "",
+    "text": "By the end of this module, you should be able to:\n\nexplain why raw UMI counts are not directly comparable across cells with different observed library sizes;\ncalculate library-size-normalized and log-normalized expression manually;\nreproduce Seurat’s LogNormalize calculation in base R;\ndistinguish raw counts, counts per scale factor, and log-normalized values;\nexplain what normalization does not correct;\nevaluate how the scale factor and log transform change numerical values;\npreserve raw counts while storing normalized values in a separate Seurat layer; and\ncompare the goals and caveats of LogNormalize and SCTransform without treating either as universally superior.\n\nSuggested time: 75–90 minutes of conceptual work plus 90–120 minutes of computation.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#the-problem-observed-library-sizes-differ",
+    "href": "modules/03-normalization/index.html#the-problem-observed-library-sizes-differ",
+    "title": "Module 3 — Normalization",
+    "section": "The problem: observed library sizes differ",
+    "text": "The problem: observed library sizes differ\nTwo otherwise similar cells can contribute different total UMI counts because of capture efficiency, sequencing allocation, cell RNA content, cell size, damage, or other technical and biological factors.\nReturn to the controlled four-cell matrix:\ntoy &lt;- read.csv(\n  \"data/toy_counts.csv\",\n  row.names = 1,\n  check.names = FALSE\n)\ntoy &lt;- as.matrix(toy)\n\ntoy\ncolSums(toy)\nCell A has 100 observed UMIs and Cell B has 200. Every gene count in Cell B is twice the corresponding count in Cell A. Their compositions are identical, but their raw numerical values differ.\nIf raw counts are compared directly, every detected gene appears higher in Cell B. The analysis would confuse a library-wide multiplier with gene-specific regulation.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#seurat-lognormalize-step-by-step",
+    "href": "modules/03-normalization/index.html#seurat-lognormalize-step-by-step",
+    "title": "Module 3 — Normalization",
+    "section": "Seurat LogNormalize, step by step",
+    "text": "Seurat LogNormalize, step by step\nLet:\n\n\\(x_{g,c}\\) be the raw UMI count for gene \\(g\\) in cell \\(c\\);\n\\(L_c = \\sum_{g'} x_{g',c}\\) be the observed library size of cell \\(c\\); and\n\\(s\\) be a chosen scale factor, conventionally 10,000 in Seurat.\n\nFirst calculate counts per scale factor:\n\\[\nr_{g,c}\n= \\frac{x_{g,c}}{L_c} \\times s.\n\\]\nThen apply the natural logarithm after adding 1:\n\\[\ny_{g,c}\n= \\log\\left(1 + r_{g,c}\\right)\n= \\log\\left(\n1 + \\frac{x_{g,c}}{\\sum_{g'} x_{g',c}} \\times s\n\\right).\n\\]\nWith Seurat’s default \\(s = 10{,}000\\):\n\\[\n\\operatorname{LogNormalize}(x_{g,c})\n= \\log\\left(\n1 + \\frac{x_{g,c}}{\\sum_{g'} x_{g',c}} \\times 10{,}000\n\\right).\n\\]\nThe dummy index \\(g'\\) in the denominator means “sum across all genes” without reusing the focal gene index \\(g\\).",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#hand-calculation",
+    "href": "modules/03-normalization/index.html#hand-calculation",
+    "title": "Module 3 — Normalization",
+    "section": "Hand calculation",
+    "text": "Hand calculation\nFor CD3D in Cell A:\n\\[\nx_{\\mathrm{CD3D},A}=20, \\qquad L_A=100.\n\\]\nUsing \\(s=100\\) so the arithmetic remains transparent:\n\\[\nr_{\\mathrm{CD3D},A}\n= \\frac{20}{100}\\times100\n=20,\n\\]\nand:\n\\[\ny_{\\mathrm{CD3D},A}\n=\\log(1+20)\n\\approx3.045.\n\\]\nFor CD3D in Cell B:\n\\[\nr_{\\mathrm{CD3D},B}\n=\\frac{40}{200}\\times100\n=20,\n\\]\nso its log-normalized value is also approximately 3.045. Normalization removes the exact twofold library multiplier in this controlled pair.\n\nCalculate three entries yourself\nUsing \\(s=100\\), calculate:\n\nNKG7 in Cell A;\nNKG7 in Cell C; and\nMS4A1 in Cell D.\n\nFor each entry, write the raw count, library size, counts per 100, and \\(\\log(1 + \\text{counts per 100})\\).",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#reproduce-the-calculation-in-r",
+    "href": "modules/03-normalization/index.html#reproduce-the-calculation-in-r",
+    "title": "Module 3 — Normalization",
+    "section": "Reproduce the calculation in R",
+    "text": "Reproduce the calculation in R\nlibrary(ggplot2)\nlibrary(patchwork)\nlibrary(dplyr)\nlibrary(tidyr)\n\nlibrary_sizes &lt;- colSums(toy)\n\ncounts_per_100 &lt;- sweep(\n  toy,\n  MARGIN = 2,\n  STATS = library_sizes,\n  FUN = \"/\"\n) * 100\n\nlog_normalized &lt;- log1p(counts_per_100)\n\nround(counts_per_100, 3)\nround(log_normalized, 3)\nlog1p(x) computes \\(\\log(1+x)\\) accurately, including for values close to zero.\nConfirm the controlled pair:\ncbind(\n  raw_A = toy[, \"Cell_A\"],\n  raw_B = toy[, \"Cell_B\"],\n  normalized_A = counts_per_100[, \"Cell_A\"],\n  normalized_B = counts_per_100[, \"Cell_B\"]\n)",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#side-by-side-raw-relative-and-log-normalized",
+    "href": "modules/03-normalization/index.html#side-by-side-raw-relative-and-log-normalized",
+    "title": "Module 3 — Normalization",
+    "section": "Side-by-side: raw, relative, and log-normalized",
+    "text": "Side-by-side: raw, relative, and log-normalized\nmatrix_to_long &lt;- function(matrix, stage) {\n  as.data.frame(matrix) |&gt;\n    tibble::rownames_to_column(\"gene\") |&gt;\n    pivot_longer(\n      -gene,\n      names_to = \"cell\",\n      values_to = \"value\"\n    ) |&gt;\n    mutate(stage = stage)\n}\n\ncomparison_long &lt;- bind_rows(\n  matrix_to_long(toy, \"Raw UMI counts\"),\n  matrix_to_long(counts_per_100, \"Counts per 100\"),\n  matrix_to_long(log_normalized, \"log(1 + counts per 100)\")\n)\n\nggplot(\n  comparison_long,\n  aes(cell, gene, fill = value)\n) +\n  geom_tile(color = \"white\") +\n  geom_text(aes(label = round(value, 1))) +\n  facet_wrap(~stage, nrow = 1, scales = \"free\") +\n  scale_fill_viridis_c() +\n  labs(x = \"Cell\", y = \"Gene\")\n\n\n\nThree heatmaps show raw UMI counts, counts per 100, and log-transformed counts per 100 for the hand-calculation matrix.\n\n\n\nWhat changed?\n\nLibrary-size correction makes Cell A and Cell B equal because their compositions are exactly proportional.\nThe log transformation compresses large values more strongly than small values.\nValues are no longer integer molecule counts.\n\n\n\nWhat did not change?\n\nZeros remain zero because \\(\\log(1+0)=0\\).\nThe original raw count matrix should remain intact.\nCell C still has a larger relative NKG7 signal than Cells A and B.\nNormalization does not establish why a cell had a different library size.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#why-add-1-and-take-a-logarithm",
+    "href": "modules/03-normalization/index.html#why-add-1-and-take-a-logarithm",
+    "title": "Module 3 — Normalization",
+    "section": "Why add 1 and take a logarithm?",
+    "text": "Why add 1 and take a logarithm?\nThe logarithm is undefined at zero, so adding 1 retains zeros. More importantly, the log transform compresses the long right tail of relative expression.\nFor example:\nrelative_values &lt;- c(0, 1, 10, 100, 1000)\n\ndata.frame(\n  relative_value = relative_values,\n  log_normalized = log1p(relative_values)\n)\nA tenfold increase does not produce an additive tenfold increase after logging. Differences among very large values are compressed, which reduces their numerical dominance in visualization and later calculations.\n\n\n\n\n\n\nWarning\n\n\n\nA difference of 1 on the log-normalized scale does not mean one additional transcript or a one-percentage-point change. Always state which scale is being interpreted.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#reproduce-seurats-result",
+    "href": "modules/03-normalization/index.html#reproduce-seurats-result",
+    "title": "Module 3 — Normalization",
+    "section": "Reproduce Seurat’s result",
+    "text": "Reproduce Seurat’s result\nlibrary(Seurat)\n\ntoy_obj &lt;- CreateSeuratObject(\n  counts = toy,\n  min.cells = 0,\n  min.features = 0\n)\n\ntoy_obj &lt;- NormalizeData(\n  toy_obj,\n  normalization.method = \"LogNormalize\",\n  scale.factor = 100,\n  verbose = FALSE\n)\n\nseurat_counts &lt;- LayerData(\n  toy_obj,\n  assay = \"RNA\",\n  layer = \"counts\"\n)\n\nseurat_normalized &lt;- LayerData(\n  toy_obj,\n  assay = \"RNA\",\n  layer = \"data\"\n)\n\nstopifnot(all(as.matrix(seurat_counts) == toy))\nstopifnot(all.equal(\n  as.matrix(seurat_normalized),\n  log_normalized,\n  tolerance = 1e-10\n))\nIn Seurat v5, raw counts remain in the counts layer and normalized values are stored in the data layer. Preserving this separation is essential for reproducibility and for methods that require integer counts.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#perturbation-exercise-change-only-the-scale-factor",
+    "href": "modules/03-normalization/index.html#perturbation-exercise-change-only-the-scale-factor",
+    "title": "Module 3 — Normalization",
+    "section": "Perturbation exercise: change only the scale factor",
+    "text": "Perturbation exercise: change only the scale factor\nUse three scale factors while holding the raw counts and normalization method fixed:\nscale_factors &lt;- c(100, 1000, 10000)\n\nnormalized_by_scale &lt;- lapply(\n  scale_factors,\n  function(scale_factor) {\n    log1p(\n      sweep(toy, 2, colSums(toy), \"/\") *\n        scale_factor\n    )\n  }\n)\n\nnames(normalized_by_scale) &lt;- paste0(\n  \"scale_\",\n  scale_factors\n)\n\nlapply(\n  normalized_by_scale,\n  function(matrix) round(matrix[\"CD3D\", ], 3)\n)\nAnswer:\n\nWhich numerical values change?\nDo zeros change?\nDoes Cell C suddenly express CD3D at any scale factor?\nDoes the ranking of cells for a nonzero gene always remain identical after changing the scale factor and applying the log transform?\nWhy should the scale factor be reported even though it is not a biological parameter?",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#apply-normalization-to-the-controlled-immune-dataset",
+    "href": "modules/03-normalization/index.html#apply-normalization-to-the-controlled-immune-dataset",
+    "title": "Module 3 — Normalization",
+    "section": "Apply normalization to the controlled immune dataset",
+    "text": "Apply normalization to the controlled immune dataset\nsource(\"scripts/course_helpers.R\")\n\nobj &lt;- load_teaching_object()\nobj &lt;- add_qc_metrics(obj)\n\nobj_log &lt;- NormalizeData(\n  obj,\n  normalization.method = \"LogNormalize\",\n  scale.factor = 10000,\n  verbose = FALSE\n)\n\nraw_nkg7 &lt;- as.numeric(\n  LayerData(obj_log, layer = \"counts\")[\"NKG7\", ]\n)\n\nlog_nkg7 &lt;- as.numeric(\n  LayerData(obj_log, layer = \"data\")[\"NKG7\", ]\n)\n\ndepth_comparison &lt;- data.frame(\n  nCount_RNA = obj_log$nCount_RNA,\n  truth_cell_type = obj_log$truth_cell_type,\n  raw_NKG7 = raw_nkg7,\n  normalized_NKG7 = log_nkg7\n)\nCompare raw and normalized NKG7 among CD8 T and NK cells:\ndepth_long &lt;- depth_comparison |&gt;\n  filter(truth_cell_type %in% c(\"CD8 T\", \"NK\")) |&gt;\n  pivot_longer(\n    cols = c(raw_NKG7, normalized_NKG7),\n    names_to = \"expression_scale\",\n    values_to = \"NKG7\"\n  )\n\nggplot(\n  depth_long,\n  aes(nCount_RNA, NKG7, color = truth_cell_type)\n) +\n  geom_point(alpha = 0.55) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  scale_x_log10() +\n  facet_wrap(~expression_scale, scales = \"free_y\") +\n  labs(\n    x = \"Observed library size (log scale)\",\n    y = \"NKG7 value\",\n    color = \"Controlled cell type\"\n  )\n\n\n\nScatterplots compare the relationship between library size and raw or log-normalized NKG7 values in controlled CD8 T and NK cells.\n\n\nNormalization reduces a library-wide depth relationship. It does not force every depth correlation to zero because biological identity, RNA content, composition, sampling variance, and contamination remain.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#what-normalization-does-not-correct",
+    "href": "modules/03-normalization/index.html#what-normalization-does-not-correct",
+    "title": "Module 3 — Normalization",
+    "section": "What normalization does not correct",
+    "text": "What normalization does not correct\nLogNormalize() does not automatically:\n\nremove batch effects;\ncorrect donor or sample confounding;\nmake cells independent biological replicates;\nremove ambient RNA;\nidentify doublets;\nrepair low-quality cells;\nimpute sampling zeros;\nregress mitochondrial, cell-cycle, or stress programs;\nmake expression values comparable across genes in the sense required for PCA scaling; or\njustify condition-level statistical inference.\n\nNormalization addresses a defined measurement problem: unequal observed library sizes. Asking it to solve unrelated design or quality problems leads to overinterpretation.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#zeros-after-normalization",
+    "href": "modules/03-normalization/index.html#zeros-after-normalization",
+    "title": "Module 3 — Normalization",
+    "section": "Zeros after normalization",
+    "text": "Zeros after normalization\nBecause zero remains zero, log normalization does not distinguish a biological zero from a sampling zero. It also does not create information that was never observed.\nzero_check &lt;- data.frame(\n  raw_zero = raw_nkg7 == 0,\n  normalized_zero = log_nkg7 == 0\n)\n\ntable(zero_check)\nAn imputation method would be a separate model with separate assumptions. This module does not impute expression.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#biological-consequence",
+    "href": "modules/03-normalization/index.html#biological-consequence",
+    "title": "Module 3 — Normalization",
+    "section": "Biological consequence",
+    "text": "Biological consequence\nSuppose a stimulated sample has deeper observed libraries than a control sample. Raw counts may make many genes appear higher in stimulation simply because more UMIs were observed per cell. Library-size normalization can reduce that global multiplier.\nHowever, if stimulation truly increases total RNA per cell, forcing all cells to the same relative library size can obscure an absolute global shift. Standard scRNA-seq usually lacks spike-ins or absolute molecule recovery needed to identify such shifts cleanly. Normalization therefore encodes an assumption: much of the library-size difference is unwanted for the intended comparison.\n\n\n\n\n\n\nImportantState the estimand\n\n\n\nAfter library-size normalization, interpretation is primarily relative: how much of a cell’s observed library is allocated to a gene, followed by transformation. Do not silently reinterpret the result as absolute transcripts per cell.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#sctransform-a-model-based-alternative",
+    "href": "modules/03-normalization/index.html#sctransform-a-model-based-alternative",
+    "title": "Module 3 — Normalization",
+    "section": "SCTransform: a model-based alternative",
+    "text": "SCTransform: a model-based alternative\nSCTransform() fits a regularized negative-binomial model of UMI counts as a function of sequencing depth and produces a variance-stabilized representation. Its Pearson residuals emphasize deviations from the model rather than applying the same explicit divide-scale-log calculation to every gene.\nPotential advantages include:\n\nmodeling the mean–variance relationship directly;\nreducing depth-associated variance in a gene-aware manner; and\ncombining normalization and variance stabilization in one framework.\n\nCaveats include:\n\na more complex model and less transparent hand interpretation;\ndependence on model assumptions and implementation choices;\nvalues that are not log-normalized counts;\nadditional computation and dependencies; and\nthe possibility that depth is associated with real biology rather than only nuisance variation.\n\nSCTransform is not automatically superior. The choice depends on the data, analytical goal, compatibility with downstream methods, and whether the model’s assumptions are appropriate.\nThe optional glmGamPoi package can accelerate the vst.flavor = \"v2\" example below. If it is absent, SCTransform() falls back to its built-in fitting implementation; the calculation remains valid but is slower.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#optional-advanced-comparison-lognormalize-versus-sctransform",
+    "href": "modules/03-normalization/index.html#optional-advanced-comparison-lognormalize-versus-sctransform",
+    "title": "Module 3 — Normalization",
+    "section": "Optional advanced comparison: LogNormalize versus SCTransform",
+    "text": "Optional advanced comparison: LogNormalize versus SCTransform\nRun both methods on the same unfiltered controlled object:\nobj_log &lt;- NormalizeData(\n  obj,\n  normalization.method = \"LogNormalize\",\n  scale.factor = 10000,\n  verbose = FALSE\n)\n\nobj_sct &lt;- SCTransform(\n  obj,\n  assay = \"RNA\",\n  new.assay.name = \"SCT\",\n  vst.flavor = \"v2\",\n  return.only.var.genes = FALSE,\n  verbose = FALSE\n)\nExtract values for one gene. These values are on different scales and should not be compared as if their numerical magnitudes had the same meaning:\nlog_value &lt;- as.numeric(\n  LayerData(\n    obj_log,\n    assay = \"RNA\",\n    layer = \"data\"\n  )[\"GZMK\", ]\n)\n\nsct_residual &lt;- as.numeric(\n  LayerData(\n    obj_sct,\n    assay = \"SCT\",\n    layer = \"scale.data\"\n  )[\"GZMK\", ]\n)\n\nmethod_comparison &lt;- data.frame(\n  nCount_RNA = obj$nCount_RNA,\n  truth_cell_type = obj$truth_cell_type,\n  LogNormalize = log_value,\n  SCTransform_residual = sct_residual\n) |&gt;\n  filter(truth_cell_type %in% c(\"CD8 T\", \"NK\")) |&gt;\n  pivot_longer(\n    cols = c(LogNormalize, SCTransform_residual),\n    names_to = \"method\",\n    values_to = \"GZMK_value\"\n  )\n\nggplot(\n  method_comparison,\n  aes(nCount_RNA, GZMK_value, color = truth_cell_type)\n) +\n  geom_point(alpha = 0.55) +\n  scale_x_log10() +\n  facet_wrap(~method, scales = \"free_y\") +\n  labs(\n    x = \"Observed library size\",\n    y = \"Method-specific GZMK value\"\n  )\nThen compare:\n\nthe residual association with observed library size;\nseparation of the controlled CD8 T and NK groups;\nthe number and identity of variable genes selected by each workflow;\nsensitivity to retaining low-quality and empty-droplet profiles; and\nwhether a substantive biological conclusion changes.\n\nDo not choose the method whose plot looks most separated without evaluating why.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#common-mistakes-and-limitations",
+    "href": "modules/03-normalization/index.html#common-mistakes-and-limitations",
+    "title": "Module 3 — Normalization",
+    "section": "Common mistakes and limitations",
+    "text": "Common mistakes and limitations\n\nOverwriting raw counts with normalized values.\nCalling log-normalized values “counts.”\nForgetting which scale factor was used.\nAssuming normalization removes batch effects or QC problems.\nComparing values from LogNormalize and SCTransform as if they share units.\nTreating a zero after normalization as proof of no biological expression.\nInterpreting lower depth correlation as proof that every technical effect is gone.\nNormalizing before deciding whether empty droplets and clear failures should be retained.\nTreating default parameters as biological truths.\nSelecting a normalization method only because it produces preferred clusters.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#check-your-understanding",
+    "href": "modules/03-normalization/index.html#check-your-understanding",
+    "title": "Module 3 — Normalization",
+    "section": "Check your understanding",
+    "text": "Check your understanding\n\nWhy do Cell A and Cell B have equal normalized CD3D despite different raw counts?\nWhat does the scale factor control, and what biological property does it not represent?\nWhy is log1p() used instead of log()?\nDoes normalization turn a UMI count into an absolute transcript estimate?\nName four problems that NormalizeData() does not solve.\nWhich Seurat layer should retain integer raw counts?\nWhy can normalized expression still correlate with library size?\nHow does a Pearson residual from SCTransform differ conceptually from a log-normalized value?\nWhen could library-size normalization remove a biologically meaningful global RNA difference?\nWhat evidence would justify choosing SCTransform over LogNormalize for a specific analysis?",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#lab",
+    "href": "modules/03-normalization/index.html#lab",
+    "title": "Module 3 — Normalization",
+    "section": "Lab",
+    "text": "Lab\nRun the Module 3 student lab. Submit the hand calculations, the three-stage heatmap, the scale-factor perturbation, the larger-dataset depth comparison, and a written evaluation of the optional SCTransform comparison if completed.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
     ]
   },
   {
@@ -247,6 +475,174 @@
     ]
   },
   {
+    "objectID": "modules/06-pca/index.html",
+    "href": "modules/06-pca/index.html",
+    "title": "Module 6 — PCA in depth",
+    "section": "",
+    "text": "By the end of this module, you should be able to:\n\nexplain dimensionality, correlation, and linear combinations using a small expression matrix;\ncalculate a cell PC score from scaled expression and gene loadings;\ndistinguish the genes-by-PC loading matrix from the cells-by-PC score matrix;\nexplain orthogonality geometrically without equating it with biological independence;\nrank positive and negative loadings and propose cautious biological interpretations;\ncalculate variance explained with an explicit denominator;\ncompare whole-immune and T-cell-only PCA while recognizing that axes are relearned; and\nexplain why maximum variance does not imply maximum biological importance.\n\nSuggested time: two 90-minute concept sessions plus 120–150 minutes of computation.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "6. PCA in depth"
+    ]
+  },
+  {
+    "objectID": "modules/06-pca/index.html#learning-objectives",
+    "href": "modules/06-pca/index.html#learning-objectives",
+    "title": "Module 6 — PCA in depth",
+    "section": "",
+    "text": "By the end of this module, you should be able to:\n\nexplain dimensionality, correlation, and linear combinations using a small expression matrix;\ncalculate a cell PC score from scaled expression and gene loadings;\ndistinguish the genes-by-PC loading matrix from the cells-by-PC score matrix;\nexplain orthogonality geometrically without equating it with biological independence;\nrank positive and negative loadings and propose cautious biological interpretations;\ncalculate variance explained with an explicit denominator;\ncompare whole-immune and T-cell-only PCA while recognizing that axes are relearned; and\nexplain why maximum variance does not imply maximum biological importance.\n\nSuggested time: two 90-minute concept sessions plus 120–150 minutes of computation.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "6. PCA in depth"
+    ]
+  },
+  {
+    "objectID": "modules/06-pca/index.html#the-problem-many-genes-describe-overlapping-patterns",
+    "href": "modules/06-pca/index.html#the-problem-many-genes-describe-overlapping-patterns",
+    "title": "Module 6 — PCA in depth",
+    "section": "The problem: many genes describe overlapping patterns",
+    "text": "The problem: many genes describe overlapping patterns\nModule 4 chose informative genes; Module 5 put each gene on a reference scale. We still have thousands of coordinates for each cell. If CCR7, IL7R, and TCF7 rise together, treating them as unrelated directions misses a shared pattern. PCA constructs new coordinates from weighted combinations of the original genes.\nA dimension is one numerical coordinate needed to locate an observation. With six input genes, a cell begins as a point in six-dimensional expression space. Six genes do not imply six distinct biological programs: correlated genes can move together. A lower-dimensional representation can retain much of that movement while discarding some smaller variation.\nPCA learns a single set of axes from all included cells. It describes relatively global variance in that population. A neighbor graph later asks which cells are close to each particular cell; that local question is different from finding one direction that explains substantial variance across the entire population.\nlibrary(Seurat)\nlibrary(ggplot2)\nlibrary(patchwork)\nsource(\"scripts/course_helpers.R\")\ndir.create(\"outputs\", showWarnings = FALSE)",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "6. PCA in depth"
+    ]
+  },
+  {
+    "objectID": "modules/06-pca/index.html#controlled-example-eight-cells-and-six-genes",
+    "href": "modules/06-pca/index.html#controlled-example-eight-cells-and-six-genes",
+    "title": "Module 6 — PCA in depth",
+    "section": "Controlled example: eight cells and six genes",
+    "text": "Controlled example: eight cells and six genes\nStart with these deliberately coordinated normalized values. They illustrate arithmetic, not validated T-cell phenotypes. Predict which genes will have similar weights and which will oppose each other before running PCA.\ntoy_pca &lt;- rbind(\n  CCR7 = c(5, 4.6, 4.2, 3.8, 2, 1.5, 1, 0.5),\n  IL7R = c(4.8, 4.5, 4, 3.9, 2.1, 1.4, 1.2, 0.4),\n  TCF7 = c(4.4, 4.8, 3.8, 4, 1.8, 1.6, 0.8, 0.7),\n  NKG7 = c(0.5, 0.9, 1.3, 1.8, 3.8, 4.2, 4.8, 5),\n  GNLY = c(0.4, 1.1, 1.2, 1.5, 3.5, 4.5, 4.7, 5.2),\n  PRF1 = c(0.8, 0.7, 1.6, 1.4, 4, 4.1, 5.1, 4.8)\n)\ncolnames(toy_pca) &lt;- paste0(\"Cell_\", 1:8)\nprint(toy_pca)\nZ &lt;- t(scale(t(toy_pca)))\nprint(round(Z, 2))\n# prcomp expects cells as rows; genes are columns.\ntoy_fit &lt;- prcomp(t(Z), center = FALSE, scale. = FALSE)\nL &lt;- toy_fit$rotation\nS &lt;- toy_fit$x\nRows of toy_pca are genes. prcomp() expects variables in columns, so we transpose the scaled matrix Z. We do not scale it a second time. Inspect both the normalized and scaled values: each gene is now measured relative to its own distribution, but correlated ordering remains visible.\n\nTwo genes before six dimensions\nDraw scaled CCR7 horizontally and scaled NKG7 vertically. A cell is one point. If their values oppose one another, the point cloud is elongated along a diagonal. PC1 follows the direction of greatest spread; PC2 is perpendicular to it and captures the remaining spread.\n\n\n\nTwo-dimensional PCA geometry with perpendicular loading directions.\n\n\nThe arrows must be judged with equal units on both axes. A stretched plotting window can make perpendicular directions look misleading. Run the geometry section of the lab to recreate this picture. Then change one cell’s NKG7 value, rescale, and refit: do the arrows move? Explain why changing one observation can affect the axes assigned to every cell.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "6. PCA in depth"
+    ]
+  },
+  {
+    "objectID": "modules/06-pca/index.html#a-principal-component-is-a-linear-combination",
+    "href": "modules/06-pca/index.html#a-principal-component-is-a-linear-combination",
+    "title": "Module 6 — PCA in depth",
+    "section": "A principal component is a linear combination",
+    "text": "A principal component is a linear combination\nA linear combination multiplies each coordinate by a weight and adds the results. Let \\(z_{g,c}\\) be scaled expression, \\(w_{g,k}\\) the loading of gene \\(g\\) on PC \\(k\\), and \\(s_{c,k}\\) the score of cell \\(c\\) on that PC:\n\\[\ns_{c,k}=\\sum_{g=1}^{p}z_{g,c}w_{g,k}.\n\\]\nThe same weights apply to every included cell. They are learned from the whole input matrix, not chosen independently for each cell. A gene with a large absolute loading helps define that axis strongly, but its contribution to one cell’s score also depends on that cell’s scaled expression.\nFor example, an axis with positive NKG7/GNLY/PRF1 weights and negative CCR7/IL7R/TCF7 weights might describe a cytotoxic versus naive/memory-like contrast. This is an interpretation of the observed weights, not a fixed definition of PC3 or any other PC number. The program may occur on another PC or be distributed across several PCs in another population.\n\n\n\n\n\n\n\n\n\nQuantity\nRows\nColumns\nQuestion answered\n\n\n\n\nGene loadings\nPCA-input genes\nPCs\nHow does a gene contribute to an axis?\n\n\nCell scores\nCells\nPCs\nWhere does a cell lie on that axis?\n\n\n\nEvery PCA-input gene has a coordinate in every loading vector, although some weights may be zero or tiny. Genes are not assigned to one PC. Genes excluded from the PCA input do not acquire loadings in that fitted PCA merely because their expression remains in the object.\n\nCalculate one cell’s score\nprint(round(L, 3))\nprint(round(S, 3))\n# A score is a weighted sum over genes, not the loading of one gene.\ncontributions &lt;- Z[, \"Cell_1\"] * L[, \"PC1\"]\nprint(contributions)\nstopifnot(abs(sum(contributions) - S[\"Cell_1\", \"PC1\"]) &lt; 1e-10)\nstopifnot(max(abs(t(Z) %*% L - S)) &lt; 1e-10)\nstopifnot(max(abs(crossprod(L) - diag(ncol(L)))) &lt; 1e-10)\nstopifnot(max(abs(cov(S) - diag(diag(cov(S))))) &lt; 1e-10)\nCalculate the first three gene contributions for Cell 1 by hand, then sum all six in R. Repeat for Cell 8. If a gene has a negative loading and below-average expression, what sign is its contribution? Explain how this differs from calling that gene “negatively expressed.”\nIn matrix notation, let \\(X\\) have cells as rows and scaled genes as columns, \\(L\\) contain loadings, and \\(S\\) contain scores:\n\\[\nS=XL.\n\\]\nCheck the dimensions before multiplying. A cells-by-genes matrix times a genes-by-PCs matrix produces a cells-by-PCs matrix. This dimensional check is a practical way to detect a transposition error.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "6. PCA in depth"
+    ]
+  },
+  {
+    "objectID": "modules/06-pca/index.html#orthogonality-and-its-biological-limit",
+    "href": "modules/06-pca/index.html#orthogonality-and-its-biological-limit",
+    "title": "Module 6 — PCA in depth",
+    "section": "Orthogonality and its biological limit",
+    "text": "Orthogonality and its biological limit\nTwo loading vectors are orthogonal when their dot product is zero:\n\\[\n\\sum_g w_{g,1}w_{g,2}=0.\n\\]\nIn two dimensions this means perpendicular arrows. In many dimensions the same algebra defines a new direction rather than repeating PC1. For centered PCA data, distinct score columns also have zero sample covariance, apart from numerical approximation.\nThis constraint does not mean that immune pathways are independent. A biological program can contribute to more than one PC, and correlated pathways can be represented through mixtures on orthogonal mathematical axes. Uncorrelated coordinates also do not establish statistical independence in general.\n\nPerturbation: reverse the sign, then compress\nflipped_L &lt;- L\nflipped_S &lt;- S\nflipped_L[, 1] &lt;- -L[, 1]\nflipped_S[, 1] &lt;- -S[, 1]\nstopifnot(max(abs(S %*% t(L) - flipped_S %*% t(flipped_L))) &lt; 1e-10)\n# Compare reconstruction with one PC and all PCs.\nreconstruction_1 &lt;- S[, 1, drop = FALSE] %*% t(L[, 1, drop = FALSE])\nreconstruction_all &lt;- S %*% t(L)\nprint(c(one_PC_error = sum((t(Z) - reconstruction_1)^2),\n        all_PC_error = sum((t(Z) - reconstruction_all)^2)))\nCompare the one-PC and full reconstruction errors. What did compression discard? What changed when both a loading column and its score column reversed sign? What remained identical about reconstruction and pairwise distances?\nA PC’s sign is arbitrary: its opposite is an equally valid axis. If two runs differ by a sign, compare programs and relative cell positions before claiming that the biology reversed. If eigenvalues are similar, axes can also rotate or exchange order, so matching PC1 to PC1 is not always sufficient.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "6. PCA in depth"
+    ]
+  },
+  {
+    "objectID": "modules/06-pca/index.html#inspect-seurats-pca-directly",
+    "href": "modules/06-pca/index.html#inspect-seurats-pca-directly",
+    "title": "Module 6 — PCA in depth",
+    "section": "Inspect Seurat’s PCA directly",
+    "text": "Inspect Seurat’s PCA directly\nUse the same 6,000-gene, 480-cell controlled dataset as Modules 4 and 5. The preparation function performs normalization, selects 2,000 HVGs, scales them, and runs 50 PCs with a fixed seed. Its source is short and should be inspected alongside the commands.\nwhole &lt;- prepare_representation_object(nfeatures = 2000, npcs = 50)\npc_loadings &lt;- Loadings(whole, reduction = \"pca\")\npc_scores &lt;- Embeddings(whole, reduction = \"pca\")\nprint(dim(pc_loadings))\nprint(dim(pc_scores))\nprint(pc_loadings[1:6, 1:5])\nprint(pc_scores[1:6, 1:5])\ninput &lt;- LayerData(whole, layer = \"scale.data\")[rownames(pc_loadings), , drop = FALSE]\nprojected &lt;- t(input) %*% pc_loadings\nstopifnot(max(abs(projected - pc_scores)) &lt; 1e-4)\nUnder this lab’s ordinary RunPCA() settings, multiplying the scaled input by the loading matrix reproduces the scores to numerical tolerance. Seurat can drop requested features that were not scaled or have zero variance, so use the returned loading row names to identify the actual input. See the RunPCA reference.\nWhich returned object contains genes? Which contains cells? Select one row from each and describe it in words before interpreting any plot.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "6. PCA in depth"
+    ]
+  },
+  {
+    "objectID": "modules/06-pca/index.html#interpret-both-ends-of-an-axis",
+    "href": "modules/06-pca/index.html#interpret-both-ends-of-an-axis",
+    "title": "Module 6 — PCA in depth",
+    "section": "Interpret both ends of an axis",
+    "text": "Interpret both ends of an axis\nloading_tables &lt;- do.call(rbind, lapply(1:5, function(k) {\n  weights &lt;- pc_loadings[, k]\n  positive &lt;- head(sort(weights[weights &gt; 0], decreasing = TRUE), 6)\n  negative &lt;- head(sort(weights[weights &lt; 0]), 6)\n  data.frame(PC = paste0(\"PC\", k), gene = c(names(positive), names(negative)),\n    loading = c(positive, negative), direction = rep(c(\"positive\", \"negative\"),\n      c(length(positive), length(negative))))\n}))\nprint(loading_tables)\nwrite.csv(loading_tables, \"outputs/module-06-loadings.csv\", row.names = FALSE)\nloading_plot &lt;- ggplot(loading_tables, aes(loading, reorder(gene, loading), fill = direction)) +\n  geom_col() + facet_wrap(~PC, scales = \"free_y\", ncol = 2) +\n  labs(x = \"Gene loading\", y = \"Gene\") + theme(legend.position = \"bottom\")\nprint(loading_plot)\nggsave(\"outputs/module-06-loadings.png\", loading_plot, width = 10, height = 11)\n\n\n\nPositive and negative gene weights for five PCs.\n\n\nAn isolated familiar marker is weak evidence. Look for several coherent genes and inspect both ends. A contrast can reflect myeloid versus lymphoid cells, T versus B cells, naive versus effector states, interferon response, proliferation, or stress. These are possible interpretations, not guaranteed labels for these five PCs.\nComplete this table from the unlabeled loading output:\n\n\n\n\n\n\n\n\n\n\nPC\nPositive genes\nNegative genes\nProposed interpretation\nConfidence and conflicting evidence\n\n\n\n\n1\n\n\n\n\n\n\n2\n\n\n\n\n\n\n3\n\n\n\n\n\n\n4\n\n\n\n\n\n\n5\n\n\n\n\n\n\n\nA high-loading gene is associated with an axis; it is not thereby causal. Check expression patterns and metadata. A large PC associated with a sample or sequencing covariate may represent technical structure. A smaller PC can still encode a biologically important rare state.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "6. PCA in depth"
+    ]
+  },
+  {
+    "objectID": "modules/06-pca/index.html#variance-explained-define-the-denominator",
+    "href": "modules/06-pca/index.html#variance-explained-define-the-denominator",
+    "title": "Module 6 — PCA in depth",
+    "section": "Variance explained: define the denominator",
+    "text": "Variance explained: define the denominator\nStdev(whole, reduction = \"pca\") returns the standard deviation of scores for each retained PC. Squaring gives the variance. Percent of total input variance is\n\\[\n100\\frac{\\operatorname{Var}(s_{\\cdot,k})}{\\sum_g\\operatorname{Var}(X_{\\cdot,g})}.\n\\]\nIf only 50 PCs were retained, dividing by their summed variance would instead report a percentage within those 50. It would conceal omitted variance. Our helper uses all actual PCA-input genes for the denominator. With unit-variance genes and no clipping, their total variance is approximately the number of genes; the helper measures it rather than assuming it.\nvariance_whole &lt;- pca_variance_table(whole)\nprint(head(variance_whole))\nstopifnot(sum(variance_whole$percent_variance) &lt;= 100 + 1e-6)\nvariance_plot &lt;- ggplot(variance_whole, aes(PC, percent_variance)) +\n  geom_line() + geom_point() + labs(y = \"% of total PCA-input variance\")\nprint(variance_plot)\nggsave(\"outputs/module-06-variance.png\", variance_plot, width = 7, height = 4.5)\n\n\n\nVariance explained with total PCA-input variance as the denominator.\n\n\nPCs are ordered by variance, not biological importance. A large lineage contrast or technical effect can dominate PC1. Ask which question the retained variation helps answer rather than expecting the highest-variance axis to be the most interesting one.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "6. PCA in depth"
+    ]
+  },
+  {
+    "objectID": "modules/06-pca/index.html#major-comparison-whole-population-versus-t-cells-only",
+    "href": "modules/06-pca/index.html#major-comparison-whole-population-versus-t-cells-only",
+    "title": "Module 6 — PCA in depth",
+    "section": "Major comparison: whole population versus T cells only",
+    "text": "Major comparison: whole population versus T cells only\nHVG ranking, gene reference scales, and PCA axes all depend on the included cells. Subsetting the old score matrix alone does not relearn any of them. Here we explicitly reselect features, rescale, and refit PCA within T cells.\nt_cells &lt;- Cells(whole)[whole$truth_cell_type %in% c(\"CD4 T\", \"CD8 T\")]\nt_only &lt;- prepare_representation_object(subset(load_representation_object(), cells = t_cells),\n  nfeatures = 2000, npcs = 50)\nprint(c(HVG_overlap = length(intersect(VariableFeatures(whole), VariableFeatures(t_only))),\n        HVG_jaccard = jaccard_similarity(VariableFeatures(whole), VariableFeatures(t_only))))\nprint(rank_pca_loadings(t_only, pcs = 1:5, n = 6))\nprint(head(pca_variance_table(t_only)))\n# A cross-PC correlation table allows axes to move or reverse sign.\nscore_comparison &lt;- cor(Embeddings(whole, \"pca\")[t_cells, 1:5],\n                        Embeddings(t_only, \"pca\")[t_cells, 1:5])\nprint(round(score_comparison, 2))\nsubset_plot &lt;- DimPlot(subset(whole, cells = t_cells), reduction = \"pca\", group.by = \"truth_t_state\", combine = FALSE)[[1]] +\n  ggtitle(\"T cells on whole-immune axes\") +\n  DimPlot(t_only, reduction = \"pca\", group.by = \"truth_t_state\", combine = FALSE)[[1]] +\n  ggtitle(\"T cells on relearned T-cell axes\") + plot_layout(guides = \"collect\")\nprint(subset_plot)\nggsave(\"outputs/module-06-subset.png\", subset_plot, width = 11, height = 5)\nstopifnot(identical(LayerData(whole, layer = \"counts\")[, t_cells],\n                    LayerData(t_only, layer = \"counts\")))\n# Interpret: which axes changed, which programs persisted, and why?\n# Does orthogonality imply independent biological pathways? Are PC numbers portable?\n\n\n\nThe same T cells on whole-immune versus relearned T-cell axes.\n\n\nThe left panel displays only T cells but retains the axes learned from all immune cells. The right learns axes from T cells. This isolates the population used for fitting while showing the same cells. Compare HVG overlap, PC1–PC5 loadings, variance fractions, and the cross-PC correlation matrix. Do not interpret raw score changes as changes in molecules.\nOnce large non-T lineage differences are absent, within-T variation can account for a larger share of the remaining variance. Cytotoxicity or exhaustion could become prominent in an appropriate dataset; this simulation does not guarantee an exhaustion axis. Biological annotation requires evidence beyond a PC number.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "6. PCA in depth"
+    ]
+  },
+  {
+    "objectID": "modules/06-pca/index.html#what-changed-what-did-not-change-why",
+    "href": "modules/06-pca/index.html#what-changed-what-did-not-change-why",
+    "title": "Module 6 — PCA in depth",
+    "section": "What changed? What did not change? Why?",
+    "text": "What changed? What did not change? Why?\n\n\n\n\n\n\n\n\n\nComparison\nWhat changed?\nWhat stayed fixed?\nWhy might interpretation change?\n\n\n\n\nReverse a PC’s sign\n\n\n\n\n\nReconstruct with one versus all toy PCs\n\n\n\n\n\nWhole-immune versus T-cell-only fitting",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "6. PCA in depth"
+    ]
+  },
+  {
+    "objectID": "modules/06-pca/index.html#common-mistakes-and-interpretation-limits",
+    "href": "modules/06-pca/index.html#common-mistakes-and-interpretation-limits",
+    "title": "Module 6 — PCA in depth",
+    "section": "Common mistakes and interpretation limits",
+    "text": "Common mistakes and interpretation limits\n\nCalling a loading a cell coordinate or a score a gene weight.\nAssigning each gene to only one PC.\nInterpreting negative weights as negative molecule counts.\nEquating orthogonality with independent pathways.\nComparing PC numbers across fitted populations as if they were fixed biological labels.\nReporting percentages of retained PCs as percentages of total variance.\nTreating visually separated points as proof of a cell type or causal program.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "6. PCA in depth"
+    ]
+  },
+  {
+    "objectID": "modules/06-pca/index.html#check-your-understanding",
+    "href": "modules/06-pca/index.html#check-your-understanding",
+    "title": "Module 6 — PCA in depth",
+    "section": "Check your understanding",
+    "text": "Check your understanding\n\nWhat is compressed when six correlated genes become two PC coordinates?\nWhich observations determine the loading weights?\nHow do you calculate one cell score by hand?\nCan a gene contribute to both PC1 and PC2?\nWhy can a negative loading produce a positive contribution?\nWhy can PC1 contain technical variation?\nDoes orthogonality imply independent biological pathways?\nHow could 50 retained PCs misleadingly be reported as explaining 100%?\nWhy can cytotoxicity move to a different PC after subsetting?\nWhat evidence would increase or decrease confidence in a proposed PC interpretation?",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "6. PCA in depth"
+    ]
+  },
+  {
+    "objectID": "modules/06-pca/index.html#lab-and-transition",
+    "href": "modules/06-pca/index.html#lab-and-transition",
+    "title": "Module 6 — PCA in depth",
+    "section": "Lab and transition",
+    "text": "Lab and transition\nRun the complete PCA lab. Submit the hand projection, geometric plot, compression comparison, five-PC interpretation table, and population comparison. Explain every comparison in words. Module 7 now asks which of these learned coordinates should define cell similarity downstream.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "6. PCA in depth"
+    ]
+  },
+  {
     "objectID": "setup/index.html",
     "href": "setup/index.html",
     "title": "Setup and reproducibility",
@@ -300,21 +696,21 @@
     "href": "index.html",
     "title": "Advanced scRNA-seq Analysis Course",
     "section": "",
-    "text": "Single-cell RNA-seq analysis is not a sequence of neutral software commands. Decisions about which barcodes to retain, how to normalize libraries, and which representation to analyze can change the apparent biology.\nThis graduate-level course teaches students to connect each computational operation to the measurement problem it addresses. Every module uses controlled data so that the consequences of an analysis choice can be observed rather than accepted on authority.\n\n\n\n\n\n\nImportantCurrent course release\n\n\n\nModules 1–3 are fully implemented and tested. Later modules have deliberately not been created yet."
+    "text": "Single-cell RNA-seq analysis is not a sequence of neutral software commands. Decisions about which barcodes to retain, how to normalize libraries, and which representation to analyze can change the apparent biology.\nThis graduate-level course teaches students to connect each computational operation to the measurement problem it addresses. Every module uses controlled data so that the consequences of an analysis choice can be observed rather than accepted on authority.\n\n\n\n\n\n\nImportantCurrent course release\n\n\n\nModules 1–7 cover measurement through PCA dimension selection. Later modules have deliberately not been created yet."
   },
   {
     "objectID": "index.html#learn-by-changing-one-decision",
     "href": "index.html#learn-by-changing-one-decision",
     "title": "Advanced scRNA-seq Analysis Course",
     "section": "",
-    "text": "Single-cell RNA-seq analysis is not a sequence of neutral software commands. Decisions about which barcodes to retain, how to normalize libraries, and which representation to analyze can change the apparent biology.\nThis graduate-level course teaches students to connect each computational operation to the measurement problem it addresses. Every module uses controlled data so that the consequences of an analysis choice can be observed rather than accepted on authority.\n\n\n\n\n\n\nImportantCurrent course release\n\n\n\nModules 1–3 are fully implemented and tested. Later modules have deliberately not been created yet."
+    "text": "Single-cell RNA-seq analysis is not a sequence of neutral software commands. Decisions about which barcodes to retain, how to normalize libraries, and which representation to analyze can change the apparent biology.\nThis graduate-level course teaches students to connect each computational operation to the measurement problem it addresses. Every module uses controlled data so that the consequences of an analysis choice can be observed rather than accepted on authority.\n\n\n\n\n\n\nImportantCurrent course release\n\n\n\nModules 1–7 cover measurement through PCA dimension selection. Later modules have deliberately not been created yet."
   },
   {
     "objectID": "index.html#implemented-modules",
     "href": "index.html#implemented-modules",
     "title": "Advanced scRNA-seq Analysis Course",
     "section": "Implemented modules",
-    "text": "Implemented modules\n\nModule 1 — What scRNA-seq data actually are\nDroplets, barcodes, reads, UMIs, sparse count matrices, zeros, library size, detected features, capture efficiency, ambient RNA, empty droplets, doublets, and controlled undersampling.\n\n\nModule 2 — Quality control\nCell- and sample-level QC distributions, mitochondrial and ribosomal percentages, complexity, ambient RNA, doublets, sample-aware thresholds, permissive/moderate/aggressive sensitivity analyses, and downstream biological consequences.\n\n\nModule 3 — Normalization\nLibrary-size correction, scale factors, log transformation, manual calculations, raw-versus-normalized comparisons, limitations of normalization, and an optional LogNormalize-versus-SCTransform comparison."
+    "text": "Implemented modules\n\nModule 1 — What scRNA-seq data actually are\nDroplets, barcodes, reads, UMIs, sparse count matrices, zeros, library size, detected features, capture efficiency, ambient RNA, empty droplets, doublets, and controlled undersampling.\n\n\nModule 2 — Quality control\nCell- and sample-level QC distributions, mitochondrial and ribosomal percentages, complexity, ambient RNA, doublets, sample-aware thresholds, permissive/moderate/aggressive sensitivity analyses, and downstream biological consequences.\n\n\nModule 3 — Normalization\nLibrary-size correction, scale factors, log transformation, manual calculations, raw-versus-normalized comparisons, limitations of normalization, and an optional LogNormalize-versus-SCTransform comparison.\n\n\nModule 4 — Highly variable genes\nControlled calculations, parameter comparisons, interpretation, and biological consequences.\n\n\nModule 5 — Scaling and regression\nControlled calculations, parameter comparisons, interpretation, and biological consequences.\n\n\nModule 6 — PCA in depth\nControlled calculations, parameter comparisons, interpretation, and biological consequences.\n\n\nModule 7 — Choosing PCA dimensions\nControlled calculations, parameter comparisons, interpretation, and biological consequences."
   },
   {
     "objectID": "index.html#how-to-work-through-a-module",
@@ -547,250 +943,646 @@
     ]
   },
   {
-    "objectID": "modules/03-normalization/index.html",
-    "href": "modules/03-normalization/index.html",
-    "title": "Module 3 — Normalization",
+    "objectID": "modules/04-variable-features/index.html",
+    "href": "modules/04-variable-features/index.html",
+    "title": "Module 4 — Highly variable genes",
     "section": "",
-    "text": "By the end of this module, you should be able to:\n\nexplain why raw UMI counts are not directly comparable across cells with different observed library sizes;\ncalculate library-size-normalized and log-normalized expression manually;\nreproduce Seurat’s LogNormalize calculation in base R;\ndistinguish raw counts, counts per scale factor, and log-normalized values;\nexplain what normalization does not correct;\nevaluate how the scale factor and log transform change numerical values;\npreserve raw counts while storing normalized values in a separate Seurat layer; and\ncompare the goals and caveats of LogNormalize and SCTransform without treating either as universally superior.\n\nSuggested time: 75–90 minutes of conceptual work plus 90–120 minutes of computation.",
+    "text": "By the end of this module, you should be able to:\n\ncalculate a gene’s mean and variance across cells;\nexplain why expression variance generally depends on mean expression;\ndefine a highly variable gene (HVG) as a gene that varies more than genes with similar mean expression;\ndistinguish statistical variability from biological importance;\nuse Seurat’s FindVariableFeatures() and inspect the selected set;\ncompare 500, 1,000, 2,000, 3,000, and 5,000 HVGs using overlap and Jaccard similarity;\ntrace how changing only the number of HVGs changes a downstream PCA; and\nexplain why absence from the HVG set is not evidence that a gene is unexpressed or irrelevant.\n\nSuggested time: 80–95 minutes of conceptual work plus 110–130 minutes of computation.",
     "crumbs": [
       "Home",
-      "Foundational modules",
-      "3. Normalization"
+      "Representation modules",
+      "4. Highly variable genes"
     ]
   },
   {
-    "objectID": "modules/03-normalization/index.html#learning-objectives",
-    "href": "modules/03-normalization/index.html#learning-objectives",
-    "title": "Module 3 — Normalization",
+    "objectID": "modules/04-variable-features/index.html#learning-objectives",
+    "href": "modules/04-variable-features/index.html#learning-objectives",
+    "title": "Module 4 — Highly variable genes",
     "section": "",
-    "text": "By the end of this module, you should be able to:\n\nexplain why raw UMI counts are not directly comparable across cells with different observed library sizes;\ncalculate library-size-normalized and log-normalized expression manually;\nreproduce Seurat’s LogNormalize calculation in base R;\ndistinguish raw counts, counts per scale factor, and log-normalized values;\nexplain what normalization does not correct;\nevaluate how the scale factor and log transform change numerical values;\npreserve raw counts while storing normalized values in a separate Seurat layer; and\ncompare the goals and caveats of LogNormalize and SCTransform without treating either as universally superior.\n\nSuggested time: 75–90 minutes of conceptual work plus 90–120 minutes of computation.",
+    "text": "By the end of this module, you should be able to:\n\ncalculate a gene’s mean and variance across cells;\nexplain why expression variance generally depends on mean expression;\ndefine a highly variable gene (HVG) as a gene that varies more than genes with similar mean expression;\ndistinguish statistical variability from biological importance;\nuse Seurat’s FindVariableFeatures() and inspect the selected set;\ncompare 500, 1,000, 2,000, 3,000, and 5,000 HVGs using overlap and Jaccard similarity;\ntrace how changing only the number of HVGs changes a downstream PCA; and\nexplain why absence from the HVG set is not evidence that a gene is unexpressed or irrelevant.\n\nSuggested time: 80–95 minutes of conceptual work plus 110–130 minutes of computation.",
     "crumbs": [
       "Home",
-      "Foundational modules",
-      "3. Normalization"
+      "Representation modules",
+      "4. Highly variable genes"
     ]
   },
   {
-    "objectID": "modules/03-normalization/index.html#the-problem-observed-library-sizes-differ",
-    "href": "modules/03-normalization/index.html#the-problem-observed-library-sizes-differ",
-    "title": "Module 3 — Normalization",
-    "section": "The problem: observed library sizes differ",
-    "text": "The problem: observed library sizes differ\nTwo otherwise similar cells can contribute different total UMI counts because of capture efficiency, sequencing allocation, cell RNA content, cell size, damage, or other technical and biological factors.\nReturn to the controlled four-cell matrix:\ntoy &lt;- read.csv(\n  \"data/toy_counts.csv\",\n  row.names = 1,\n  check.names = FALSE\n)\ntoy &lt;- as.matrix(toy)\n\ntoy\ncolSums(toy)\nCell A has 100 observed UMIs and Cell B has 200. Every gene count in Cell B is twice the corresponding count in Cell A. Their compositions are identical, but their raw numerical values differ.\nIf raw counts are compared directly, every detected gene appears higher in Cell B. The analysis would confuse a library-wide multiplier with gene-specific regulation.",
+    "objectID": "modules/04-variable-features/index.html#the-problem-not-every-measured-gene-is-equally-informative",
+    "href": "modules/04-variable-features/index.html#the-problem-not-every-measured-gene-is-equally-informative",
+    "title": "Module 4 — Highly variable genes",
+    "section": "The problem: not every measured gene is equally informative",
+    "text": "The problem: not every measured gene is equally informative\nAfter quality control and normalization, an expression matrix can still contain thousands of genes. Some are nearly constant, some are detected too rarely to define a stable pattern, and some differ coherently among lineages or states. Passing every gene into representation learning can add computation and allow abundant but uninformative patterns to dilute useful structure.\nFeature selection asks:\n\nWhich genes contain reproducible cell-to-cell variation relative to other genes with similar average expression?\n\nIt does not ask which genes are important in every biological sense. A stable housekeeping gene can be essential to cell survival and still contribute little to separating cells in this dataset.\n\n\n\n\n\n\nImportantHVG is a dataset-specific statistical label\n\n\n\nA gene can be an HVG in one tissue, condition, or subset and not in another. “Highly variable” does not mean “most important,” “differentially expressed,” “a marker,” or “causal.”",
     "crumbs": [
       "Home",
-      "Foundational modules",
-      "3. Normalization"
+      "Representation modules",
+      "4. Highly variable genes"
     ]
   },
   {
-    "objectID": "modules/03-normalization/index.html#seurat-lognormalize-step-by-step",
-    "href": "modules/03-normalization/index.html#seurat-lognormalize-step-by-step",
-    "title": "Module 3 — Normalization",
-    "section": "Seurat LogNormalize, step by step",
-    "text": "Seurat LogNormalize, step by step\nLet:\n\n\\(x_{g,c}\\) be the raw UMI count for gene \\(g\\) in cell \\(c\\);\n\\(L_c = \\sum_{g'} x_{g',c}\\) be the observed library size of cell \\(c\\); and\n\\(s\\) be a chosen scale factor, conventionally 10,000 in Seurat.\n\nFirst calculate counts per scale factor:\n\\[\nr_{g,c}\n= \\frac{x_{g,c}}{L_c} \\times s.\n\\]\nThen apply the natural logarithm after adding 1:\n\\[\ny_{g,c}\n= \\log\\left(1 + r_{g,c}\\right)\n= \\log\\left(\n1 + \\frac{x_{g,c}}{\\sum_{g'} x_{g',c}} \\times s\n\\right).\n\\]\nWith Seurat’s default \\(s = 10{,}000\\):\n\\[\n\\operatorname{LogNormalize}(x_{g,c})\n= \\log\\left(\n1 + \\frac{x_{g,c}}{\\sum_{g'} x_{g',c}} \\times 10{,}000\n\\right).\n\\]\nThe dummy index \\(g'\\) in the denominator means “sum across all genes” without reusing the focal gene index \\(g\\).",
+    "objectID": "modules/04-variable-features/index.html#mean-and-variance-across-cells",
+    "href": "modules/04-variable-features/index.html#mean-and-variance-across-cells",
+    "title": "Module 4 — Highly variable genes",
+    "section": "Mean and variance across cells",
+    "text": "Mean and variance across cells\nFor normalized expression \\(x_{g,c}\\) of gene \\(g\\) in cell \\(c\\), with \\(C\\) cells, the gene mean is\n\\[\n\\bar{x}_g = \\frac{1}{C}\\sum_{c=1}^{C}x_{g,c}.\n\\]\nThe sample variance is\n\\[\ns_g^2 = \\frac{1}{C-1}\\sum_{c=1}^{C}(x_{g,c}-\\bar{x}_g)^2.\n\\]\nThe mean describes the center of the gene’s observed values. The variance describes their spread around that center. Variance is zero only when every included cell has exactly the same value.",
     "crumbs": [
       "Home",
-      "Foundational modules",
-      "3. Normalization"
+      "Representation modules",
+      "4. Highly variable genes"
     ]
   },
   {
-    "objectID": "modules/03-normalization/index.html#hand-calculation",
-    "href": "modules/03-normalization/index.html#hand-calculation",
-    "title": "Module 3 — Normalization",
-    "section": "Hand calculation",
-    "text": "Hand calculation\nFor CD3D in Cell A:\n\\[\nx_{\\mathrm{CD3D},A}=20, \\qquad L_A=100.\n\\]\nUsing \\(s=100\\) so the arithmetic remains transparent:\n\\[\nr_{\\mathrm{CD3D},A}\n= \\frac{20}{100}\\times100\n=20,\n\\]\nand:\n\\[\ny_{\\mathrm{CD3D},A}\n=\\log(1+20)\n\\approx3.045.\n\\]\nFor CD3D in Cell B:\n\\[\nr_{\\mathrm{CD3D},B}\n=\\frac{40}{200}\\times100\n=20,\n\\]\nso its log-normalized value is also approximately 3.045. Normalization removes the exact twofold library multiplier in this controlled pair.\n\nCalculate three entries yourself\nUsing \\(s=100\\), calculate:\n\nNKG7 in Cell A;\nNKG7 in Cell C; and\nMS4A1 in Cell D.\n\nFor each entry, write the raw count, library size, counts per 100, and \\(\\log(1 + \\text{counts per 100})\\).",
+    "objectID": "modules/04-variable-features/index.html#controlled-example-five-expression-patterns",
+    "href": "modules/04-variable-features/index.html#controlled-example-five-expression-patterns",
+    "title": "Module 4 — Highly variable genes",
+    "section": "Controlled example: five expression patterns",
+    "text": "Controlled example: five expression patterns\nThis small matrix contains normalized-expression values, not UMI counts. Each row represents a distinct pattern.\ntoy_hvg &lt;- rbind(\n  stable_high_housekeeping = c(8.0, 8.1, 7.9, 8.0, 8.1, 7.9, 8.0, 8.0),\n  lineage_marker = c(0.0, 0.1, 0.0, 0.2, 5.0, 5.2, 4.9, 5.1),\n  low_noisy = c(0, 0, 0, 1, 0, 0, 0, 0),\n  genuinely_variable = c(0.5, 1.0, 1.5, 2.0, 3.5, 4.0, 4.5, 5.0),\n  important_but_stable = c(1.0, 1.0, 1.1, 0.9, 1.0, 1.0, 0.9, 1.1)\n)\ncolnames(toy_hvg) &lt;- paste0(\"Cell_\", 1:8)\n\ntoy_hvg\nBefore calculating anything, predict which rows should help distinguish the first four cells from the last four.\n\nCalculate the summaries manually\ntoy_feature_summary &lt;- data.frame(\n  gene_pattern = rownames(toy_hvg),\n  mean = rowMeans(toy_hvg),\n  variance = apply(toy_hvg, 1, var),\n  row.names = NULL\n)\n\ntoy_feature_summary\nReproduce one row without rowMeans() or var():\nx &lt;- toy_hvg[\"lineage_marker\", ]\nmanual_mean &lt;- sum(x) / length(x)\nmanual_variance &lt;- sum((x - manual_mean)^2) / (length(x) - 1)\n\nc(mean = manual_mean, variance = manual_variance)\n\n\nVisualize mean and variance\nlibrary(ggplot2)\n\nggplot(toy_feature_summary, aes(mean, variance, label = gene_pattern)) +\n  geom_point(size = 3) +\n  geom_text(nudge_y = 0.25, check_overlap = TRUE) +\n  labs(x = \"Mean normalized expression\", y = \"Variance across cells\")\n\n\n\nFive controlled gene patterns illustrate that high mean, high variance, low noisy expression, and biological importance are different properties.\n\n\nInterpret each row:\n\nstable_high_housekeeping has high expression but almost no cell-separating variation.\nlineage_marker varies coherently between two cell groups.\nlow_noisy varies because of one small isolated observation; its variance is difficult to estimate reliably.\ngenuinely_variable spans a broad, ordered range.\nimportant_but_stable may be biologically essential yet adds little information about differences among these cells.",
     "crumbs": [
       "Home",
-      "Foundational modules",
-      "3. Normalization"
+      "Representation modules",
+      "4. Highly variable genes"
     ]
   },
   {
-    "objectID": "modules/03-normalization/index.html#reproduce-the-calculation-in-r",
-    "href": "modules/03-normalization/index.html#reproduce-the-calculation-in-r",
-    "title": "Module 3 — Normalization",
-    "section": "Reproduce the calculation in R",
-    "text": "Reproduce the calculation in R\nlibrary(ggplot2)\nlibrary(patchwork)\nlibrary(dplyr)\nlibrary(tidyr)\n\nlibrary_sizes &lt;- colSums(toy)\n\ncounts_per_100 &lt;- sweep(\n  toy,\n  MARGIN = 2,\n  STATS = library_sizes,\n  FUN = \"/\"\n) * 100\n\nlog_normalized &lt;- log1p(counts_per_100)\n\nround(counts_per_100, 3)\nround(log_normalized, 3)\nlog1p(x) computes \\(\\log(1+x)\\) accurately, including for values close to zero.\nConfirm the controlled pair:\ncbind(\n  raw_A = toy[, \"Cell_A\"],\n  raw_B = toy[, \"Cell_B\"],\n  normalized_A = counts_per_100[, \"Cell_A\"],\n  normalized_B = counts_per_100[, \"Cell_B\"]\n)",
+    "objectID": "modules/04-variable-features/index.html#why-raw-variance-is-not-enough",
+    "href": "modules/04-variable-features/index.html#why-raw-variance-is-not-enough",
+    "title": "Module 4 — Highly variable genes",
+    "section": "Why raw variance is not enough",
+    "text": "Why raw variance is not enough\nFor count-derived expression data, genes with larger means often have larger variances simply because more signal can be observed. Comparing the raw variance of a highly expressed gene with that of a barely detected gene is therefore not an even contest.\nAn HVG procedure models or standardizes the expected mean–variance relationship, then identifies genes that vary more than expected for their mean. In conceptual form:\n\\[\n\\text{standardized variability}_g\n=\n\\frac{\\text{observed variability}_g-\n\\text{expected variability at }\\bar{x}_g}\n{\\text{variability scale at }\\bar{x}_g}.\n\\]\nThis expression explains the comparison; it is not a line-by-line reproduction of Seurat’s implementation. Seurat’s vst method estimates an expected variance trend from the data, standardizes values relative to that trend, and ranks genes by standardized variance.\n\n\n\nIllustrative expected mean–variance trend.\n\n\nFor the RNA vst workflow, Seurat uses the count layer; the log-normalized scatter above is an exploratory illustration, not the exact data used to fit that trend. Its method standardizes using expected variance and clips extreme values before ranking. See the FindVariableFeatures reference.",
     "crumbs": [
       "Home",
-      "Foundational modules",
-      "3. Normalization"
+      "Representation modules",
+      "4. Highly variable genes"
     ]
   },
   {
-    "objectID": "modules/03-normalization/index.html#side-by-side-raw-relative-and-log-normalized",
-    "href": "modules/03-normalization/index.html#side-by-side-raw-relative-and-log-normalized",
-    "title": "Module 3 — Normalization",
-    "section": "Side-by-side: raw, relative, and log-normalized",
-    "text": "Side-by-side: raw, relative, and log-normalized\nmatrix_to_long &lt;- function(matrix, stage) {\n  as.data.frame(matrix) |&gt;\n    tibble::rownames_to_column(\"gene\") |&gt;\n    pivot_longer(\n      -gene,\n      names_to = \"cell\",\n      values_to = \"value\"\n    ) |&gt;\n    mutate(stage = stage)\n}\n\ncomparison_long &lt;- bind_rows(\n  matrix_to_long(toy, \"Raw UMI counts\"),\n  matrix_to_long(counts_per_100, \"Counts per 100\"),\n  matrix_to_long(log_normalized, \"log(1 + counts per 100)\")\n)\n\nggplot(\n  comparison_long,\n  aes(cell, gene, fill = value)\n) +\n  geom_tile(color = \"white\") +\n  geom_text(aes(label = round(value, 1))) +\n  facet_wrap(~stage, nrow = 1, scales = \"free\") +\n  scale_fill_viridis_c() +\n  labs(x = \"Cell\", y = \"Gene\")\n\n\n\nThree heatmaps show raw UMI counts, counts per 100, and log-transformed counts per 100 for the hand-calculation matrix.\n\n\n\nWhat changed?\n\nLibrary-size correction makes Cell A and Cell B equal because their compositions are exactly proportional.\nThe log transformation compresses large values more strongly than small values.\nValues are no longer integer molecule counts.\n\n\n\nWhat did not change?\n\nZeros remain zero because \\(\\log(1+0)=0\\).\nThe original raw count matrix should remain intact.\nCell C still has a larger relative NKG7 signal than Cells A and B.\nNormalization does not establish why a cell had a different library size.",
+    "objectID": "modules/04-variable-features/index.html#load-the-representation-learning-dataset",
+    "href": "modules/04-variable-features/index.html#load-the-representation-learning-dataset",
+    "title": "Module 4 — Highly variable genes",
+    "section": "Load the representation-learning dataset",
+    "text": "Load the representation-learning dataset\nThe controlled dataset for Modules 4–7 contains 6,000 genes and 480 high-quality immune cells. Its larger gene dimension supports the requested feature-count perturbations without changing the smaller QC dataset used in Modules 1–3.\nlibrary(Seurat)\nlibrary(Matrix)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(patchwork)\n\nsource(\"scripts/course_helpers.R\")\n\nobj &lt;- load_representation_object()\nobj &lt;- NormalizeData(obj, normalization.method = \"LogNormalize\", verbose = FALSE)\n\nobj\ntable(obj$truth_cell_type)\nThese labels are simulation truth for teaching. Real data would require biological annotation and independent evidence.",
     "crumbs": [
       "Home",
-      "Foundational modules",
-      "3. Normalization"
+      "Representation modules",
+      "4. Highly variable genes"
     ]
   },
   {
-    "objectID": "modules/03-normalization/index.html#why-add-1-and-take-a-logarithm",
-    "href": "modules/03-normalization/index.html#why-add-1-and-take-a-logarithm",
-    "title": "Module 3 — Normalization",
-    "section": "Why add 1 and take a logarithm?",
-    "text": "Why add 1 and take a logarithm?\nThe logarithm is undefined at zero, so adding 1 retains zeros. More importantly, the log transform compresses the long right tail of relative expression.\nFor example:\nrelative_values &lt;- c(0, 1, 10, 100, 1000)\n\ndata.frame(\n  relative_value = relative_values,\n  log_normalized = log1p(relative_values)\n)\nA tenfold increase does not produce an additive tenfold increase after logging. Differences among very large values are compressed, which reduces their numerical dominance in visualization and later calculations.\n\n\n\n\n\n\nWarning\n\n\n\nA difference of 1 on the log-normalized scale does not mean one additional transcript or a one-percentage-point change. Always state which scale is being interpreted.",
+    "objectID": "modules/04-variable-features/index.html#inspect-the-empirical-meanvariance-relationship",
+    "href": "modules/04-variable-features/index.html#inspect-the-empirical-meanvariance-relationship",
+    "title": "Module 4 — Highly variable genes",
+    "section": "Inspect the empirical mean–variance relationship",
+    "text": "Inspect the empirical mean–variance relationship\nCalculate summaries from the log-normalized data layer:\nnormalized &lt;- as.matrix(LayerData(obj, assay = \"RNA\", layer = \"data\"))\n\ngene_summary &lt;- data.frame(\n  gene = rownames(normalized),\n  mean = rowMeans(normalized),\n  variance = apply(normalized, 1, var),\n  row.names = NULL\n)\n\nggplot(gene_summary, aes(mean, variance)) +\n  geom_point(alpha = 0.25, size = 0.7) +\n  scale_x_continuous(trans = \"log1p\") +\n  scale_y_continuous(trans = \"log1p\") +\n  labs(\n    x = \"Mean log-normalized expression (log1p axis)\",\n    y = \"Variance across cells (log1p axis)\"\n  )\nGenes do not occupy a horizontal band. Expected variability changes with mean, which is why ranking raw variance alone is inadequate.",
     "crumbs": [
       "Home",
-      "Foundational modules",
-      "3. Normalization"
+      "Representation modules",
+      "4. Highly variable genes"
     ]
   },
   {
-    "objectID": "modules/03-normalization/index.html#reproduce-seurats-result",
-    "href": "modules/03-normalization/index.html#reproduce-seurats-result",
-    "title": "Module 3 — Normalization",
-    "section": "Reproduce Seurat’s result",
-    "text": "Reproduce Seurat’s result\nlibrary(Seurat)\n\ntoy_obj &lt;- CreateSeuratObject(\n  counts = toy,\n  min.cells = 0,\n  min.features = 0\n)\n\ntoy_obj &lt;- NormalizeData(\n  toy_obj,\n  normalization.method = \"LogNormalize\",\n  scale.factor = 100,\n  verbose = FALSE\n)\n\nseurat_counts &lt;- LayerData(\n  toy_obj,\n  assay = \"RNA\",\n  layer = \"counts\"\n)\n\nseurat_normalized &lt;- LayerData(\n  toy_obj,\n  assay = \"RNA\",\n  layer = \"data\"\n)\n\nstopifnot(all(as.matrix(seurat_counts) == toy))\nstopifnot(all.equal(\n  as.matrix(seurat_normalized),\n  log_normalized,\n  tolerance = 1e-10\n))\nIn Seurat v5, raw counts remain in the counts layer and normalized values are stored in the data layer. Preserving this separation is essential for reproducibility and for methods that require integer counts.",
+    "objectID": "modules/04-variable-features/index.html#select-hvgs-with-seurat",
+    "href": "modules/04-variable-features/index.html#select-hvgs-with-seurat",
+    "title": "Module 4 — Highly variable genes",
+    "section": "Select HVGs with Seurat",
+    "text": "Select HVGs with Seurat\nobj_2000 &lt;- FindVariableFeatures(\n  obj,\n  selection.method = \"vst\",\n  nfeatures = 2000,\n  verbose = FALSE\n)\n\nhvg_2000 &lt;- VariableFeatures(obj_2000)\nlength(hvg_2000)\nhead(hvg_2000, 20)\n\nVariableFeaturePlot(obj_2000)\nVariableFeatures() returns an ordered character vector. The first entry is ranked most highly by the chosen method; it is not guaranteed to have the largest mean, the largest raw variance, or the strongest biological relevance.\nLabel several known programs without treating them as validation truth:\nmarkers_to_label &lt;- c(\"CD3D\", \"MS4A1\", \"NKG7\", \"LST1\")\nLabelPoints(\n  plot = VariableFeaturePlot(obj_2000),\n  points = markers_to_label,\n  repel = TRUE\n)\n\n\n\nThe empirical mean–variance relationship and Seurat’s standardized feature ranking show why HVGs are judged relative to genes with similar means.",
     "crumbs": [
       "Home",
-      "Foundational modules",
-      "3. Normalization"
+      "Representation modules",
+      "4. Highly variable genes"
     ]
   },
   {
-    "objectID": "modules/03-normalization/index.html#perturbation-exercise-change-only-the-scale-factor",
-    "href": "modules/03-normalization/index.html#perturbation-exercise-change-only-the-scale-factor",
-    "title": "Module 3 — Normalization",
-    "section": "Perturbation exercise: change only the scale factor",
-    "text": "Perturbation exercise: change only the scale factor\nUse three scale factors while holding the raw counts and normalization method fixed:\nscale_factors &lt;- c(100, 1000, 10000)\n\nnormalized_by_scale &lt;- lapply(\n  scale_factors,\n  function(scale_factor) {\n    log1p(\n      sweep(toy, 2, colSums(toy), \"/\") *\n        scale_factor\n    )\n  }\n)\n\nnames(normalized_by_scale) &lt;- paste0(\n  \"scale_\",\n  scale_factors\n)\n\nlapply(\n  normalized_by_scale,\n  function(matrix) round(matrix[\"CD3D\", ], 3)\n)\nAnswer:\n\nWhich numerical values change?\nDo zeros change?\nDoes Cell C suddenly express CD3D at any scale factor?\nDoes the ranking of cells for a nonzero gene always remain identical after changing the scale factor and applying the log transform?\nWhy should the scale factor be reported even though it is not a biological parameter?",
+    "objectID": "modules/04-variable-features/index.html#are-familiar-markers-necessarily-hvgs",
+    "href": "modules/04-variable-features/index.html#are-familiar-markers-necessarily-hvgs",
+    "title": "Module 4 — Highly variable genes",
+    "section": "Are familiar markers necessarily HVGs?",
+    "text": "Are familiar markers necessarily HVGs?\nmarker_hvg_status &lt;- data.frame(\n  gene = c(\"CD3D\", \"MS4A1\", \"NKG7\", \"LST1\"),\n  selected_at_2000 = c(\"CD3D\", \"MS4A1\", \"NKG7\", \"LST1\") %in% hvg_2000,\n  rank = match(c(\"CD3D\", \"MS4A1\", \"NKG7\", \"LST1\"), hvg_2000)\n)\n\nmarker_hvg_status\nFor each marker, ask:\n\nIn which cells is it expected to vary?\nIs it measured often enough for its variability to be stable?\nAre there many other genes with stronger standardized variability?\nIf it is absent from the selected set, does that change what the counts say about its expression?\n\nThe last answer is no: feature selection controls which genes enter a later representation. It does not delete raw or normalized expression and does not determine whether a marker may be visualized or tested appropriately later.",
     "crumbs": [
       "Home",
-      "Foundational modules",
-      "3. Normalization"
+      "Representation modules",
+      "4. Highly variable genes"
     ]
   },
   {
-    "objectID": "modules/03-normalization/index.html#apply-normalization-to-the-controlled-immune-dataset",
-    "href": "modules/03-normalization/index.html#apply-normalization-to-the-controlled-immune-dataset",
-    "title": "Module 3 — Normalization",
-    "section": "Apply normalization to the controlled immune dataset",
-    "text": "Apply normalization to the controlled immune dataset\nsource(\"scripts/course_helpers.R\")\n\nobj &lt;- load_teaching_object()\nobj &lt;- add_qc_metrics(obj)\n\nobj_log &lt;- NormalizeData(\n  obj,\n  normalization.method = \"LogNormalize\",\n  scale.factor = 10000,\n  verbose = FALSE\n)\n\nraw_nkg7 &lt;- as.numeric(\n  LayerData(obj_log, layer = \"counts\")[\"NKG7\", ]\n)\n\nlog_nkg7 &lt;- as.numeric(\n  LayerData(obj_log, layer = \"data\")[\"NKG7\", ]\n)\n\ndepth_comparison &lt;- data.frame(\n  nCount_RNA = obj_log$nCount_RNA,\n  truth_cell_type = obj_log$truth_cell_type,\n  raw_NKG7 = raw_nkg7,\n  normalized_NKG7 = log_nkg7\n)\nCompare raw and normalized NKG7 among CD8 T and NK cells:\ndepth_long &lt;- depth_comparison |&gt;\n  filter(truth_cell_type %in% c(\"CD8 T\", \"NK\")) |&gt;\n  pivot_longer(\n    cols = c(raw_NKG7, normalized_NKG7),\n    names_to = \"expression_scale\",\n    values_to = \"NKG7\"\n  )\n\nggplot(\n  depth_long,\n  aes(nCount_RNA, NKG7, color = truth_cell_type)\n) +\n  geom_point(alpha = 0.55) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  scale_x_log10() +\n  facet_wrap(~expression_scale, scales = \"free_y\") +\n  labs(\n    x = \"Observed library size (log scale)\",\n    y = \"NKG7 value\",\n    color = \"Controlled cell type\"\n  )\n\n\n\nScatterplots compare the relationship between library size and raw or log-normalized NKG7 values in controlled CD8 T and NK cells.\n\n\nNormalization reduces a library-wide depth relationship. It does not force every depth correlation to zero because biological identity, RNA content, composition, sampling variance, and contamination remain.",
+    "objectID": "modules/04-variable-features/index.html#change-one-thing-number-of-selected-features",
+    "href": "modules/04-variable-features/index.html#change-one-thing-number-of-selected-features",
+    "title": "Module 4 — Highly variable genes",
+    "section": "Change one thing: number of selected features",
+    "text": "Change one thing: number of selected features\nHold cells, normalization, selection method, and seed fixed. Change only nfeatures.\nhvg_counts &lt;- c(500, 1000, 2000, 3000, 5000)\n\nhvg_objects &lt;- lapply(hvg_counts, function(n) {\n  FindVariableFeatures(\n    obj,\n    selection.method = \"vst\",\n    nfeatures = n,\n    verbose = FALSE\n  )\n})\nnames(hvg_objects) &lt;- paste0(\"hvg_\", hvg_counts)\n\nhvg_sets &lt;- lapply(hvg_objects, VariableFeatures)\nvapply(hvg_sets, length, integer(1))\n\nQuantify overlap\npair_grid &lt;- expand.grid(\n  set_1 = names(hvg_sets),\n  set_2 = names(hvg_sets),\n  stringsAsFactors = FALSE\n)\n\npair_grid$jaccard &lt;- mapply(\n  function(a, b) jaccard_similarity(hvg_sets[[a]], hvg_sets[[b]]),\n  pair_grid$set_1,\n  pair_grid$set_2\n)\n\nggplot(pair_grid, aes(set_1, set_2, fill = jaccard)) +\n  geom_tile(color = \"white\") +\n  geom_text(aes(label = sprintf(\"%.2f\", jaccard))) +\n  scale_fill_viridis_c(limits = c(0, 1)) +\n  labs(x = NULL, y = NULL, fill = \"Jaccard\") +\n  theme(axis.text.x = element_text(angle = 35, hjust = 1))\nFor sets \\(A\\) and \\(B\\), Jaccard similarity is\n\\[\nJ(A,B)=\\frac{|A\\cap B|}{|A\\cup B|}.\n\\]\nBecause these sets come from one ranking, the smaller set will usually be nested within the larger set. In that special case, the Jaccard value is largely determined by set sizes. The exercise is still valuable because it makes the magnitude of the change explicit; in analyses where cells or methods also change, nesting is not guaranteed.",
     "crumbs": [
       "Home",
-      "Foundational modules",
-      "3. Normalization"
+      "Representation modules",
+      "4. Highly variable genes"
     ]
   },
   {
-    "objectID": "modules/03-normalization/index.html#what-normalization-does-not-correct",
-    "href": "modules/03-normalization/index.html#what-normalization-does-not-correct",
-    "title": "Module 3 — Normalization",
-    "section": "What normalization does not correct",
-    "text": "What normalization does not correct\nLogNormalize() does not automatically:\n\nremove batch effects;\ncorrect donor or sample confounding;\nmake cells independent biological replicates;\nremove ambient RNA;\nidentify doublets;\nrepair low-quality cells;\nimpute sampling zeros;\nregress mitochondrial, cell-cycle, or stress programs;\nmake expression values comparable across genes in the sense required for PCA scaling; or\njustify condition-level statistical inference.\n\nNormalization addresses a defined measurement problem: unequal observed library sizes. Asking it to solve unrelated design or quality problems leads to overinterpretation.",
+    "objectID": "modules/04-variable-features/index.html#carry-the-perturbation-into-pca",
+    "href": "modules/04-variable-features/index.html#carry-the-perturbation-into-pca",
+    "title": "Module 4 — Highly variable genes",
+    "section": "Carry the perturbation into PCA",
+    "text": "Carry the perturbation into PCA\nCompare the deliberately restrictive 500-HVG representation with the broad 5,000-HVG representation. Keep all other choices fixed.\nrun_hvg_pca &lt;- function(feature_object, seed = 20260907) {\n  feature_object &lt;- ScaleData(\n    feature_object,\n    features = VariableFeatures(feature_object),\n    verbose = FALSE\n  )\n  RunPCA(\n    feature_object,\n    features = VariableFeatures(feature_object),\n    npcs = 20,\n    seed.use = seed,\n    verbose = FALSE\n  )\n}\n\npca_500 &lt;- run_hvg_pca(hvg_objects$hvg_500)\npca_5000 &lt;- run_hvg_pca(hvg_objects$hvg_5000)\n\nplot_500 &lt;- DimPlot(\n  pca_500,\n  reduction = \"pca\",\n  group.by = \"truth_cell_type\",\n  raster = FALSE\n) + ggtitle(\"500 HVGs\")\n\nplot_5000 &lt;- DimPlot(\n  pca_5000,\n  reduction = \"pca\",\n  group.by = \"truth_cell_type\",\n  raster = FALSE\n) + ggtitle(\"5,000 HVGs\")\n\nplot_500 + plot_5000 + plot_layout(guides = \"collect\")\n\n\n\nPCA of the same 480 cells using 500 or 5,000 HVGs shows stable broad lineages but altered coordinates and lower-level structure.\n\n\nInspect numerical consequences rather than judging only visual separation:\ncomparison &lt;- data.frame(\n  cell_id = Cells(pca_500),\n  PC1_500 = Embeddings(pca_500, \"pca\")[, \"PC_1\"],\n  PC1_5000 = Embeddings(pca_5000, \"pca\")[, \"PC_1\"],\n  PC2_500 = Embeddings(pca_500, \"pca\")[, \"PC_2\"],\n  PC2_5000 = Embeddings(pca_5000, \"pca\")[, \"PC_2\"]\n)\n\ncor(comparison$PC1_500, comparison$PC1_5000)\ncor(comparison$PC2_500, comparison$PC2_5000)\n\nhead(rank_pca_loadings(pca_500, pcs = 1:3, n = 5))\nhead(rank_pca_loadings(pca_5000, pcs = 1:3, n = 5))\nThe sign of a PC is arbitrary, so a correlation near \\(-1\\) can indicate the same axis with reversed orientation. Compare gene programs and relative cell positions, not signs alone.",
     "crumbs": [
       "Home",
-      "Foundational modules",
-      "3. Normalization"
+      "Representation modules",
+      "4. Highly variable genes"
     ]
   },
   {
-    "objectID": "modules/03-normalization/index.html#zeros-after-normalization",
-    "href": "modules/03-normalization/index.html#zeros-after-normalization",
-    "title": "Module 3 — Normalization",
-    "section": "Zeros after normalization",
-    "text": "Zeros after normalization\nBecause zero remains zero, log normalization does not distinguish a biological zero from a sampling zero. It also does not create information that was never observed.\nzero_check &lt;- data.frame(\n  raw_zero = raw_nkg7 == 0,\n  normalized_zero = log_nkg7 == 0\n)\n\ntable(zero_check)\nAn imputation method would be a separate model with separate assumptions. This module does not impute expression.",
+    "objectID": "modules/04-variable-features/index.html#what-changed-what-did-not-change-why",
+    "href": "modules/04-variable-features/index.html#what-changed-what-did-not-change-why",
+    "title": "Module 4 — Highly variable genes",
+    "section": "What changed? What did not change? Why?",
+    "text": "What changed? What did not change? Why?\nComplete the table before choosing an HVG count:\n\n\n\nQuestion\n500 HVGs\n5,000 HVGs\n\n\n\n\nWhich genes entered PCA?\n\n\n\n\nWhich familiar markers were selected?\n\n\n\n\nWhich broad cell relationships persisted?\n\n\n\n\nWhich PC loadings changed?\n\n\n\n\nWhich cell coordinates changed?\n\n\n\n\nDid raw or normalized expression change?\n\n\n\n\nDid biological identity change?\n\n\n\n\n\nWhat changed is the set of variables available to PCA. What did not change is the observed count matrix, normalization, included cells, truth labels, or biology that generated the data. Any changed representation follows from exposing PCA to a narrower or broader collection of variation.",
     "crumbs": [
       "Home",
-      "Foundational modules",
-      "3. Normalization"
+      "Representation modules",
+      "4. Highly variable genes"
     ]
   },
   {
-    "objectID": "modules/03-normalization/index.html#biological-consequence",
-    "href": "modules/03-normalization/index.html#biological-consequence",
-    "title": "Module 3 — Normalization",
+    "objectID": "modules/04-variable-features/index.html#biological-consequence",
+    "href": "modules/04-variable-features/index.html#biological-consequence",
+    "title": "Module 4 — Highly variable genes",
     "section": "Biological consequence",
-    "text": "Biological consequence\nSuppose a stimulated sample has deeper observed libraries than a control sample. Raw counts may make many genes appear higher in stimulation simply because more UMIs were observed per cell. Library-size normalization can reduce that global multiplier.\nHowever, if stimulation truly increases total RNA per cell, forcing all cells to the same relative library size can obscure an absolute global shift. Standard scRNA-seq usually lacks spike-ins or absolute molecule recovery needed to identify such shifts cleanly. Normalization therefore encodes an assumption: much of the library-size difference is unwanted for the intended comparison.\n\n\n\n\n\n\nImportantState the estimand\n\n\n\nAfter library-size normalization, interpretation is primarily relative: how much of a cell’s observed library is allocated to a gene, followed by transformation. Do not silently reinterpret the result as absolute transcripts per cell.",
+    "text": "Biological consequence\nSuppose a rare T-cell state is represented by a modest coordinated program. A very small HVG set may omit parts of that program because stronger lineage differences dominate the ranking. A very large set may retain the program but also introduce many weak or noisy genes. Either choice can alter which axes are learned and which cells become neighbors later.\nThere is no universally correct HVG count. A defensible choice uses sensitivity analysis, checks relevant programs, and reports whether conclusions are stable.",
     "crumbs": [
       "Home",
-      "Foundational modules",
-      "3. Normalization"
+      "Representation modules",
+      "4. Highly variable genes"
     ]
   },
   {
-    "objectID": "modules/03-normalization/index.html#sctransform-a-model-based-alternative",
-    "href": "modules/03-normalization/index.html#sctransform-a-model-based-alternative",
-    "title": "Module 3 — Normalization",
-    "section": "SCTransform: a model-based alternative",
-    "text": "SCTransform: a model-based alternative\nSCTransform() fits a regularized negative-binomial model of UMI counts as a function of sequencing depth and produces a variance-stabilized representation. Its Pearson residuals emphasize deviations from the model rather than applying the same explicit divide-scale-log calculation to every gene.\nPotential advantages include:\n\nmodeling the mean–variance relationship directly;\nreducing depth-associated variance in a gene-aware manner; and\ncombining normalization and variance stabilization in one framework.\n\nCaveats include:\n\na more complex model and less transparent hand interpretation;\ndependence on model assumptions and implementation choices;\nvalues that are not log-normalized counts;\nadditional computation and dependencies; and\nthe possibility that depth is associated with real biology rather than only nuisance variation.\n\nSCTransform is not automatically superior. The choice depends on the data, analytical goal, compatibility with downstream methods, and whether the model’s assumptions are appropriate.\nThe optional glmGamPoi package can accelerate the vst.flavor = \"v2\" example below. If it is absent, SCTransform() falls back to its built-in fitting implementation; the calculation remains valid but is slower.",
+    "objectID": "modules/04-variable-features/index.html#common-mistakes-and-interpretation-limits",
+    "href": "modules/04-variable-features/index.html#common-mistakes-and-interpretation-limits",
+    "title": "Module 4 — Highly variable genes",
+    "section": "Common mistakes and interpretation limits",
+    "text": "Common mistakes and interpretation limits\n\nCalling HVGs “the genes that matter.”\nRanking genes by raw variance without accounting for mean expression.\nAssuming highly expressed genes must be highly variable.\nAssuming a gene not selected as an HVG is absent or biologically irrelevant.\nSelecting an HVG count because it produces the preferred picture.\nChanging cells, normalization, and HVG count simultaneously, then attributing all differences to feature count.\nTreating the simulated truth labels as if equivalent labels were known in real data.\nForgetting that selection is learned from the cells currently included.\nInterpreting a PC sign reversal as a contradictory result.",
     "crumbs": [
       "Home",
-      "Foundational modules",
-      "3. Normalization"
+      "Representation modules",
+      "4. Highly variable genes"
     ]
   },
   {
-    "objectID": "modules/03-normalization/index.html#optional-advanced-comparison-lognormalize-versus-sctransform",
-    "href": "modules/03-normalization/index.html#optional-advanced-comparison-lognormalize-versus-sctransform",
-    "title": "Module 3 — Normalization",
-    "section": "Optional advanced comparison: LogNormalize versus SCTransform",
-    "text": "Optional advanced comparison: LogNormalize versus SCTransform\nRun both methods on the same unfiltered controlled object:\nobj_log &lt;- NormalizeData(\n  obj,\n  normalization.method = \"LogNormalize\",\n  scale.factor = 10000,\n  verbose = FALSE\n)\n\nobj_sct &lt;- SCTransform(\n  obj,\n  assay = \"RNA\",\n  new.assay.name = \"SCT\",\n  vst.flavor = \"v2\",\n  return.only.var.genes = FALSE,\n  verbose = FALSE\n)\nExtract values for one gene. These values are on different scales and should not be compared as if their numerical magnitudes had the same meaning:\nlog_value &lt;- as.numeric(\n  LayerData(\n    obj_log,\n    assay = \"RNA\",\n    layer = \"data\"\n  )[\"GZMK\", ]\n)\n\nsct_residual &lt;- as.numeric(\n  LayerData(\n    obj_sct,\n    assay = \"SCT\",\n    layer = \"scale.data\"\n  )[\"GZMK\", ]\n)\n\nmethod_comparison &lt;- data.frame(\n  nCount_RNA = obj$nCount_RNA,\n  truth_cell_type = obj$truth_cell_type,\n  LogNormalize = log_value,\n  SCTransform_residual = sct_residual\n) |&gt;\n  filter(truth_cell_type %in% c(\"CD8 T\", \"NK\")) |&gt;\n  pivot_longer(\n    cols = c(LogNormalize, SCTransform_residual),\n    names_to = \"method\",\n    values_to = \"GZMK_value\"\n  )\n\nggplot(\n  method_comparison,\n  aes(nCount_RNA, GZMK_value, color = truth_cell_type)\n) +\n  geom_point(alpha = 0.55) +\n  scale_x_log10() +\n  facet_wrap(~method, scales = \"free_y\") +\n  labs(\n    x = \"Observed library size\",\n    y = \"Method-specific GZMK value\"\n  )\nThen compare:\n\nthe residual association with observed library size;\nseparation of the controlled CD8 T and NK groups;\nthe number and identity of variable genes selected by each workflow;\nsensitivity to retaining low-quality and empty-droplet profiles; and\nwhether a substantive biological conclusion changes.\n\nDo not choose the method whose plot looks most separated without evaluating why.",
-    "crumbs": [
-      "Home",
-      "Foundational modules",
-      "3. Normalization"
-    ]
-  },
-  {
-    "objectID": "modules/03-normalization/index.html#common-mistakes-and-limitations",
-    "href": "modules/03-normalization/index.html#common-mistakes-and-limitations",
-    "title": "Module 3 — Normalization",
-    "section": "Common mistakes and limitations",
-    "text": "Common mistakes and limitations\n\nOverwriting raw counts with normalized values.\nCalling log-normalized values “counts.”\nForgetting which scale factor was used.\nAssuming normalization removes batch effects or QC problems.\nComparing values from LogNormalize and SCTransform as if they share units.\nTreating a zero after normalization as proof of no biological expression.\nInterpreting lower depth correlation as proof that every technical effect is gone.\nNormalizing before deciding whether empty droplets and clear failures should be retained.\nTreating default parameters as biological truths.\nSelecting a normalization method only because it produces preferred clusters.",
-    "crumbs": [
-      "Home",
-      "Foundational modules",
-      "3. Normalization"
-    ]
-  },
-  {
-    "objectID": "modules/03-normalization/index.html#check-your-understanding",
-    "href": "modules/03-normalization/index.html#check-your-understanding",
-    "title": "Module 3 — Normalization",
+    "objectID": "modules/04-variable-features/index.html#check-your-understanding",
+    "href": "modules/04-variable-features/index.html#check-your-understanding",
+    "title": "Module 4 — Highly variable genes",
     "section": "Check your understanding",
-    "text": "Check your understanding\n\nWhy do Cell A and Cell B have equal normalized CD3D despite different raw counts?\nWhat does the scale factor control, and what biological property does it not represent?\nWhy is log1p() used instead of log()?\nDoes normalization turn a UMI count into an absolute transcript estimate?\nName four problems that NormalizeData() does not solve.\nWhich Seurat layer should retain integer raw counts?\nWhy can normalized expression still correlate with library size?\nHow does a Pearson residual from SCTransform differ conceptually from a log-normalized value?\nWhen could library-size normalization remove a biologically meaningful global RNA difference?\nWhat evidence would justify choosing SCTransform over LogNormalize for a specific analysis?",
+    "text": "Check your understanding\n\nWhy can a stable, highly expressed housekeeping gene have low feature-selection value?\nWhy is raw variance expected to depend on gene mean?\nWhat comparison does the phrase “highly variable” imply?\nCan an important marker fail to enter a 2,000-HVG set? Give two reasons.\nWhat does VariableFeatures() return, and what does it not change?\nWhy is the 500-versus-5,000 comparison interpretable only if other preprocessing choices remain fixed?\nWhich evidence would make you worry that 500 features is too restrictive?\nWhich evidence would make you worry that 5,000 features adds mostly noise?\nWhy can two equivalent PCA axes have opposite signs?\nWhat would you report about feature selection in a reproducible methods section?",
     "crumbs": [
       "Home",
-      "Foundational modules",
-      "3. Normalization"
+      "Representation modules",
+      "4. Highly variable genes"
     ]
   },
   {
-    "objectID": "modules/03-normalization/index.html#lab",
-    "href": "modules/03-normalization/index.html#lab",
-    "title": "Module 3 — Normalization",
-    "section": "Lab",
-    "text": "Lab\nRun the Module 3 student lab. Submit the hand calculations, the three-stage heatmap, the scale-factor perturbation, the larger-dataset depth comparison, and a written evaluation of the optional SCTransform comparison if completed.",
+    "objectID": "modules/04-variable-features/index.html#additional-controlled-computations",
+    "href": "modules/04-variable-features/index.html#additional-controlled-computations",
+    "title": "Module 4 — Highly variable genes",
+    "section": "Additional controlled computations",
+    "text": "Additional controlled computations\nRun the complete lab first to initialize the objects used here.\nsource(\"labs/04-variable-features-lab.R\")\n# Explicit overlap and newly admitted genes, relative to the preceding cutoff.\noverlap_counts &lt;- data.frame(nfeatures = hvg_counts,\n  overlap_with_500 = vapply(hvg_sets, function(x) length(intersect(x, hvg_sets[[1]])), integer(1)),\n  added_since_previous = c(length(hvg_sets[[1]]), vapply(2:5, function(i)\n    length(setdiff(hvg_sets[[i]], hvg_sets[[i - 1]])), integer(1))))\nprint(overlap_counts)\n# Label top-ranked features as well as canonical markers.\ntop_hvg_plot &lt;- LabelPoints(VariableFeaturePlot(obj_2000), points = head(hvg_2000, 5),\n  repel = TRUE, xnudge = 0, ynudge = 0)\n# Schematic, not Seurat's fitted curve: compare genes at the same expected mean.\nschematic_data &lt;- data.frame(mean = c(1, 1, 5, 5), variance = c(1, 4, 5, 8))\nschematic_plot &lt;- ggplot(schematic_data, aes(mean, variance)) +\n  geom_abline(slope = 1, intercept = 0, linetype = 2) + geom_point(size = 3) +\n  labs(title = \"Schematic: variation relative to an expected trend\",\n    subtitle = \"Dashed line is illustrative, not a fitted Seurat model\",\n    x = \"Mean\", y = \"Variance\")\nprint(schematic_plot)\nFor this comparison, state what changed, what stayed fixed, why, and the biological consequence.",
     "crumbs": [
       "Home",
-      "Foundational modules",
-      "3. Normalization"
+      "Representation modules",
+      "4. Highly variable genes"
+    ]
+  },
+  {
+    "objectID": "modules/04-variable-features/index.html#lab",
+    "href": "modules/04-variable-features/index.html#lab",
+    "title": "Module 4 — Highly variable genes",
+    "section": "Lab",
+    "text": "Lab\nRun the Module 4 student lab. Submit the manual mean/variance calculation, empirical mean–variance plot, marker-selection table, Jaccard heatmap, 500-versus-5,000 PCA comparison, and a written recommendation that identifies both a benefit and a risk of the chosen feature count.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "4. Highly variable genes"
+    ]
+  },
+  {
+    "objectID": "modules/07-choosing-dimensions/index.html",
+    "href": "modules/07-choosing-dimensions/index.html",
+    "title": "Module 7 — Choosing PCA dimensions",
+    "section": "",
+    "text": "By the end of this module, you should be able to:\n\nexplain that dims = 1:30 selects 30 PC coordinates, not 30 genes;\nuse an elbow plot while recognizing its limitations;\ninspect later PC loadings for coherent biological or technical programs;\ncompare 10, 20, 30, 40, and 50 PCs on one fixed PCA object at fixed resolution;\nmeasure changes using cluster counts, contingency tables, and composition;\ndistinguish changing the graph from changing its partitioning resolution; and\njustify a cutoff using statistical and biological evidence, including uncertainty.\n\nSuggested time: 75–90 minutes of conceptual work plus 120 minutes of computation.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "7. Choosing PCA dimensions"
+    ]
+  },
+  {
+    "objectID": "modules/07-choosing-dimensions/index.html#learning-objectives",
+    "href": "modules/07-choosing-dimensions/index.html#learning-objectives",
+    "title": "Module 7 — Choosing PCA dimensions",
+    "section": "",
+    "text": "By the end of this module, you should be able to:\n\nexplain that dims = 1:30 selects 30 PC coordinates, not 30 genes;\nuse an elbow plot while recognizing its limitations;\ninspect later PC loadings for coherent biological or technical programs;\ncompare 10, 20, 30, 40, and 50 PCs on one fixed PCA object at fixed resolution;\nmeasure changes using cluster counts, contingency tables, and composition;\ndistinguish changing the graph from changing its partitioning resolution; and\njustify a cutoff using statistical and biological evidence, including uncertainty.\n\nSuggested time: 75–90 minutes of conceptual work plus 120 minutes of computation.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "7. Choosing PCA dimensions"
+    ]
+  },
+  {
+    "objectID": "modules/07-choosing-dimensions/index.html#what-dims-means",
+    "href": "modules/07-choosing-dimensions/index.html#what-dims-means",
+    "title": "Module 7 — Choosing PCA dimensions",
+    "section": "What dims means",
+    "text": "What dims means\nIn FindNeighbors(obj, reduction = \"pca\", dims = 1:30), each cell is compared using its scores on PC1 through PC30. Each coordinate can combine thousands of genes. This does not restrict expression to 30 genes, recompute HVGs, or relearn PCA. It selects coordinates from an already fitted representation.\nFor ordinary Euclidean distances on scores, the squared distance between cells \\(a\\) and \\(b\\) using \\(K\\) PCs is\n\\[\nd_K(a,b)^2=\\sum_{k=1}^{K}(s_{a,k}-s_{b,k})^2.\n\\]\nAdding a coordinate cannot reduce this squared distance, but it can change the relative ordering of distances and therefore which cells are nearest neighbors. Many weak extra coordinates can collectively matter.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "7. Choosing PCA dimensions"
+    ]
+  },
+  {
+    "objectID": "modules/07-choosing-dimensions/index.html#controlled-distance-example",
+    "href": "modules/07-choosing-dimensions/index.html#controlled-distance-example",
+    "title": "Module 7 — Choosing PCA dimensions",
+    "section": "Controlled distance example",
+    "text": "Controlled distance example\ncoordinates &lt;- rbind(A = c(0, 0, 0), B = c(0.1, 0, 4), C = c(1, 0, 0))\nprint(as.matrix(dist(coordinates[, 1:2])))\nprint(as.matrix(dist(coordinates[, 1:3])))\nBefore running the code, calculate A-to-B and A-to-C distances using two coordinates, then three. Which cell is closer to A? Change only B’s PC3 score from 4 to 0.2 and repeat. Explain why a distinction invisible in the selected coordinates cannot influence the resulting neighbor graph.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "7. Choosing PCA dimensions"
+    ]
+  },
+  {
+    "objectID": "modules/07-choosing-dimensions/index.html#elbow-plots-are-evidence-not-a-cutoff-rule",
+    "href": "modules/07-choosing-dimensions/index.html#elbow-plots-are-evidence-not-a-cutoff-rule",
+    "title": "Module 7 — Choosing PCA dimensions",
+    "section": "Elbow plots are evidence, not a cutoff rule",
+    "text": "Elbow plots are evidence, not a cutoff rule\nPrepare one object and inspect its 50 retained PCs:\nsuppressPackageStartupMessages({library(Seurat); library(ggplot2); library(patchwork)})\nsource(\"scripts/course_helpers.R\")\nset.seed(20260907)\ndir.create(\"outputs\", showWarnings = FALSE)\nobj &lt;- prepare_representation_object(nfeatures = 2000, npcs = 50)\noriginal_scores &lt;- Embeddings(obj, \"pca\")\noriginal_counts &lt;- LayerData(obj, layer = \"counts\")\nprint(ElbowPlot(obj, ndims = 50))\nprint(rank_pca_loadings(obj, pcs = c(10, 20, 30, 40), n = 6))\nSeurat’s elbow plot displays each PC’s score standard deviation. It is not a p-value or automatically a percent-variance plot. An elbow is a region where successive PCs add smaller amounts of variation. There may be several bends or no clear bend.\nToo few PCs can omit a coherent state; too many can add weak or noisy variation that changes neighbor rankings. More PCs are neither automatically better nor automatically worse. Dataset size, composition, preprocessing, and the biological question all matter.\n\nInspect later PCs before choosing\nUse the printed positive and negative loadings for PC10, PC20, PC30, and PC40. Look for several genes in a coherent program and consider whether technical variables explain the same pattern. Record evidence rather than naming a PC from one familiar gene.\n\n\n\n\n\n\n\n\n\n\n\nPC\nPositive genes\nNegative genes\nCoherent program?\nTechnical alternative\nKeep for this question?\n\n\n\n\n10\n\n\n\n\n\n\n\n20\n\n\n\n\n\n\n\n30\n\n\n\n\n\n\n\n40\n\n\n\n\n\n\n\n\nThe synthetic dataset may not put an interpretable program in every later PC. A negative result is informative. Do not invent biological meaning because a PC was requested for inspection.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "7. Choosing PCA dimensions"
+    ]
+  },
+  {
+    "objectID": "modules/07-choosing-dimensions/index.html#central-experiment-change-pc-dimensions-hold-resolution-fixed",
+    "href": "modules/07-choosing-dimensions/index.html#central-experiment-change-pc-dimensions-hold-resolution-fixed",
+    "title": "Module 7 — Choosing PCA dimensions",
+    "section": "Central experiment: change PC dimensions, hold resolution fixed",
+    "text": "Central experiment: change PC dimensions, hold resolution fixed\nUse the same normalized, scaled, 50-PC object for all five comparisons. Keep cells, feature set, neighbor method, and clustering seed fixed. Use resolution 0.5 throughout. The explicit graph names ensure that each partition uses its intended graph, and separate metadata columns preserve every result.\ndims_values &lt;- c(10, 20, 30, 40, 50)\nfixed_resolution &lt;- 0.5\n# Keep this loop explicit: students can see which graph each partition uses.\nfor (n_dims in dims_values) {\n  nn_name &lt;- paste0(\"nn_dims_\", n_dims)\n  snn_name &lt;- paste0(\"snn_dims_\", n_dims)\n  cluster_name &lt;- paste0(\"clusters_dims_\", n_dims)\n  obj &lt;- FindNeighbors(obj, reduction = \"pca\", dims = seq_len(n_dims),\n    graph.name = c(nn_name, snn_name), nn.method = \"rann\", verbose = FALSE)\n  obj &lt;- FindClusters(obj, graph.name = snn_name, resolution = fixed_resolution,\n    cluster.name = cluster_name, random.seed = 20260907, verbose = FALSE)\n}\nWe use exact nearest-neighbor search here to reduce approximation variability in this small teaching dataset. The subsequent SNN graph summarizes shared neighbors. More detail about graph construction belongs to a later module; the essential point here is that its input coordinates have changed. See the FindNeighbors reference.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "7. Choosing PCA dimensions"
+    ]
+  },
+  {
+    "objectID": "modules/07-choosing-dimensions/index.html#visual-comparison-on-fixed-display-coordinates",
+    "href": "modules/07-choosing-dimensions/index.html#visual-comparison-on-fixed-display-coordinates",
+    "title": "Module 7 — Choosing PCA dimensions",
+    "section": "Visual comparison on fixed display coordinates",
+    "text": "Visual comparison on fixed display coordinates\nChanging UMAP coordinates and cluster labels together makes differences harder to attribute. For this first experiment, compute one 30-PC UMAP solely as a display and color the same positions by each partition. The clustering comparisons themselves used 10–50 PCs as specified.\nobj &lt;- RunUMAP(obj, reduction = \"pca\", dims = 1:30, seed.use = 20260907,\n  reduction.name = \"umap_display\", verbose = FALSE)\nplots &lt;- lapply(dims_values, function(n) {\n  DimPlot(obj, reduction = \"umap_display\", group.by = paste0(\"clusters_dims_\", n)) +\n    ggtitle(paste(\"Graph PCs 1–\", n, \" | resolution 0.5\", sep = \"\")) + NoLegend()\n})\ndims_plot &lt;- wrap_plots(plots, ncol = 2) +\n  plot_annotation(caption = \"Same cells and display coordinates in every panel; cluster numbers are local labels.\")\nprint(dims_plot)\nggsave(\"outputs/module-07-dims.png\", dims_plot, width = 11, height = 12)\nstopifnot(identical(original_scores, Embeddings(obj, \"pca\")),\n          identical(original_counts, LayerData(obj, layer = \"counts\")))\n\n\n\nFive partitions shown on one fixed embedding.\n\n\nCluster IDs and colors are local labels: cluster 2 in one run need not correspond to cluster 2 in another. Compare membership, not color names. UMAP does not define the clusters and its two-dimensional geometry can conceal structure used by a higher-dimensional graph.\nIf the partition changed, was resolution responsible? State exactly what was held fixed and what changed before interpreting biology.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "7. Choosing PCA dimensions"
+    ]
+  },
+  {
+    "objectID": "modules/07-choosing-dimensions/index.html#quantify-membership-changes",
+    "href": "modules/07-choosing-dimensions/index.html#quantify-membership-changes",
+    "title": "Module 7 — Choosing PCA dimensions",
+    "section": "Quantify membership changes",
+    "text": "Quantify membership changes\ncluster_summary &lt;- data.frame(dims = dims_values, resolution = fixed_resolution,\n  clusters = vapply(dims_values, function(n) length(unique(obj[[paste0(\"clusters_dims_\", n)]][, 1])), integer(1)))\nprint(cluster_summary)\nwrite.csv(cluster_summary, \"outputs/module-07-cluster-counts.csv\", row.names = FALSE)\ncontingency &lt;- table(PC10 = obj$clusters_dims_10, PC40 = obj$clusters_dims_40)\nprint(contingency)\nprint(prop.table(contingency, 1))\nfor (n in dims_values) {\n  print(n)\n  print(table(cluster = obj[[paste0(\"clusters_dims_\", n)]][, 1], lineage = obj$truth_cell_type))\n}\nA contingency table counts cells shared by pairs of clusters. A row spread across several columns suggests a split relative to the first partition; several rows concentrated in one column suggest a merge. A change in cluster count alone does not identify which population changed, and an unchanged count does not establish identical membership.\nKnown simulation labels let us examine composition. They are a teaching aid, not a substitute for annotation in real datasets. Write down which populations remain recognizable, which split, and which mix across all five choices.\n\nOptional advanced measure: adjusted Rand index\nari &lt;- outer(dims_values, dims_values, Vectorize(function(a, b) {\n  adjusted_rand_index(obj[[paste0(\"clusters_dims_\", a)]][, 1],\n                      obj[[paste0(\"clusters_dims_\", b)]][, 1])\n}))\ndimnames(ari) &lt;- list(dims_values, dims_values)\nprint(round(ari, 3))\nstopifnot(max(abs(diag(ari) - 1)) &lt; 1e-10)\nARI compares pairs of cell memberships while adjusting for chance agreement. One indicates the same partition up to relabeling; values near zero indicate agreement near its chance baseline, and negative values can occur. It assesses agreement, not biological correctness. Two analyses can agree on an unhelpful partition, and a biologically meaningful refinement can lower agreement.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "7. Choosing PCA dimensions"
+    ]
+  },
+  {
+    "objectID": "modules/07-choosing-dimensions/index.html#biological-interpretation-explain-a-split-with-evidence",
+    "href": "modules/07-choosing-dimensions/index.html#biological-interpretation-explain-a-split-with-evidence",
+    "title": "Module 7 — Choosing PCA dimensions",
+    "section": "Biological interpretation: explain a split with evidence",
+    "text": "Biological interpretation: explain a split with evidence\nmarkers &lt;- c(\"CD3D\", \"MS4A1\", \"NKG7\", \"LST1\", \"ISG15\", \"IFIT1\", \"MKI67\")\nIdents(obj) &lt;- \"clusters_dims_40\"\nmarker_plot &lt;- DotPlot(obj, features = markers) + RotatedAxis() +\n  labs(title = \"Marker evidence for the 40-PC partition\")\nprint(marker_plot)\nggsave(\"outputs/module-07-markers.png\", marker_plot, width = 9, height = 5)\n\n\n\nMarker evidence for one partition.\n\n\nFor a split identified in the contingency table, inspect multiple marker genes and the later loading tables. If an interferon-responsive population appears only with 40 PCs, identify which included PC carries coherent interferon variation and check whether the same cells express that program. This is a conditional reasoning exercise, not a promised outcome of this simulation.\nIf new clusters mostly differ in weak, scattered genes, or track an unwanted technical variable, more dimensions may be unhelpful for the stated question. If they reveal a reproducible relevant program, more dimensions may be justified. Neither interpretation follows from a prettier UMAP.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "7. Choosing PCA dimensions"
+    ]
+  },
+  {
+    "objectID": "modules/07-choosing-dimensions/index.html#dims-versus-resolution",
+    "href": "modules/07-choosing-dimensions/index.html#dims-versus-resolution",
+    "title": "Module 7 — Choosing PCA dimensions",
+    "section": "dims versus resolution",
+    "text": "dims versus resolution\n\n\n\n\n\n\n\n\nParameter\nWhat it controls\nWhat is held fixed in this module\n\n\n\n\ndims\nWhich PCA-derived variation defines similarity and therefore the graph\nNormalization, HVGs, scaling, PCA, and resolution\n\n\nresolution\nHow the chosen graph is partitioned; often higher values yield finer partitions\nResolution is 0.5 in every comparison\n\n\n\ndims -&gt; input coordinates -&gt; neighbor/SNN graph\nresolution + that graph -&gt; partition\nChanging dimensions can change the graph itself. Changing resolution changes partitioning on a graph. A later exercise could vary resolution while keeping one graph fixed, but changing both at once would confound this first experiment.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "7. Choosing PCA dimensions"
+    ]
+  },
+  {
+    "objectID": "modules/07-choosing-dimensions/index.html#what-changed-what-did-not-change-why",
+    "href": "modules/07-choosing-dimensions/index.html#what-changed-what-did-not-change-why",
+    "title": "Module 7 — Choosing PCA dimensions",
+    "section": "What changed? What did not change? Why?",
+    "text": "What changed? What did not change? Why?\n\n\n\n\n\n\n\n\n\n\n\nChoice\nCluster count\nStable memberships\nSplits/merges\nSupporting genes\nRemaining uncertainty\n\n\n\n\nPCs 1:10\n\n\n\n\n\n\n\nPCs 1:20\n\n\n\n\n\n\n\nPCs 1:30\n\n\n\n\n\n\n\nPCs 1:40\n\n\n\n\n\n\n\nPCs 1:50\n\n\n\n\n\n\n\n\nUse the unchanged-score and unchanged-count checks in the lab to establish that the original measurements and PCA did not change. Then explain why memberships can still differ. A computational change in partition is not a biological change in the cells.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "7. Choosing PCA dimensions"
+    ]
+  },
+  {
+    "objectID": "modules/07-choosing-dimensions/index.html#cross-module-synthesis",
+    "href": "modules/07-choosing-dimensions/index.html#cross-module-synthesis",
+    "title": "Module 7 — Choosing PCA dimensions",
+    "section": "Cross-module synthesis",
+    "text": "Cross-module synthesis\nHVG selection\n      ↓\nScaling\n      ↓\nPCA\n      ↓\nPC interpretation\n      ↓\nChoose dims\n      ↓\nBuild neighbor graph\nComplete this table in your own words:\n\n\n\nStep\nInput\nOutput\nMain decision\nWhat could go wrong?\n\n\n\n\nHVG selection\n\n\n\n\n\n\nScaling\n\n\n\n\n\n\nPCA\n\n\n\n\n\n\ndims selection\n\n\n\n\n\n\n\nChoose one defensible cutoff and one plausible alternative. Cite the elbow region, loading coherence, membership stability, and biological evidence. Describe what observation would change your decision. There is no universal correct cutoff supplied by this course.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "7. Choosing PCA dimensions"
+    ]
+  },
+  {
+    "objectID": "modules/07-choosing-dimensions/index.html#common-mistakes-and-interpretation-limits",
+    "href": "modules/07-choosing-dimensions/index.html#common-mistakes-and-interpretation-limits",
+    "title": "Module 7 — Choosing PCA dimensions",
+    "section": "Common mistakes and interpretation limits",
+    "text": "Common mistakes and interpretation limits\n\nReading dims = 1:30 as 30 genes.\nRerunning PCA or changing resolution in the middle of a dimensions-only comparison.\nTreating cluster numbers as matched labels across runs.\nUsing cluster count or ARI as a measure of biological truth.\nNaming a later PC from one gene.\nAssuming the elbow plot gives an objectively correct cutoff.\nAssuming extra clusters must be new cell types.\nTreating two-dimensional display distances as the complete clustering input.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "7. Choosing PCA dimensions"
+    ]
+  },
+  {
+    "objectID": "modules/07-choosing-dimensions/index.html#check-your-understanding",
+    "href": "modules/07-choosing-dimensions/index.html#check-your-understanding",
+    "title": "Module 7 — Choosing PCA dimensions",
+    "section": "Check your understanding",
+    "text": "Check your understanding\n\nWhich values enter similarity calculations when dims = 1:30?\nWhat if relevant information lies on PC25 but only PCs 1:10 are used?\nWhy can a larger pairwise distance still correspond to a closer neighbor ranking?\nWhat quantity is on Seurat’s elbow-plot y-axis?\nWhy inspect both ends of later loading vectors?\nIf clustering changes here, did resolution change?\nHow can equal cluster counts hide different partitions?\nWhat does ARI fail to establish?\nWhat distinguishes changing dimensions from changing resolution?\nWhich statistical and biological evidence supports your cutoff?",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "7. Choosing PCA dimensions"
+    ]
+  },
+  {
+    "objectID": "modules/07-choosing-dimensions/index.html#lab",
+    "href": "modules/07-choosing-dimensions/index.html#lab",
+    "title": "Module 7 — Choosing PCA dimensions",
+    "section": "Lab",
+    "text": "Lab\nRun the complete dimensions lab. Submit the controlled distance calculation, later-PC evidence table, five-panel comparison, cluster counts, contingency and composition tables, and cross-module synthesis. Keep ARI optional. Your written recommendation must acknowledge a limitation and a plausible alternative.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "7. Choosing PCA dimensions"
+    ]
+  },
+  {
+    "objectID": "modules/05-scaling-regression/index.html",
+    "href": "modules/05-scaling-regression/index.html",
+    "title": "Module 5 — Scaling and regression",
+    "section": "",
+    "text": "By the end of this module, you should be able to:\n\ndistinguish library-size normalization from gene-wise centering and scaling;\ncalculate a gene-wise z score manually and reproduce it with scale();\ninterpret scaled expression relative to one gene’s mean and standard deviation;\nexplain why scaled values from different genes are not fold changes;\nshow why PCA can be dominated by numerically high-variance genes without scaling;\ndemonstrate that scaled values depend on the reference population;\ndescribe ScaleData(vars.to.regress = ...) as gene-wise regression followed by analysis of residual variation; and\ncompare no regression, mitochondrial-percentage regression, and cell-cycle-score regression without assuming that removable variation should be removed.\n\nSuggested time: 90 minutes of conceptual work plus 120–150 minutes of computation.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "5. Scaling and regression"
+    ]
+  },
+  {
+    "objectID": "modules/05-scaling-regression/index.html#learning-objectives",
+    "href": "modules/05-scaling-regression/index.html#learning-objectives",
+    "title": "Module 5 — Scaling and regression",
+    "section": "",
+    "text": "By the end of this module, you should be able to:\n\ndistinguish library-size normalization from gene-wise centering and scaling;\ncalculate a gene-wise z score manually and reproduce it with scale();\ninterpret scaled expression relative to one gene’s mean and standard deviation;\nexplain why scaled values from different genes are not fold changes;\nshow why PCA can be dominated by numerically high-variance genes without scaling;\ndemonstrate that scaled values depend on the reference population;\ndescribe ScaleData(vars.to.regress = ...) as gene-wise regression followed by analysis of residual variation; and\ncompare no regression, mitochondrial-percentage regression, and cell-cycle-score regression without assuming that removable variation should be removed.\n\nSuggested time: 90 minutes of conceptual work plus 120–150 minutes of computation.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "5. Scaling and regression"
+    ]
+  },
+  {
+    "objectID": "modules/05-scaling-regression/index.html#from-comparable-libraries-to-comparable-numerical-contributions",
+    "href": "modules/05-scaling-regression/index.html#from-comparable-libraries-to-comparable-numerical-contributions",
+    "title": "Module 5 — Scaling and regression",
+    "section": "From comparable libraries to comparable numerical contributions",
+    "text": "From comparable libraries to comparable numerical contributions\nModule 3 made gene values more comparable across cells with different observed library sizes. Module 4 selected genes that carry useful variation. A new problem remains: selected genes can have very different numerical ranges and variances.\nPCA finds directions that explain variance. If one gene’s numerical variance is much larger than another’s, it can dominate the result even when the second gene carries a coherent biological distinction. Gene-wise scaling gives each included gene a common reference variance before PCA.\n\n\n\n\n\n\nImportantNormalization and scaling solve different problems\n\n\n\nNormalizeData() adjusts values within each cell for observed library size and transforms them. ScaleData() centers each included gene across the chosen cells and usually divides by that gene’s standard deviation. Neither operation is batch correction, integration, or biological annotation.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "5. Scaling and regression"
+    ]
+  },
+  {
+    "objectID": "modules/05-scaling-regression/index.html#mean-centering-and-standard-deviation-scaling",
+    "href": "modules/05-scaling-regression/index.html#mean-centering-and-standard-deviation-scaling",
+    "title": "Module 5 — Scaling and regression",
+    "section": "Mean-centering and standard-deviation scaling",
+    "text": "Mean-centering and standard-deviation scaling\nFor normalized expression \\(x_{g,c}\\), gene mean \\(\\mu_g\\), and gene standard deviation \\(\\sigma_g\\), a gene-wise z score is\n\\[\nz_{g,c}=\\frac{x_{g,c}-\\mu_g}{\\sigma_g}.\n\\]\nMean-centering subtracts \\(\\mu_g\\), so the average scaled value for the gene becomes approximately zero. Dividing by \\(\\sigma_g\\) expresses each cell’s deviation in units of that gene’s standard deviation, so the variance becomes approximately one unless values are clipped or additional regression is performed.\nPositive means above the reference mean; negative means below it. Neither sign means expressed versus unexpressed.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "5. Scaling and regression"
+    ]
+  },
+  {
+    "objectID": "modules/05-scaling-regression/index.html#controlled-hand-calculation",
+    "href": "modules/05-scaling-regression/index.html#controlled-hand-calculation",
+    "title": "Module 5 — Scaling and regression",
+    "section": "Controlled hand calculation",
+    "text": "Controlled hand calculation\ntoy_scaled &lt;- rbind(\n  NKG7 = c(0.5, 0.8, 2.1, 4.6),\n  CD3D = c(2.7, 2.9, 3.0, 3.2),\n  MALAT1 = c(6.8, 6.9, 6.8, 6.9)\n)\ncolnames(toy_scaled) &lt;- paste0(\"Cell_\", LETTERS[1:4])\n\ntoy_scaled\nCalculate NKG7 in Cell D:\nx &lt;- toy_scaled[\"NKG7\", ]\nmu &lt;- mean(x)\nsigma &lt;- sd(x)\nmanual_z &lt;- (x[\"Cell_D\"] - mu) / sigma\n\nc(mean = mu, standard_deviation = sigma, z_Cell_D = manual_z)\nThen reproduce every entry with base R:\nmanual_scaled &lt;- t(apply(toy_scaled, 1, function(x) {\n  (x - mean(x)) / sd(x)\n}))\n\nbase_scaled &lt;- t(scale(t(toy_scaled)))\n\nstopifnot(\n  identical(dimnames(manual_scaled), dimnames(base_scaled)),\n  isTRUE(all.equal(as.vector(manual_scaled), as.vector(base_scaled), tolerance = 1e-12))\n)\nround(base_scaled, 3)\nscale() operates down columns, so transposing makes genes the variables being scaled and transposing back restores genes as rows.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "5. Scaling and regression"
+    ]
+  },
+  {
+    "objectID": "modules/05-scaling-regression/index.html#side-by-side-normalized-and-scaled-values",
+    "href": "modules/05-scaling-regression/index.html#side-by-side-normalized-and-scaled-values",
+    "title": "Module 5 — Scaling and regression",
+    "section": "Side-by-side: normalized and scaled values",
+    "text": "Side-by-side: normalized and scaled values\nlibrary(ggplot2)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(patchwork)\n\nmatrix_long &lt;- function(x, stage) {\n  as.data.frame(x) |&gt;\n    tibble::rownames_to_column(\"gene\") |&gt;\n    pivot_longer(-gene, names_to = \"cell\", values_to = \"value\") |&gt;\n    mutate(stage = stage)\n}\n\nscale_long &lt;- bind_rows(\n  matrix_long(toy_scaled, \"Normalized expression\"),\n  matrix_long(base_scaled, \"Gene-wise scaled expression\")\n)\n\nnormalized_heatmap &lt;- ggplot(subset(scale_long, stage == \"Normalized expression\"), aes(cell, gene, fill = value)) +\n  geom_tile(color = \"white\") + geom_text(aes(label = round(value, 2))) +\n  scale_fill_gradient(low = \"white\", high = \"skyblue3\", name = \"Normalized\") +\n  labs(title = \"Normalized expression\", x = \"Cell\", y = \"Gene\")\nscaled_heatmap &lt;- ggplot(subset(scale_long, stage == \"Gene-wise scaled expression\"), aes(cell, gene, fill = value)) +\n  geom_tile(color = \"white\") + geom_text(aes(label = round(value, 2))) +\n  scale_fill_gradient2(low = \"skyblue3\", mid = \"white\", high = \"salmon\", midpoint = 0, name = \"Scaled\") +\n  labs(title = \"Gene-wise scaled expression\", x = \"Cell\", y = \"Gene\")\nscale_plot &lt;- normalized_heatmap + scaled_heatmap\n\nprint(scale_plot)\n\n\n\nNormalized and gene-wise scaled heatmaps demonstrate that scaling changes each gene’s center and variance, not the underlying expression observations.\n\n\n\nInterpret values within genes\nA scaled NKG7 value of \\(+2\\) means approximately two NKG7 standard deviations above the NKG7 mean in the reference cells. A scaled CD3D value of \\(+0.5\\) means half a CD3D standard deviation above the CD3D mean.\nIt is incorrect to say that NKG7 is four times as expressed as CD3D. The denominators differ: one value is measured in NKG7 standard deviations and the other in CD3D standard deviations. Scaled values are not counts, proportions, fold changes, or common absolute units across genes.\n\n\nWhat changed?\n\nEvery gene now has a reference mean near zero.\nGenes with different original ranges have comparable variance contributions.\nThe numerical value for a cell depends on the other cells used to estimate \\(\\mu_g\\) and \\(\\sigma_g\\).\n\n\n\nWhat did not change?\n\nThe raw counts layer.\nThe normalized data layer.\nWhich cells and genes were observed.\nThe biological sample that generated each cell.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "5. Scaling and regression"
+    ]
+  },
+  {
+    "objectID": "modules/05-scaling-regression/index.html#why-scaling-matters-for-pca",
+    "href": "modules/05-scaling-regression/index.html#why-scaling-matters-for-pca",
+    "title": "Module 5 — Scaling and regression",
+    "section": "Why scaling matters for PCA",
+    "text": "Why scaling matters for PCA\nBuild a controlled example with one large-range nuisance measurement and one smaller coherent group signal:\nunscaled_example &lt;- data.frame(\n  cell = paste0(\"Cell_\", 1:10),\n  group = rep(c(\"naive-like\", \"cytotoxic\"), each = 5),\n  large_range_gene = c(20, 80, 35, 95, 45, 25, 85, 40, 100, 50),\n  coherent_state_gene = c(1.0, 1.2, 0.8, 1.1, 0.9, 4.8, 5.2, 5.0, 4.9, 5.1)\n)\n\nunscaled_pca &lt;- prcomp(\n  unscaled_example[, c(\"large_range_gene\", \"coherent_state_gene\")],\n  center = TRUE,\n  scale. = FALSE\n)\n\nscaled_pca &lt;- prcomp(\n  unscaled_example[, c(\"large_range_gene\", \"coherent_state_gene\")],\n  center = TRUE,\n  scale. = TRUE\n)\n\nunscaled_example$PC1_unscaled &lt;- unscaled_pca$x[, 1]\nunscaled_example$PC1_scaled &lt;- scaled_pca$x[, 1]\n\ncor(unscaled_example$PC1_unscaled, unscaled_example$large_range_gene)\ncor(unscaled_example$PC1_scaled, unscaled_example$coherent_state_gene)\nVisualize cell scores:\np_unscaled &lt;- ggplot(\n  unscaled_example,\n  aes(group, PC1_unscaled, color = group)\n) + geom_point(size = 3) + ggtitle(\"PCA without variance scaling\")\n\np_scaled &lt;- ggplot(\n  unscaled_example,\n  aes(group, PC1_scaled, color = group)\n) + geom_point(size = 3) + ggtitle(\"PCA after variance scaling\")\n\np_unscaled + p_scaled + plot_layout(guides = \"collect\")\n\n\n\nA controlled PCA comparison shows a large-range nuisance gene dominating without variance scaling and a coherent group signal contributing after scaling.\n\n\nScaling does not prove the smaller-range pattern is biologically correct. It prevents raw numerical magnitude alone from deciding the representation.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "5. Scaling and regression"
+    ]
+  },
+  {
+    "objectID": "modules/05-scaling-regression/index.html#apply-scaledata-to-the-immune-dataset",
+    "href": "modules/05-scaling-regression/index.html#apply-scaledata-to-the-immune-dataset",
+    "title": "Module 5 — Scaling and regression",
+    "section": "Apply ScaleData() to the immune dataset",
+    "text": "Apply ScaleData() to the immune dataset\nlibrary(Seurat)\nsource(\"scripts/course_helpers.R\")\n\nobj &lt;- load_representation_object()\nobj &lt;- NormalizeData(obj, verbose = FALSE)\nobj &lt;- FindVariableFeatures(\n  obj,\n  selection.method = \"vst\",\n  nfeatures = 2000,\n  verbose = FALSE\n)\nobj &lt;- ScaleData(obj, features = VariableFeatures(obj), verbose = FALSE)\n\nscaled_matrix &lt;- LayerData(obj, assay = \"RNA\", layer = \"scale.data\")\ndim(scaled_matrix)\nBy default in this workflow, scale.data contains the scaled variable features, not necessarily all 6,000 genes. Make the feature set explicit whenever later code depends on a particular gene.\ngenes_to_inspect &lt;- intersect(\n  c(\"NKG7\", \"CD3D\", \"MS4A1\", \"LST1\"),\n  rownames(scaled_matrix)\n)\n\ndata.frame(\n  gene = genes_to_inspect,\n  scaled_mean = rowMeans(scaled_matrix[genes_to_inspect, , drop = FALSE]),\n  scaled_sd = apply(scaled_matrix[genes_to_inspect, , drop = FALSE], 1, sd)\n)",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "5. Scaling and regression"
+    ]
+  },
+  {
+    "objectID": "modules/05-scaling-regression/index.html#perturbation-change-the-reference-population",
+    "href": "modules/05-scaling-regression/index.html#perturbation-change-the-reference-population",
+    "title": "Module 5 — Scaling and regression",
+    "section": "Perturbation: change the reference population",
+    "text": "Perturbation: change the reference population\nScaling is learned from the included cells. Compare the same T cell and gene under two references: all immune cells versus T cells only.\nreference_obj &lt;- NormalizeData(load_representation_object(), verbose = FALSE)\nreference_features &lt;- c(\"NKG7\", \"CD3D\", \"IL7R\")\n\nwhole_scaled &lt;- ScaleData(\n  reference_obj,\n  features = reference_features,\n  verbose = FALSE\n)\n\nt_cells &lt;- Cells(reference_obj)[reference_obj$truth_cell_type %in% c(\"CD4 T\", \"CD8 T\")]\nt_reference &lt;- subset(reference_obj, cells = t_cells)\nt_scaled &lt;- ScaleData(\n  t_reference,\n  features = reference_features,\n  verbose = FALSE\n)\n\nsame_cell &lt;- t_cells[1]\n\nreference_comparison &lt;- data.frame(\n  gene = reference_features,\n  normalized_value = as.numeric(\n    LayerData(reference_obj, layer = \"data\")[reference_features, same_cell]\n  ),\n  scaled_whole_immune = as.numeric(\n    LayerData(whole_scaled, layer = \"scale.data\")[reference_features, same_cell]\n  ),\n  scaled_T_cells_only = as.numeric(\n    LayerData(t_scaled, layer = \"scale.data\")[reference_features, same_cell]\n  )\n)\n\nreference_comparison\n\n\n\nScaled values for the same T cell change when the reference is all immune cells versus T cells only, while normalized expression remains fixed.\n\n\nThe cell and its normalized values did not change. The reference mean and standard deviation changed. A z score is therefore a contextual location, not an intrinsic molecular property of a cell.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "5. Scaling and regression"
+    ]
+  },
+  {
+    "objectID": "modules/05-scaling-regression/index.html#regression-in-scaledata",
+    "href": "modules/05-scaling-regression/index.html#regression-in-scaledata",
+    "title": "Module 5 — Scaling and regression",
+    "section": "Regression in ScaleData()",
+    "text": "Regression in ScaleData()\nSuppose normalized expression of gene \\(g\\) is associated with a metadata variable \\(q_c\\), such as mitochondrial percentage or a cell-cycle score. In simplified form, a gene-wise model is\n\\[\nx_{g,c}=\\beta_{0,g}+\\beta_{1,g}q_c+\\varepsilon_{g,c}.\n\\]\nScaleData(vars.to.regress = \"q\") fits a model for each gene, uses residual variation \\(\\varepsilon_{g,c}\\) after accounting for the specified variable, then centers and scales the result for downstream use.\nPlainly: regression asks what remains of each gene’s variation after removing the fitted association with the chosen covariate.\n\n\n\n\n\n\nWarningRegressible does not mean disposable\n\n\n\nA variable can be modeled and removed computationally even when it carries real biology. Mitochondrial programs can reflect tissue state; cell cycle can be the phenomenon of interest; and either can be confounded with condition or cell type. Automatic regression can erase signal and create misleading residual structure.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "5. Scaling and regression"
+    ]
+  },
+  {
+    "objectID": "modules/05-scaling-regression/index.html#controlled-comparison-no-regression-versus-two-regressions",
+    "href": "modules/05-scaling-regression/index.html#controlled-comparison-no-regression-versus-two-regressions",
+    "title": "Module 5 — Scaling and regression",
+    "section": "Controlled comparison: no regression versus two regressions",
+    "text": "Controlled comparison: no regression versus two regressions\nHold cells, normalization, HVGs, PCA feature set, PC count, and seed fixed. Change only vars.to.regress.\nbase_obj &lt;- load_representation_object()\nbase_obj &lt;- NormalizeData(base_obj, verbose = FALSE)\nbase_obj &lt;- FindVariableFeatures(\n  base_obj,\n  selection.method = \"vst\",\n  nfeatures = 2000,\n  verbose = FALSE\n)\nfeatures &lt;- VariableFeatures(base_obj)\n\nrun_scaled_pca &lt;- function(obj, regress = NULL) {\n  obj &lt;- ScaleData(\n    obj,\n    features = features,\n    vars.to.regress = regress,\n    verbose = FALSE\n  )\n  RunPCA(\n    obj,\n    features = features,\n    npcs = 30,\n    seed.use = 20260907,\n    verbose = FALSE\n  )\n}\n\nno_regression &lt;- run_scaled_pca(base_obj)\nregress_mito &lt;- run_scaled_pca(base_obj, \"percent.mt\")\nregress_cycle &lt;- run_scaled_pca(base_obj, \"cell_cycle_score\")\n\nCompare PCA structure\nregression_plots &lt;- list(\n  DimPlot(no_regression, reduction = \"pca\", group.by = \"cell_cycle_phase\") +\n    ggtitle(\"No regression\"),\n  DimPlot(regress_mito, reduction = \"pca\", group.by = \"cell_cycle_phase\") +\n    ggtitle(\"Regress percent.mt\"),\n  DimPlot(regress_cycle, reduction = \"pca\", group.by = \"cell_cycle_phase\") +\n    ggtitle(\"Regress cell-cycle score\")\n)\n\nwrap_plots(regression_plots, ncol = 3, guides = \"collect\")\n\n\n\nPCA panels compare no regression, mitochondrial-percentage regression, and cell-cycle-score regression with every other choice fixed.\n\n\n\n\nQuantify residual associations\npc1_associations &lt;- data.frame(\n  analysis = c(\"none\", \"percent.mt\", \"cell_cycle_score\"),\n  PC1_cor_percent_mt = c(\n    cor(Embeddings(no_regression, \"pca\")[, 1], no_regression$percent.mt),\n    cor(Embeddings(regress_mito, \"pca\")[, 1], regress_mito$percent.mt),\n    cor(Embeddings(regress_cycle, \"pca\")[, 1], regress_cycle$percent.mt)\n  ),\n  PC1_cor_cell_cycle = c(\n    cor(Embeddings(no_regression, \"pca\")[, 1], no_regression$cell_cycle_score),\n    cor(Embeddings(regress_mito, \"pca\")[, 1], regress_mito$cell_cycle_score),\n    cor(Embeddings(regress_cycle, \"pca\")[, 1], regress_cycle$cell_cycle_score)\n  )\n)\n\npc1_associations\nPC1 is only one axis; repeat across multiple PCs before concluding that a program disappeared.\n\n\nInspect loading programs\nloading_comparison &lt;- bind_rows(\n  rank_pca_loadings(no_regression, pcs = 1:5, n = 5) |&gt;\n    mutate(analysis = \"none\"),\n  rank_pca_loadings(regress_mito, pcs = 1:5, n = 5) |&gt;\n    mutate(analysis = \"percent.mt\"),\n  rank_pca_loadings(regress_cycle, pcs = 1:5, n = 5) |&gt;\n    mutate(analysis = \"cell_cycle_score\")\n)\n\nloading_comparison\nAsk whether cell-cycle, mitochondrial, lineage, or state programs move among PCs. Regression can redistribute variance rather than producing one universally cleaner representation.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "5. Scaling and regression"
+    ]
+  },
+  {
+    "objectID": "modules/05-scaling-regression/index.html#when-might-regression-be-appropriate",
+    "href": "modules/05-scaling-regression/index.html#when-might-regression-be-appropriate",
+    "title": "Module 5 — Scaling and regression",
+    "section": "When might regression be appropriate?",
+    "text": "When might regression be appropriate?\nRegression is more defensible when all of the following are considered:\n\nthe covariate is measured or estimated adequately;\nthe analysis goal explicitly treats its associated variation as nuisance;\nthe covariate is not inseparable from the biological comparison of interest;\nremoving it does not erase a population needed for the scientific question;\nsensitivity analyses show which conclusions change; and\nthe choice and model are reported.\n\nFor example, cell-cycle regression may be useful when the goal is to compare stable lineage identity and cycling status is a known orthogonal nuisance. It is inappropriate when proliferation is a response of interest or is confounded with condition.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "5. Scaling and regression"
+    ]
+  },
+  {
+    "objectID": "modules/05-scaling-regression/index.html#what-changed-what-did-not-change-why",
+    "href": "modules/05-scaling-regression/index.html#what-changed-what-did-not-change-why",
+    "title": "Module 5 — Scaling and regression",
+    "section": "What changed? What did not change? Why?",
+    "text": "What changed? What did not change? Why?\n\n\n\n\n\n\n\n\n\nQuestion\nNo regression\nRegress percent.mt\nRegress cell-cycle score\n\n\n\n\nWhich scaled values changed?\n\n\n\n\n\nWhich PC loading programs changed?\n\n\n\n\n\nWhich cell-score relationships changed?\n\n\n\n\n\nWhich lineages remained separated?\n\n\n\n\n\nWhich biological program may have been attenuated?\n\n\n\n\n\nDid counts or normalized values change?",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "5. Scaling and regression"
+    ]
+  },
+  {
+    "objectID": "modules/05-scaling-regression/index.html#biological-consequence",
+    "href": "modules/05-scaling-regression/index.html#biological-consequence",
+    "title": "Module 5 — Scaling and regression",
+    "section": "Biological consequence",
+    "text": "Biological consequence\nIf activated T cells genuinely proliferate while resting T cells do not, regressing a cell-cycle score can make the representation emphasize non-cycle differences. That may help a lineage-focused question but would hide part of the activation response. Likewise, percent mitochondrial expression can be a technical quality signal, a biological metabolic signal, or both.\nThe correct question is not “Can I regress this?” It is “Which estimand remains after I regress this, and is that the estimand my study needs?”",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "5. Scaling and regression"
+    ]
+  },
+  {
+    "objectID": "modules/05-scaling-regression/index.html#common-mistakes-and-interpretation-limits",
+    "href": "modules/05-scaling-regression/index.html#common-mistakes-and-interpretation-limits",
+    "title": "Module 5 — Scaling and regression",
+    "section": "Common mistakes and interpretation limits",
+    "text": "Common mistakes and interpretation limits\n\nCalling scaled values normalized counts.\nInterpreting z scores as fold changes or absolute expression.\nComparing a z score for one gene numerically with a z score for another as if they share molecular units.\nForgetting that scaling depends on the reference cells.\nRunning PCA on unscaled features without checking numerical dominance.\nRegressing percent.mt, library size, or cell cycle automatically.\nAssuming a weak residual correlation proves that unwanted biology was removed correctly.\nRegressing a covariate confounded with condition or cell type.\nChanging the HVGs and regression target simultaneously in a sensitivity comparison.\nForgetting that raw and normalized layers should remain unchanged.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "5. Scaling and regression"
+    ]
+  },
+  {
+    "objectID": "modules/05-scaling-regression/index.html#check-your-understanding",
+    "href": "modules/05-scaling-regression/index.html#check-your-understanding",
+    "title": "Module 5 — Scaling and regression",
+    "section": "Check your understanding",
+    "text": "Check your understanding\n\nWhich dimension does NormalizeData() primarily address, and which dimension does ScaleData() address?\nWhat does a scaled value of \\(-1.5\\) mean for one gene?\nWhy is NKG7 at \\(+2\\) not four times CD3D at \\(+0.5\\)?\nWhy can unscaled PCA be dominated by one gene?\nWhy can the same cell have different scaled NKG7 values in whole immune data and a T-cell subset?\nWhat remains after gene-wise regression on a covariate?\nGive one setting where cell-cycle regression supports the estimand and one where it destroys it.\nWhy can mitochondrial percentage carry biological as well as technical variation?\nWhich layers should remain unchanged after ScaleData()?\nWhat evidence would you show to defend a regression choice?\n\nThe bundled cell_cycle_score is a simulated covariate, not an inferred CellCycleScoring() result. Removing its linear association need not remove S-versus-G2M differences or nonlinear programs. In real data, examine how scores were estimated before choosing a model. See the ScaleData reference.\n\n\n\nNormalized distributions beside scaled distributions.\n\n\n\n\n\nValue mapping for the same cells and genes.\n\n\n\n\n\nResidual distributions under three regression choices.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "5. Scaling and regression"
+    ]
+  },
+  {
+    "objectID": "modules/05-scaling-regression/index.html#additional-controlled-computations",
+    "href": "modules/05-scaling-regression/index.html#additional-controlled-computations",
+    "title": "Module 5 — Scaling and regression",
+    "section": "Additional controlled computations",
+    "text": "Additional controlled computations\nRun the complete lab first to initialize the objects used here.\nsource(\"labs/05-scaling-regression-lab.R\")\n# Calculate three values manually, preserving sample-SD arithmetic.\nmanual_three &lt;- (toy_scaled[\"NKG7\", 1:3] - manual_mean) / manual_sd\nprint(manual_three)\nstopifnot(max(abs(manual_three - base_scaled[\"NKG7\", 1:3])) &lt; 1e-12)\n# A transparent regression example: fit, predict, subtract, and scale residuals.\nregression_toy &lt;- data.frame(q = 0:5, expression = c(1, 3, 4, 7, 8, 10))\nfit &lt;- lm(expression ~ q, data = regression_toy)\nregression_toy$fitted &lt;- predict(fit)\nregression_toy$residual &lt;- regression_toy$expression - regression_toy$fitted\nprint(regression_toy)\nprint(scale(regression_toy$residual))\n# Compare distributions and value mappings using identical cells and genes.\ngene_values &lt;- data.frame(\n  gene = rep(reference_features, each = ncol(whole_scaled)),\n  normalized = as.vector(t(as.matrix(LayerData(whole_scaled, layer = \"data\")[reference_features, ]))),\n  scaled = as.vector(t(LayerData(whole_scaled, layer = \"scale.data\")[reference_features, ])))\nmapping_plot &lt;- ggplot(gene_values, aes(normalized, scaled)) + geom_point(alpha = 0.25) +\n  facet_wrap(~gene) + labs(x = \"Normalized expression\", y = \"Gene-wise scaled value\")\ndistribution_data &lt;- pivot_longer(gene_values, c(normalized, scaled), names_to = \"stage\", values_to = \"value\")\ndistribution_plot &lt;- ggplot(distribution_data, aes(value, color = gene)) +\n  geom_density() + facet_wrap(~stage, scales = \"free\") + labs(y = \"Density\")\nprint(mapping_plot)\nprint(distribution_plot)\n# Residual gene distributions across all three preprocessing choices.\nregression_distributions &lt;- bind_rows(lapply(\n  list(none = no_regression, percent_mt = regress_mito, cycle = regress_cycle),\n  function(x) matrix_long(LayerData(x, layer = \"scale.data\")[c(\"MKI67\", \"NKG7\"), ], \"scaled\")),\n  .id = \"analysis\")\nregression_distribution_plot &lt;- ggplot(regression_distributions, aes(value, color = analysis)) +\n  geom_density() + facet_wrap(~gene) + labs(x = \"Scaled/residual value\", y = \"Density\")\nprint(regression_distribution_plot)\nFor this comparison, state what changed, what stayed fixed, why, and the biological consequence.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "5. Scaling and regression"
+    ]
+  },
+  {
+    "objectID": "modules/05-scaling-regression/index.html#lab",
+    "href": "modules/05-scaling-regression/index.html#lab",
+    "title": "Module 5 — Scaling and regression",
+    "section": "Lab",
+    "text": "Lab\nRun the Module 5 student lab. Submit the hand calculation, normalized-versus-scaled comparison, unscaled-versus-scaled PCA, reference-population analysis, regression comparison, loading-program table, and a written decision about whether either regression is appropriate for a stated analysis goal.",
+    "crumbs": [
+      "Home",
+      "Representation modules",
+      "5. Scaling and regression"
     ]
   },
   {
     "objectID": "schedule-quarter.html",
     "href": "schedule-quarter.html",
-    "title": "Quarter pacing: foundational block",
+    "title": "Quarter pacing: Modules 1–7",
     "section": "",
-    "text": "This page schedules the currently implemented foundational block within a 10-week quarter. Later weeks are intentionally not scaffolded in this release.\n\n\n\n\n\n\n\n\n\nWeek\nPreparation (60–90 min)\nClass meeting (150–180 min)\nProduct\n\n\n\n\n1\nSetup, reproducibility checks, Module 1 concepts\nMatrix anatomy, sparse representations, manual library metrics\nCount-matrix interpretation memo\n\n\n2\nModule 1 undersampling sections; begin Module 2\nSampling zeros, ambient RNA, empty droplets, doublets; QC visualizations\nControlled undersampling comparison\n\n\n3\nModule 2 threshold sections\nPermissive/moderate/aggressive QC lab and downstream comparison\nQC sensitivity report\n\n\n4\nModule 3 conceptual and hand-calculation sections\nManual normalization, Seurat reproduction, scale-factor perturbation\nNormalization worksheet\n\n\n5\nModule 3 SCTransform section\nLogNormalize-versus-SCTransform comparison and synthesis discussion\nFoundational analysis audit\n\n\n\nWeeks 6–10 are reserved for later modules and a capstone after those modules are developed."
+    "text": "This 10-week plan combines class meetings with separate lab preparation. PCA receives two weeks; use the semester plan if learners need more R practice.\n\n\n\n\n\n\n\n\n\nWeek\nPreparation (60–90 min)\nClass meeting (150–180 min)\nProduct\n\n\n\n\n1\nSetup, reproducibility checks, Module 1 concepts\nMatrix anatomy, sparse representations, manual library metrics\nCount-matrix interpretation memo\n\n\n2\nModule 1 undersampling sections; begin Module 2\nSampling zeros, ambient RNA, empty droplets, doublets; QC visualizations\nControlled undersampling comparison\n\n\n3\nModule 2 threshold sections\nPermissive/moderate/aggressive QC lab and downstream comparison\nQC sensitivity report\n\n\n4\nModule 3 conceptual and hand-calculation sections\nManual normalization, Seurat reproduction, scale-factor perturbation\nNormalization worksheet\n\n\n5\nModule 3 SCTransform section\nLogNormalize-versus-SCTransform comparison and synthesis discussion\nFoundational analysis audit\n\n\n6\nModule 4\nHVG arithmetic, mean–variance trend, feature-count sensitivity\nFeature-selection report\n\n\n7\nModule 5\nScaling, reference population, regression\nScaling and regression comparison\n\n\n8\nModule 6 geometry\nLoadings, scores, orthogonality, reconstruction\nManual projection and geometry\n\n\n9\nModule 6 population comparison\nWhole-immune versus T-cell PCA; variance and interpretation\nPC evidence table\n\n\n10\nModule 7\nFixed-resolution dims experiment and cross-module synthesis\nDefended representation choice\n\n\n\nAllow the modules’ stated lab time outside the class meeting. No later module is required by this plan."
   },
   {
     "objectID": "resources/glossary.html",
     "href": "resources/glossary.html",
-    "title": "Glossary for Modules 1–3",
+    "title": "Glossary for Modules 1–7",
     "section": "",
     "text": "Barcode\nA sequence used to associate captured molecules with a droplet or putative cell.\nCapture efficiency\nThe fraction of molecules present in a cell that ultimately contributes observed counts. It is incomplete and variable.\nDetected feature\nA gene with at least one observed UMI in a barcode.\nLibrary size\nThe sum of observed UMI counts for a barcode, usually stored by Seurat as nCount_RNA.\nSampling zero\nAn observed zero caused by incomplete molecular sampling even though transcripts were present.\nBiological zero\nAn observed zero consistent with a gene truly not being expressed in the cell at the relevant moment.\nSparse matrix\nA matrix representation that stores nonzero values and their positions rather than allocating memory to every zero.\nUMI\nA unique molecular identifier used to collapse reads likely derived from the same captured molecule.\nNormalization\nA transformation intended to make expression values more comparable across cells with different observed library sizes. It does not make cells biological replicates or remove every technical effect.",
     "crumbs": [
       "Home",
       "Course resources",
-      "Glossary for Modules 1–3"
+      "Glossary for Modules 1–7"
+    ]
+  },
+  {
+    "objectID": "resources/glossary.html#representation-terms",
+    "href": "resources/glossary.html#representation-terms",
+    "title": "Glossary for Modules 1–7",
+    "section": "Representation terms",
+    "text": "Representation terms\n\n\n\n\n\n\n\nTerm\nMeaning\n\n\n\n\nHVG\nGene with high variability relative to an expected mean–variance relationship in the included cells\n\n\nCentering\nSubtracting a variable’s reference mean\n\n\nScaling\nDividing centered values by a reference standard deviation in this workflow\n\n\nLoading\nA gene’s weight on a fitted PC\n\n\nPC score\nA cell’s projection onto that PC\n\n\nOrthogonality\nZero dot product between mathematical directions\n\n\ndims\nPC coordinates selected for a downstream computation\n\n\nresolution\nParameter controlling partitioning of a selected graph\n\n\nARI\nChance-adjusted agreement between two partitions, not biological accuracy",
+    "crumbs": [
+      "Home",
+      "Course resources",
+      "Glossary for Modules 1–7"
     ]
   }
 ]

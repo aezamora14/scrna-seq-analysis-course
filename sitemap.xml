@@ -2,42 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://aezamora14.github.io/scrna-seq-analysis-course/references/index.html</loc>
-    <lastmod>2026-09-05T01:38:24.686Z</lastmod>
+    <lastmod>2026-09-05T04:30:47.113Z</lastmod>
   </url>
   <url>
     <loc>https://aezamora14.github.io/scrna-seq-analysis-course/schedule-semester.html</loc>
-    <lastmod>2026-09-05T01:38:24.689Z</lastmod>
+    <lastmod>2026-09-05T04:30:47.116Z</lastmod>
   </url>
   <url>
     <loc>https://aezamora14.github.io/scrna-seq-analysis-course/labs/index.html</loc>
-    <lastmod>2026-09-05T01:38:24.686Z</lastmod>
-  </url>
-  <url>
-    <loc>https://aezamora14.github.io/scrna-seq-analysis-course/modules/01-count-matrix/index.html</loc>
-    <lastmod>2026-09-05T01:38:24.686Z</lastmod>
-  </url>
-  <url>
-    <loc>https://aezamora14.github.io/scrna-seq-analysis-course/setup/index.html</loc>
-    <lastmod>2026-09-05T01:38:24.689Z</lastmod>
-  </url>
-  <url>
-    <loc>https://aezamora14.github.io/scrna-seq-analysis-course/index.html</loc>
-    <lastmod>2026-09-05T01:38:24.685Z</lastmod>
-  </url>
-  <url>
-    <loc>https://aezamora14.github.io/scrna-seq-analysis-course/modules/02-quality-control/index.html</loc>
-    <lastmod>2026-09-05T01:38:24.686Z</lastmod>
+    <lastmod>2026-09-05T04:30:47.113Z</lastmod>
   </url>
   <url>
     <loc>https://aezamora14.github.io/scrna-seq-analysis-course/modules/03-normalization/index.html</loc>
-    <lastmod>2026-09-05T01:38:24.686Z</lastmod>
+    <lastmod>2026-09-05T04:30:47.113Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aezamora14.github.io/scrna-seq-analysis-course/modules/01-count-matrix/index.html</loc>
+    <lastmod>2026-09-05T04:30:47.113Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aezamora14.github.io/scrna-seq-analysis-course/modules/06-pca/index.html</loc>
+    <lastmod>2026-09-05T04:30:47.113Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aezamora14.github.io/scrna-seq-analysis-course/setup/index.html</loc>
+    <lastmod>2026-09-05T04:30:47.116Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aezamora14.github.io/scrna-seq-analysis-course/index.html</loc>
+    <lastmod>2026-09-05T04:30:47.111Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aezamora14.github.io/scrna-seq-analysis-course/modules/02-quality-control/index.html</loc>
+    <lastmod>2026-09-05T04:30:47.113Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aezamora14.github.io/scrna-seq-analysis-course/modules/04-variable-features/index.html</loc>
+    <lastmod>2026-09-05T04:30:47.113Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aezamora14.github.io/scrna-seq-analysis-course/modules/07-choosing-dimensions/index.html</loc>
+    <lastmod>2026-09-05T04:30:47.113Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aezamora14.github.io/scrna-seq-analysis-course/modules/05-scaling-regression/index.html</loc>
+    <lastmod>2026-09-05T04:30:47.113Z</lastmod>
   </url>
   <url>
     <loc>https://aezamora14.github.io/scrna-seq-analysis-course/schedule-quarter.html</loc>
-    <lastmod>2026-09-05T01:38:24.689Z</lastmod>
+    <lastmod>2026-09-05T04:30:47.116Z</lastmod>
   </url>
   <url>
     <loc>https://aezamora14.github.io/scrna-seq-analysis-course/resources/glossary.html</loc>
-    <lastmod>2026-09-05T01:38:24.688Z</lastmod>
+    <lastmod>2026-09-05T04:30:47.116Z</lastmod>
   </url>
 </urlset>

@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Module 5 — Scaling and regression – Advanced scRNA-seq Analysis Course</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-ee55caa158e530c0c52bbb44840fb07f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-69b8fd39b915e130ce02cb4b128045d4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-ee55caa158e530c0c52bbb44840fb07f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Advanced scRNA-seq Analysis Course</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../setup/index.html"> 
+<span class="menu-text">Setup</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../labs/index.html" aria-current="page"> 
+<span class="menu-text">Labs</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-pacing" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Pacing</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-pacing">    
+        <li>
+    <a class="dropdown-item" href="../../schedule-quarter.html">
+ <span class="dropdown-text">Quarter foundation block</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../schedule-semester.html">
+ <span class="dropdown-text">Semester foundation block</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/aezamora14/scrna-seq-analysis-course"> <i class="bi bi-github" role="img" aria-label="GitHub repository">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/04-variable-features/index.html">Representation modules</a></li><li class="breadcrumb-item"><a href="../../modules/05-scaling-regression/index.html">5. Scaling and regression</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Foundational modules</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/01-count-matrix/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Count matrices</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/02-quality-control/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Quality control</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/03-normalization/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Normalization</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Representation modules</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/04-variable-features/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Highly variable genes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/05-scaling-regression/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">5. Scaling and regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/06-pca/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. PCA in depth</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../modules/07-choosing-dimensions/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7. Choosing PCA dimensions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Course resources</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Student labs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Glossary for Modules 1–7</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../references/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References and software documentation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning objectives</a></li>
+  <li><a href="#from-comparable-libraries-to-comparable-numerical-contributions" id="toc-from-comparable-libraries-to-comparable-numerical-contributions" class="nav-link" data-scroll-target="#from-comparable-libraries-to-comparable-numerical-contributions">From comparable libraries to comparable numerical contributions</a></li>
+  <li><a href="#mean-centering-and-standard-deviation-scaling" id="toc-mean-centering-and-standard-deviation-scaling" class="nav-link" data-scroll-target="#mean-centering-and-standard-deviation-scaling">Mean-centering and standard-deviation scaling</a></li>
+  <li><a href="#controlled-hand-calculation" id="toc-controlled-hand-calculation" class="nav-link" data-scroll-target="#controlled-hand-calculation">Controlled hand calculation</a></li>
+  <li><a href="#side-by-side-normalized-and-scaled-values" id="toc-side-by-side-normalized-and-scaled-values" class="nav-link" data-scroll-target="#side-by-side-normalized-and-scaled-values">Side-by-side: normalized and scaled values</a>
+  <ul class="collapse">
+  <li><a href="#interpret-values-within-genes" id="toc-interpret-values-within-genes" class="nav-link" data-scroll-target="#interpret-values-within-genes">Interpret values within genes</a></li>
+  <li><a href="#what-changed" id="toc-what-changed" class="nav-link" data-scroll-target="#what-changed">What changed?</a></li>
+  <li><a href="#what-did-not-change" id="toc-what-did-not-change" class="nav-link" data-scroll-target="#what-did-not-change">What did not change?</a></li>
+  </ul></li>
+  <li><a href="#why-scaling-matters-for-pca" id="toc-why-scaling-matters-for-pca" class="nav-link" data-scroll-target="#why-scaling-matters-for-pca">Why scaling matters for PCA</a></li>
+  <li><a href="#apply-scaledata-to-the-immune-dataset" id="toc-apply-scaledata-to-the-immune-dataset" class="nav-link" data-scroll-target="#apply-scaledata-to-the-immune-dataset">Apply <code>ScaleData()</code> to the immune dataset</a></li>
+  <li><a href="#perturbation-change-the-reference-population" id="toc-perturbation-change-the-reference-population" class="nav-link" data-scroll-target="#perturbation-change-the-reference-population">Perturbation: change the reference population</a></li>
+  <li><a href="#regression-in-scaledata" id="toc-regression-in-scaledata" class="nav-link" data-scroll-target="#regression-in-scaledata">Regression in <code>ScaleData()</code></a></li>
+  <li><a href="#controlled-comparison-no-regression-versus-two-regressions" id="toc-controlled-comparison-no-regression-versus-two-regressions" class="nav-link" data-scroll-target="#controlled-comparison-no-regression-versus-two-regressions">Controlled comparison: no regression versus two regressions</a>
+  <ul class="collapse">
+  <li><a href="#compare-pca-structure" id="toc-compare-pca-structure" class="nav-link" data-scroll-target="#compare-pca-structure">Compare PCA structure</a></li>
+  <li><a href="#quantify-residual-associations" id="toc-quantify-residual-associations" class="nav-link" data-scroll-target="#quantify-residual-associations">Quantify residual associations</a></li>
+  <li><a href="#inspect-loading-programs" id="toc-inspect-loading-programs" class="nav-link" data-scroll-target="#inspect-loading-programs">Inspect loading programs</a></li>
+  </ul></li>
+  <li><a href="#when-might-regression-be-appropriate" id="toc-when-might-regression-be-appropriate" class="nav-link" data-scroll-target="#when-might-regression-be-appropriate">When might regression be appropriate?</a></li>
+  <li><a href="#what-changed-what-did-not-change-why" id="toc-what-changed-what-did-not-change-why" class="nav-link" data-scroll-target="#what-changed-what-did-not-change-why">What changed? What did not change? Why?</a></li>
+  <li><a href="#biological-consequence" id="toc-biological-consequence" class="nav-link" data-scroll-target="#biological-consequence">Biological consequence</a></li>
+  <li><a href="#common-mistakes-and-interpretation-limits" id="toc-common-mistakes-and-interpretation-limits" class="nav-link" data-scroll-target="#common-mistakes-and-interpretation-limits">Common mistakes and interpretation limits</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding">Check your understanding</a></li>
+  <li><a href="#additional-controlled-computations" id="toc-additional-controlled-computations" class="nav-link" data-scroll-target="#additional-controlled-computations">Additional controlled computations</a></li>
+  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab">Lab</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../modules/04-variable-features/index.html">Representation modules</a></li><li class="breadcrumb-item"><a href="../../modules/05-scaling-regression/index.html">5. Scaling and regression</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Module 5 — Scaling and regression</h1>
+<p class="subtitle lead">Defining gene-wise reference scales and deciding whether to remove modeled variation</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
+<p>By the end of this module, you should be able to:</p>
+<ol type="1">
+<li>distinguish library-size normalization from gene-wise centering and scaling;</li>
+<li>calculate a gene-wise z score manually and reproduce it with <code>scale()</code>;</li>
+<li>interpret scaled expression relative to one gene’s mean and standard deviation;</li>
+<li>explain why scaled values from different genes are not fold changes;</li>
+<li>show why PCA can be dominated by numerically high-variance genes without scaling;</li>
+<li>demonstrate that scaled values depend on the reference population;</li>
+<li>describe <code>ScaleData(vars.to.regress = ...)</code> as gene-wise regression followed by analysis of residual variation; and</li>
+<li>compare no regression, mitochondrial-percentage regression, and cell-cycle-score regression without assuming that removable variation should be removed.</li>
+</ol>
+<p><strong>Suggested time:</strong> 90 minutes of conceptual work plus 120–150 minutes of computation.</p>
+</section>
+<section id="from-comparable-libraries-to-comparable-numerical-contributions" class="level2">
+<h2 class="anchored" data-anchor-id="from-comparable-libraries-to-comparable-numerical-contributions">From comparable libraries to comparable numerical contributions</h2>
+<p>Module 3 made gene values more comparable across cells with different observed library sizes. Module 4 selected genes that carry useful variation. A new problem remains: selected genes can have very different numerical ranges and variances.</p>
+<p>PCA finds directions that explain variance. If one gene’s numerical variance is much larger than another’s, it can dominate the result even when the second gene carries a coherent biological distinction. Gene-wise scaling gives each included gene a common reference variance before PCA.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Normalization and scaling solve different problems">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Normalization and scaling solve different problems
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>NormalizeData()</code> adjusts values within each cell for observed library size and transforms them. <code>ScaleData()</code> centers each included gene across the chosen cells and usually divides by that gene’s standard deviation. Neither operation is batch correction, integration, or biological annotation.</p>
+</div>
+</div>
+</section>
+<section id="mean-centering-and-standard-deviation-scaling" class="level2">
+<h2 class="anchored" data-anchor-id="mean-centering-and-standard-deviation-scaling">Mean-centering and standard-deviation scaling</h2>
+<p>For normalized expression <span class="math inline">\(x_{g,c}\)</span>, gene mean <span class="math inline">\(\mu_g\)</span>, and gene standard deviation <span class="math inline">\(\sigma_g\)</span>, a gene-wise z score is</p>
+<p><span class="math display">\[
+z_{g,c}=\frac{x_{g,c}-\mu_g}{\sigma_g}.
+\]</span></p>
+<p>Mean-centering subtracts <span class="math inline">\(\mu_g\)</span>, so the average scaled value for the gene becomes approximately zero. Dividing by <span class="math inline">\(\sigma_g\)</span> expresses each cell’s deviation in units of that gene’s standard deviation, so the variance becomes approximately one unless values are clipped or additional regression is performed.</p>
+<p>Positive means above the reference mean; negative means below it. Neither sign means expressed versus unexpressed.</p>
+</section>
+<section id="controlled-hand-calculation" class="level2">
+<h2 class="anchored" data-anchor-id="controlled-hand-calculation">Controlled hand calculation</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>toy_scaled <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">NKG7 =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.8</span>, <span class="fl">2.1</span>, <span class="fl">4.6</span>),</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">CD3D =</span> <span class="fu">c</span>(<span class="fl">2.7</span>, <span class="fl">2.9</span>, <span class="fl">3.0</span>, <span class="fl">3.2</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">MALAT1 =</span> <span class="fu">c</span>(<span class="fl">6.8</span>, <span class="fl">6.9</span>, <span class="fl">6.8</span>, <span class="fl">6.9</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(toy_scaled) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Cell_"</span>, LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>toy_scaled</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Calculate NKG7 in Cell D:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> toy_scaled[<span class="st">"NKG7"</span>, ]</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">sd</span>(x)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>manual_z <span class="ot">&lt;-</span> (x[<span class="st">"Cell_D"</span>] <span class="sc">-</span> mu) <span class="sc">/</span> sigma</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">mean =</span> mu, <span class="at">standard_deviation =</span> sigma, <span class="at">z_Cell_D =</span> manual_z)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then reproduce every entry with base R:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>manual_scaled <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">apply</span>(toy_scaled, <span class="dv">1</span>, <span class="cf">function</span>(x) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  (x <span class="sc">-</span> <span class="fu">mean</span>(x)) <span class="sc">/</span> <span class="fu">sd</span>(x)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>base_scaled <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">scale</span>(<span class="fu">t</span>(toy_scaled)))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">identical</span>(<span class="fu">dimnames</span>(manual_scaled), <span class="fu">dimnames</span>(base_scaled)),</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">isTRUE</span>(<span class="fu">all.equal</span>(<span class="fu">as.vector</span>(manual_scaled), <span class="fu">as.vector</span>(base_scaled), <span class="at">tolerance =</span> <span class="fl">1e-12</span>))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(base_scaled, <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>scale()</code> operates down columns, so transposing makes genes the variables being scaled and transposing back restores genes as rows.</p>
+</section>
+<section id="side-by-side-normalized-and-scaled-values" class="level2">
+<h2 class="anchored" data-anchor-id="side-by-side-normalized-and-scaled-values">Side-by-side: normalized and scaled values</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>matrix_long <span class="ot">&lt;-</span> <span class="cf">function</span>(x, stage) {</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>(x) <span class="sc">|&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    tibble<span class="sc">::</span><span class="fu">rownames_to_column</span>(<span class="st">"gene"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="sc">-</span>gene, <span class="at">names_to =</span> <span class="st">"cell"</span>, <span class="at">values_to =</span> <span class="st">"value"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">stage =</span> stage)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>scale_long <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">matrix_long</span>(toy_scaled, <span class="st">"Normalized expression"</span>),</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">matrix_long</span>(base_scaled, <span class="st">"Gene-wise scaled expression"</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>normalized_heatmap <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">subset</span>(scale_long, stage <span class="sc">==</span> <span class="st">"Normalized expression"</span>), <span class="fu">aes</span>(cell, gene, <span class="at">fill =</span> value)) <span class="sc">+</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span> <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(value, <span class="dv">2</span>))) <span class="sc">+</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"skyblue3"</span>, <span class="at">name =</span> <span class="st">"Normalized"</span>) <span class="sc">+</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Normalized expression"</span>, <span class="at">x =</span> <span class="st">"Cell"</span>, <span class="at">y =</span> <span class="st">"Gene"</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>scaled_heatmap <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">subset</span>(scale_long, stage <span class="sc">==</span> <span class="st">"Gene-wise scaled expression"</span>), <span class="fu">aes</span>(cell, gene, <span class="at">fill =</span> value)) <span class="sc">+</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span> <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(value, <span class="dv">2</span>))) <span class="sc">+</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">"skyblue3"</span>, <span class="at">mid =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"salmon"</span>, <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">name =</span> <span class="st">"Scaled"</span>) <span class="sc">+</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Gene-wise scaled expression"</span>, <span class="at">x =</span> <span class="st">"Cell"</span>, <span class="at">y =</span> <span class="st">"Gene"</span>)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>scale_plot <span class="ot">&lt;-</span> normalized_heatmap <span class="sc">+</span> scaled_heatmap</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(scale_plot)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../figures/module-05/normalized-versus-scaled.png" class="img-fluid figure-img" alt="Side-by-side heatmaps of normalized and gene-wise z-scored expression"></p>
+<figcaption>Normalized and gene-wise scaled heatmaps demonstrate that scaling changes each gene’s center and variance, not the underlying expression observations.</figcaption>
+</figure>
+</div>
+<section id="interpret-values-within-genes" class="level3">
+<h3 class="anchored" data-anchor-id="interpret-values-within-genes">Interpret values within genes</h3>
+<p>A scaled NKG7 value of <span class="math inline">\(+2\)</span> means approximately two NKG7 standard deviations above the NKG7 mean in the reference cells. A scaled CD3D value of <span class="math inline">\(+0.5\)</span> means half a CD3D standard deviation above the CD3D mean.</p>
+<p>It is <strong>incorrect</strong> to say that NKG7 is four times as expressed as CD3D. The denominators differ: one value is measured in NKG7 standard deviations and the other in CD3D standard deviations. Scaled values are not counts, proportions, fold changes, or common absolute units across genes.</p>
+</section>
+<section id="what-changed" class="level3">
+<h3 class="anchored" data-anchor-id="what-changed">What changed?</h3>
+<ul>
+<li>Every gene now has a reference mean near zero.</li>
+<li>Genes with different original ranges have comparable variance contributions.</li>
+<li>The numerical value for a cell depends on the other cells used to estimate <span class="math inline">\(\mu_g\)</span> and <span class="math inline">\(\sigma_g\)</span>.</li>
+</ul>
+</section>
+<section id="what-did-not-change" class="level3">
+<h3 class="anchored" data-anchor-id="what-did-not-change">What did not change?</h3>
+<ul>
+<li>The raw <code>counts</code> layer.</li>
+<li>The normalized <code>data</code> layer.</li>
+<li>Which cells and genes were observed.</li>
+<li>The biological sample that generated each cell.</li>
+</ul>
+</section>
+</section>
+<section id="why-scaling-matters-for-pca" class="level2">
+<h2 class="anchored" data-anchor-id="why-scaling-matters-for-pca">Why scaling matters for PCA</h2>
+<p>Build a controlled example with one large-range nuisance measurement and one smaller coherent group signal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>unscaled_example <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">cell =</span> <span class="fu">paste0</span>(<span class="st">"Cell_"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"naive-like"</span>, <span class="st">"cytotoxic"</span>), <span class="at">each =</span> <span class="dv">5</span>),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">large_range_gene =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">80</span>, <span class="dv">35</span>, <span class="dv">95</span>, <span class="dv">45</span>, <span class="dv">25</span>, <span class="dv">85</span>, <span class="dv">40</span>, <span class="dv">100</span>, <span class="dv">50</span>),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">coherent_state_gene =</span> <span class="fu">c</span>(<span class="fl">1.0</span>, <span class="fl">1.2</span>, <span class="fl">0.8</span>, <span class="fl">1.1</span>, <span class="fl">0.9</span>, <span class="fl">4.8</span>, <span class="fl">5.2</span>, <span class="fl">5.0</span>, <span class="fl">4.9</span>, <span class="fl">5.1</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>unscaled_pca <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  unscaled_example[, <span class="fu">c</span>(<span class="st">"large_range_gene"</span>, <span class="st">"coherent_state_gene"</span>)],</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">center =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">scale. =</span> <span class="cn">FALSE</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>scaled_pca <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  unscaled_example[, <span class="fu">c</span>(<span class="st">"large_range_gene"</span>, <span class="st">"coherent_state_gene"</span>)],</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">center =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">scale. =</span> <span class="cn">TRUE</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>unscaled_example<span class="sc">$</span>PC1_unscaled <span class="ot">&lt;-</span> unscaled_pca<span class="sc">$</span>x[, <span class="dv">1</span>]</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>unscaled_example<span class="sc">$</span>PC1_scaled <span class="ot">&lt;-</span> scaled_pca<span class="sc">$</span>x[, <span class="dv">1</span>]</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(unscaled_example<span class="sc">$</span>PC1_unscaled, unscaled_example<span class="sc">$</span>large_range_gene)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(unscaled_example<span class="sc">$</span>PC1_scaled, unscaled_example<span class="sc">$</span>coherent_state_gene)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Visualize cell scores:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>p_unscaled <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  unscaled_example,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(group, PC1_unscaled, <span class="at">color =</span> group)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"PCA without variance scaling"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>p_scaled <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  unscaled_example,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(group, PC1_scaled, <span class="at">color =</span> group)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"PCA after variance scaling"</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>p_unscaled <span class="sc">+</span> p_scaled <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">"collect"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../figures/module-05/unscaled-versus-scaled-pca.png" class="img-fluid figure-img" alt="PC1 scores without and with variance scaling for naive-like and cytotoxic cells"></p>
+<figcaption>A controlled PCA comparison shows a large-range nuisance gene dominating without variance scaling and a coherent group signal contributing after scaling.</figcaption>
+</figure>
+</div>
+<p>Scaling does not prove the smaller-range pattern is biologically correct. It prevents raw numerical magnitude alone from deciding the representation.</p>
+</section>
+<section id="apply-scaledata-to-the-immune-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="apply-scaledata-to-the-immune-dataset">Apply <code>ScaleData()</code> to the immune dataset</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Seurat)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"scripts/course_helpers.R"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">&lt;-</span> <span class="fu">load_representation_object</span>()</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">&lt;-</span> <span class="fu">NormalizeData</span>(obj, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">&lt;-</span> <span class="fu">FindVariableFeatures</span>(</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  obj,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">selection.method =</span> <span class="st">"vst"</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">nfeatures =</span> <span class="dv">2000</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">&lt;-</span> <span class="fu">ScaleData</span>(obj, <span class="at">features =</span> <span class="fu">VariableFeatures</span>(obj), <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>scaled_matrix <span class="ot">&lt;-</span> <span class="fu">LayerData</span>(obj, <span class="at">assay =</span> <span class="st">"RNA"</span>, <span class="at">layer =</span> <span class="st">"scale.data"</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(scaled_matrix)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>By default in this workflow, <code>scale.data</code> contains the scaled variable features, not necessarily all 6,000 genes. Make the feature set explicit whenever later code depends on a particular gene.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>genes_to_inspect <span class="ot">&lt;-</span> <span class="fu">intersect</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">"NKG7"</span>, <span class="st">"CD3D"</span>, <span class="st">"MS4A1"</span>, <span class="st">"LST1"</span>),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames</span>(scaled_matrix)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">gene =</span> genes_to_inspect,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">scaled_mean =</span> <span class="fu">rowMeans</span>(scaled_matrix[genes_to_inspect, , <span class="at">drop =</span> <span class="cn">FALSE</span>]),</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">scaled_sd =</span> <span class="fu">apply</span>(scaled_matrix[genes_to_inspect, , <span class="at">drop =</span> <span class="cn">FALSE</span>], <span class="dv">1</span>, sd)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="perturbation-change-the-reference-population" class="level2">
+<h2 class="anchored" data-anchor-id="perturbation-change-the-reference-population">Perturbation: change the reference population</h2>
+<p>Scaling is learned from the included cells. Compare the same T cell and gene under two references: all immune cells versus T cells only.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>reference_obj <span class="ot">&lt;-</span> <span class="fu">NormalizeData</span>(<span class="fu">load_representation_object</span>(), <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>reference_features <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"NKG7"</span>, <span class="st">"CD3D"</span>, <span class="st">"IL7R"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>whole_scaled <span class="ot">&lt;-</span> <span class="fu">ScaleData</span>(</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  reference_obj,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">features =</span> reference_features,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>t_cells <span class="ot">&lt;-</span> <span class="fu">Cells</span>(reference_obj)[reference_obj<span class="sc">$</span>truth_cell_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"CD4 T"</span>, <span class="st">"CD8 T"</span>)]</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>t_reference <span class="ot">&lt;-</span> <span class="fu">subset</span>(reference_obj, <span class="at">cells =</span> t_cells)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>t_scaled <span class="ot">&lt;-</span> <span class="fu">ScaleData</span>(</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  t_reference,</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">features =</span> reference_features,</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>same_cell <span class="ot">&lt;-</span> t_cells[<span class="dv">1</span>]</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>reference_comparison <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">gene =</span> reference_features,</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">normalized_value =</span> <span class="fu">as.numeric</span>(</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">LayerData</span>(reference_obj, <span class="at">layer =</span> <span class="st">"data"</span>)[reference_features, same_cell]</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">scaled_whole_immune =</span> <span class="fu">as.numeric</span>(</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">LayerData</span>(whole_scaled, <span class="at">layer =</span> <span class="st">"scale.data"</span>)[reference_features, same_cell]</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">scaled_T_cells_only =</span> <span class="fu">as.numeric</span>(</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">LayerData</span>(t_scaled, <span class="at">layer =</span> <span class="st">"scale.data"</span>)[reference_features, same_cell]</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>reference_comparison</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../figures/module-05/reference-population-scaling.png" class="img-fluid figure-img" alt="Same-cell scaled expression under whole-immune and T-cell-only reference populations"></p>
+<figcaption>Scaled values for the same T cell change when the reference is all immune cells versus T cells only, while normalized expression remains fixed.</figcaption>
+</figure>
+</div>
+<p>The cell and its normalized values did not change. The reference mean and standard deviation changed. A z score is therefore a contextual location, not an intrinsic molecular property of a cell.</p>
+</section>
+<section id="regression-in-scaledata" class="level2">
+<h2 class="anchored" data-anchor-id="regression-in-scaledata">Regression in <code>ScaleData()</code></h2>
+<p>Suppose normalized expression of gene <span class="math inline">\(g\)</span> is associated with a metadata variable <span class="math inline">\(q_c\)</span>, such as mitochondrial percentage or a cell-cycle score. In simplified form, a gene-wise model is</p>
+<p><span class="math display">\[
+x_{g,c}=\beta_{0,g}+\beta_{1,g}q_c+\varepsilon_{g,c}.
+\]</span></p>
+<p><code>ScaleData(vars.to.regress = "q")</code> fits a model for each gene, uses residual variation <span class="math inline">\(\varepsilon_{g,c}\)</span> after accounting for the specified variable, then centers and scales the result for downstream use.</p>
+<p>Plainly: regression asks what remains of each gene’s variation after removing the fitted association with the chosen covariate.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Regressible does not mean disposable">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Regressible does not mean disposable
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A variable can be modeled and removed computationally even when it carries real biology. Mitochondrial programs can reflect tissue state; cell cycle can be the phenomenon of interest; and either can be confounded with condition or cell type. Automatic regression can erase signal and create misleading residual structure.</p>
+</div>
+</div>
+</section>
+<section id="controlled-comparison-no-regression-versus-two-regressions" class="level2">
+<h2 class="anchored" data-anchor-id="controlled-comparison-no-regression-versus-two-regressions">Controlled comparison: no regression versus two regressions</h2>
+<p>Hold cells, normalization, HVGs, PCA feature set, PC count, and seed fixed. Change only <code>vars.to.regress</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>base_obj <span class="ot">&lt;-</span> <span class="fu">load_representation_object</span>()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>base_obj <span class="ot">&lt;-</span> <span class="fu">NormalizeData</span>(base_obj, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>base_obj <span class="ot">&lt;-</span> <span class="fu">FindVariableFeatures</span>(</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  base_obj,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">selection.method =</span> <span class="st">"vst"</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">nfeatures =</span> <span class="dv">2000</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>features <span class="ot">&lt;-</span> <span class="fu">VariableFeatures</span>(base_obj)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>run_scaled_pca <span class="ot">&lt;-</span> <span class="cf">function</span>(obj, <span class="at">regress =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  obj <span class="ot">&lt;-</span> <span class="fu">ScaleData</span>(</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    obj,</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">features =</span> features,</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">vars.to.regress =</span> regress,</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">RunPCA</span>(</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    obj,</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">features =</span> features,</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">npcs =</span> <span class="dv">30</span>,</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">seed.use =</span> <span class="dv">20260907</span>,</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>no_regression <span class="ot">&lt;-</span> <span class="fu">run_scaled_pca</span>(base_obj)</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>regress_mito <span class="ot">&lt;-</span> <span class="fu">run_scaled_pca</span>(base_obj, <span class="st">"percent.mt"</span>)</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>regress_cycle <span class="ot">&lt;-</span> <span class="fu">run_scaled_pca</span>(base_obj, <span class="st">"cell_cycle_score"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="compare-pca-structure" class="level3">
+<h3 class="anchored" data-anchor-id="compare-pca-structure">Compare PCA structure</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>regression_plots <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">DimPlot</span>(no_regression, <span class="at">reduction =</span> <span class="st">"pca"</span>, <span class="at">group.by =</span> <span class="st">"cell_cycle_phase"</span>) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"No regression"</span>),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">DimPlot</span>(regress_mito, <span class="at">reduction =</span> <span class="st">"pca"</span>, <span class="at">group.by =</span> <span class="st">"cell_cycle_phase"</span>) <span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Regress percent.mt"</span>),</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">DimPlot</span>(regress_cycle, <span class="at">reduction =</span> <span class="st">"pca"</span>, <span class="at">group.by =</span> <span class="st">"cell_cycle_phase"</span>) <span class="sc">+</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Regress cell-cycle score"</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="fu">wrap_plots</span>(regression_plots, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">guides =</span> <span class="st">"collect"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../figures/module-05/regression-pca-comparison.png" class="img-fluid figure-img" alt="Three PCA plots under no regression, mitochondrial regression, and cell-cycle regression"></p>
+<figcaption>PCA panels compare no regression, mitochondrial-percentage regression, and cell-cycle-score regression with every other choice fixed.</figcaption>
+</figure>
+</div>
+</section>
+<section id="quantify-residual-associations" class="level3">
+<h3 class="anchored" data-anchor-id="quantify-residual-associations">Quantify residual associations</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pc1_associations <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">analysis =</span> <span class="fu">c</span>(<span class="st">"none"</span>, <span class="st">"percent.mt"</span>, <span class="st">"cell_cycle_score"</span>),</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">PC1_cor_percent_mt =</span> <span class="fu">c</span>(</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cor</span>(<span class="fu">Embeddings</span>(no_regression, <span class="st">"pca"</span>)[, <span class="dv">1</span>], no_regression<span class="sc">$</span>percent.mt),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cor</span>(<span class="fu">Embeddings</span>(regress_mito, <span class="st">"pca"</span>)[, <span class="dv">1</span>], regress_mito<span class="sc">$</span>percent.mt),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cor</span>(<span class="fu">Embeddings</span>(regress_cycle, <span class="st">"pca"</span>)[, <span class="dv">1</span>], regress_cycle<span class="sc">$</span>percent.mt)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">PC1_cor_cell_cycle =</span> <span class="fu">c</span>(</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cor</span>(<span class="fu">Embeddings</span>(no_regression, <span class="st">"pca"</span>)[, <span class="dv">1</span>], no_regression<span class="sc">$</span>cell_cycle_score),</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cor</span>(<span class="fu">Embeddings</span>(regress_mito, <span class="st">"pca"</span>)[, <span class="dv">1</span>], regress_mito<span class="sc">$</span>cell_cycle_score),</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cor</span>(<span class="fu">Embeddings</span>(regress_cycle, <span class="st">"pca"</span>)[, <span class="dv">1</span>], regress_cycle<span class="sc">$</span>cell_cycle_score)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>pc1_associations</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>PC1 is only one axis; repeat across multiple PCs before concluding that a program disappeared.</p>
+</section>
+<section id="inspect-loading-programs" class="level3">
+<h3 class="anchored" data-anchor-id="inspect-loading-programs">Inspect loading programs</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>loading_comparison <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rank_pca_loadings</span>(no_regression, <span class="at">pcs =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">n =</span> <span class="dv">5</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">analysis =</span> <span class="st">"none"</span>),</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rank_pca_loadings</span>(regress_mito, <span class="at">pcs =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">n =</span> <span class="dv">5</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">analysis =</span> <span class="st">"percent.mt"</span>),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rank_pca_loadings</span>(regress_cycle, <span class="at">pcs =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">n =</span> <span class="dv">5</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">analysis =</span> <span class="st">"cell_cycle_score"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>loading_comparison</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Ask whether cell-cycle, mitochondrial, lineage, or state programs move among PCs. Regression can redistribute variance rather than producing one universally cleaner representation.</p>
+</section>
+</section>
+<section id="when-might-regression-be-appropriate" class="level2">
+<h2 class="anchored" data-anchor-id="when-might-regression-be-appropriate">When might regression be appropriate?</h2>
+<p>Regression is more defensible when all of the following are considered:</p>
+<ul>
+<li>the covariate is measured or estimated adequately;</li>
+<li>the analysis goal explicitly treats its associated variation as nuisance;</li>
+<li>the covariate is not inseparable from the biological comparison of interest;</li>
+<li>removing it does not erase a population needed for the scientific question;</li>
+<li>sensitivity analyses show which conclusions change; and</li>
+<li>the choice and model are reported.</li>
+</ul>
+<p>For example, cell-cycle regression may be useful when the goal is to compare stable lineage identity and cycling status is a known orthogonal nuisance. It is inappropriate when proliferation is a response of interest or is confounded with condition.</p>
+</section>
+<section id="what-changed-what-did-not-change-why" class="level2">
+<h2 class="anchored" data-anchor-id="what-changed-what-did-not-change-why">What changed? What did not change? Why?</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>No regression</th>
+<th>Regress percent.mt</th>
+<th>Regress cell-cycle score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Which scaled values changed?</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Which PC loading programs changed?</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Which cell-score relationships changed?</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Which lineages remained separated?</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Which biological program may have been attenuated?</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Did counts or normalized values change?</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="biological-consequence" class="level2">
+<h2 class="anchored" data-anchor-id="biological-consequence">Biological consequence</h2>
+<p>If activated T cells genuinely proliferate while resting T cells do not, regressing a cell-cycle score can make the representation emphasize non-cycle differences. That may help a lineage-focused question but would hide part of the activation response. Likewise, percent mitochondrial expression can be a technical quality signal, a biological metabolic signal, or both.</p>
+<p>The correct question is not “Can I regress this?” It is “Which estimand remains after I regress this, and is that the estimand my study needs?”</p>
+</section>
+<section id="common-mistakes-and-interpretation-limits" class="level2">
+<h2 class="anchored" data-anchor-id="common-mistakes-and-interpretation-limits">Common mistakes and interpretation limits</h2>
+<ul>
+<li>Calling scaled values normalized counts.</li>
+<li>Interpreting z scores as fold changes or absolute expression.</li>
+<li>Comparing a z score for one gene numerically with a z score for another as if they share molecular units.</li>
+<li>Forgetting that scaling depends on the reference cells.</li>
+<li>Running PCA on unscaled features without checking numerical dominance.</li>
+<li>Regressing <code>percent.mt</code>, library size, or cell cycle automatically.</li>
+<li>Assuming a weak residual correlation proves that unwanted biology was removed correctly.</li>
+<li>Regressing a covariate confounded with condition or cell type.</li>
+<li>Changing the HVGs and regression target simultaneously in a sensitivity comparison.</li>
+<li>Forgetting that raw and normalized layers should remain unchanged.</li>
+</ul>
+</section>
+<section id="check-your-understanding" class="level2">
+<h2 class="anchored" data-anchor-id="check-your-understanding">Check your understanding</h2>
+<ol type="1">
+<li>Which dimension does <code>NormalizeData()</code> primarily address, and which dimension does <code>ScaleData()</code> address?</li>
+<li>What does a scaled value of <span class="math inline">\(-1.5\)</span> mean for one gene?</li>
+<li>Why is NKG7 at <span class="math inline">\(+2\)</span> not four times CD3D at <span class="math inline">\(+0.5\)</span>?</li>
+<li>Why can unscaled PCA be dominated by one gene?</li>
+<li>Why can the same cell have different scaled NKG7 values in whole immune data and a T-cell subset?</li>
+<li>What remains after gene-wise regression on a covariate?</li>
+<li>Give one setting where cell-cycle regression supports the estimand and one where it destroys it.</li>
+<li>Why can mitochondrial percentage carry biological as well as technical variation?</li>
+<li>Which layers should remain unchanged after <code>ScaleData()</code>?</li>
+<li>What evidence would you show to defend a regression choice?</li>
+</ol>
+<p>The bundled <code>cell_cycle_score</code> is a simulated covariate, not an inferred <code>CellCycleScoring()</code> result. Removing its linear association need not remove S-versus-G2M differences or nonlinear programs. In real data, examine how scores were estimated before choosing a model. See the <a href="https://satijalab.org/seurat/reference/scaledata">ScaleData reference</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../figures/module-05/distributions.png" class="img-fluid figure-img" alt="Gene-expression density plots before and after gene-wise scaling"></p>
+<figcaption>Normalized distributions beside scaled distributions.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../figures/module-05/mapping.png" class="img-fluid figure-img" alt="Normalized versus scaled values for NKG7, CD3D, and IL7R"></p>
+<figcaption>Value mapping for the same cells and genes.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../figures/module-05/regression-distributions.png" class="img-fluid figure-img" alt="MKI67 and NKG7 distributions after no regression, mitochondrial regression, and cell-cycle-score regression"></p>
+<figcaption>Residual distributions under three regression choices.</figcaption>
+</figure>
+</div>
+</section>
+<section id="additional-controlled-computations" class="level2">
+<h2 class="anchored" data-anchor-id="additional-controlled-computations">Additional controlled computations</h2>
+<p>Run the complete lab first to initialize the objects used here.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"labs/05-scaling-regression-lab.R"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate three values manually, preserving sample-SD arithmetic.</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>manual_three <span class="ot">&lt;-</span> (toy_scaled[<span class="st">"NKG7"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>] <span class="sc">-</span> manual_mean) <span class="sc">/</span> manual_sd</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(manual_three)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">max</span>(<span class="fu">abs</span>(manual_three <span class="sc">-</span> base_scaled[<span class="st">"NKG7"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>])) <span class="sc">&lt;</span> <span class="fl">1e-12</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># A transparent regression example: fit, predict, subtract, and scale residuals.</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>regression_toy <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">q =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">expression =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">10</span>))</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(expression <span class="sc">~</span> q, <span class="at">data =</span> regression_toy)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>regression_toy<span class="sc">$</span>fitted <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>regression_toy<span class="sc">$</span>residual <span class="ot">&lt;-</span> regression_toy<span class="sc">$</span>expression <span class="sc">-</span> regression_toy<span class="sc">$</span>fitted</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(regression_toy)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">scale</span>(regression_toy<span class="sc">$</span>residual))</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare distributions and value mappings using identical cells and genes.</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>gene_values <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">gene =</span> <span class="fu">rep</span>(reference_features, <span class="at">each =</span> <span class="fu">ncol</span>(whole_scaled)),</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">normalized =</span> <span class="fu">as.vector</span>(<span class="fu">t</span>(<span class="fu">as.matrix</span>(<span class="fu">LayerData</span>(whole_scaled, <span class="at">layer =</span> <span class="st">"data"</span>)[reference_features, ]))),</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">scaled =</span> <span class="fu">as.vector</span>(<span class="fu">t</span>(<span class="fu">LayerData</span>(whole_scaled, <span class="at">layer =</span> <span class="st">"scale.data"</span>)[reference_features, ])))</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>mapping_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(gene_values, <span class="fu">aes</span>(normalized, scaled)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>gene) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Normalized expression"</span>, <span class="at">y =</span> <span class="st">"Gene-wise scaled value"</span>)</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>distribution_data <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(gene_values, <span class="fu">c</span>(normalized, scaled), <span class="at">names_to =</span> <span class="st">"stage"</span>, <span class="at">values_to =</span> <span class="st">"value"</span>)</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>distribution_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(distribution_data, <span class="fu">aes</span>(value, <span class="at">color =</span> gene)) <span class="sc">+</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>stage, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Density"</span>)</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mapping_plot)</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(distribution_plot)</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Residual gene distributions across all three preprocessing choices.</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>regression_distributions <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(<span class="fu">lapply</span>(</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">none =</span> no_regression, <span class="at">percent_mt =</span> regress_mito, <span class="at">cycle =</span> regress_cycle),</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(x) <span class="fu">matrix_long</span>(<span class="fu">LayerData</span>(x, <span class="at">layer =</span> <span class="st">"scale.data"</span>)[<span class="fu">c</span>(<span class="st">"MKI67"</span>, <span class="st">"NKG7"</span>), ], <span class="st">"scaled"</span>)),</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">.id =</span> <span class="st">"analysis"</span>)</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>regression_distribution_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(regression_distributions, <span class="fu">aes</span>(value, <span class="at">color =</span> analysis)) <span class="sc">+</span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>gene) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Scaled/residual value"</span>, <span class="at">y =</span> <span class="st">"Density"</span>)</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(regression_distribution_plot)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For this comparison, state what changed, what stayed fixed, why, and the biological consequence.</p>
+</section>
+<section id="lab" class="level2">
+<h2 class="anchored" data-anchor-id="lab">Lab</h2>
+<p>Run <a href="../../labs/05-scaling-regression-lab.R">the Module 5 student lab</a>. Submit the hand calculation, normalized-versus-scaled comparison, unscaled-versus-scaled PCA, reference-population analysis, regression comparison, loading-program table, and a written decision about whether either regression is appropriate for a stated analysis goal.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/aezamora14\.github\.io\/scrna-seq-analysis-course\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
