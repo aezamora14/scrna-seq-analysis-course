@@ -1,0 +1,796 @@
+[
+  {
+    "objectID": "references/index.html",
+    "href": "references/index.html",
+    "title": "References and software documentation",
+    "section": "",
+    "text": "Hao Y, et al. Dictionary learning for integrative, multimodal and scalable single-cell analysis. Nature Biotechnology. 2024.\nHafemeister C, Satija R. Normalization and variance stabilization of single-cell RNA-seq data using regularized negative binomial regression. Genome Biology. 2019.\nLun ATL, et al. EmptyDrops: distinguishing cells from empty droplets in droplet-based single-cell RNA sequencing data. Genome Biology. 2019.\nMcGinnis CS, Murrow LM, Gartner ZJ. DoubletFinder: doublet detection in single-cell RNA sequencing data using artificial nearest neighbors. Cell Systems. 2019.\nGermain P-L, et al. Doublet identification in single-cell sequencing data using scDblFinder. F1000Research. 2021.",
+    "crumbs": [
+      "Home",
+      "Course resources",
+      "References and software documentation"
+    ]
+  },
+  {
+    "objectID": "references/index.html#core-methods-and-software",
+    "href": "references/index.html#core-methods-and-software",
+    "title": "References and software documentation",
+    "section": "",
+    "text": "Hao Y, et al. Dictionary learning for integrative, multimodal and scalable single-cell analysis. Nature Biotechnology. 2024.\nHafemeister C, Satija R. Normalization and variance stabilization of single-cell RNA-seq data using regularized negative binomial regression. Genome Biology. 2019.\nLun ATL, et al. EmptyDrops: distinguishing cells from empty droplets in droplet-based single-cell RNA sequencing data. Genome Biology. 2019.\nMcGinnis CS, Murrow LM, Gartner ZJ. DoubletFinder: doublet detection in single-cell RNA sequencing data using artificial nearest neighbors. Cell Systems. 2019.\nGermain P-L, et al. Doublet identification in single-cell sequencing data using scDblFinder. F1000Research. 2021.",
+    "crumbs": [
+      "Home",
+      "Course resources",
+      "References and software documentation"
+    ]
+  },
+  {
+    "objectID": "references/index.html#documentation-used-by-the-exercises",
+    "href": "references/index.html#documentation-used-by-the-exercises",
+    "title": "References and software documentation",
+    "section": "Documentation used by the exercises",
+    "text": "Documentation used by the exercises\n\nSeurat reference documentation\nSeurat NormalizeData() documentation\nSeurat PercentageFeatureSet() documentation\nSCTransform documentation\nscDblFinder Bioconductor documentation\nMatrix package documentation\n\nSoftware APIs are tested by the repository smoke tests against the versions recorded in renv.lock.",
+    "crumbs": [
+      "Home",
+      "Course resources",
+      "References and software documentation"
+    ]
+  },
+  {
+    "objectID": "schedule-semester.html",
+    "href": "schedule-semester.html",
+    "title": "Semester pacing: foundational block",
+    "section": "",
+    "text": "This page schedules the currently implemented material within a 14–16 week semester. It does not create placeholder lessons for future modules.\n\n\n\n\n\n\n\n\n\nWeek\nPreparation (60–90 min)\nClass meeting (150–180 min)\nProduct\n\n\n\n\n1\nSetup and reproducibility reading\nEnvironment clinic; R sparse-matrix refresher\nVerified local environment\n\n\n2\nModule 1 through matrix anatomy\nDroplets, barcodes, reads, UMIs, cell/gene access patterns\nMatrix anatomy worksheet\n\n\n3\nModule 1 zeros and artifacts\nUndersampling lab; ambient RNA, empty droplets, doublets\nSampling-zero explanation\n\n\n4\nModule 2 metrics\nQC plots by cell and sample; complexity interpretation\nQC figure set\n\n\n5\nModule 2 thresholds\nThreshold sensitivity lab; population retention analysis\nQC decision table\n\n\n6\nModule 2 downstream consequences\nPCA/clustering comparison and biological discussion\nQC sensitivity report\n\n\n7\nModule 3 through hand calculations\nLibrary-size correction and log transformation\nHand-calculation worksheet\n\n\n8\nModule 3 perturbations\nRaw/normalized comparison and scale-factor exercise\nNormalization interpretation memo\n\n\n9\nModule 3 model-based section\nOptional SCTransform comparison; foundational synthesis\nFoundational analysis audit\n\n\n\nRemaining semester weeks are intentionally left for later development rather than linked to empty modules."
+  },
+  {
+    "objectID": "labs/index.html",
+    "href": "labs/index.html",
+    "title": "Student labs",
+    "section": "",
+    "text": "Run each lab from the repository root. The scripts are complete and executable; the assessed work is the interpretation you add to your own Quarto notebook or course submission.\n\nModule 1 lab: count matrices\nModule 2 lab: quality control\nModule 3 lab: normalization\n\n\n\n\n\n\n\nImportant\n\n\n\nCode execution is necessary but not sufficient. For every comparison, document what changed, what did not change, why, and whether the biological conclusion changed.",
+    "crumbs": [
+      "Home",
+      "Course resources",
+      "Student labs"
+    ]
+  },
+  {
+    "objectID": "modules/01-count-matrix/index.html",
+    "href": "modules/01-count-matrix/index.html",
+    "title": "Module 1 — What scRNA-seq data actually are",
+    "section": "",
+    "text": "By the end of this module, you should be able to:\n\ndistinguish a read, UMI, barcode, gene, droplet, and putative cell;\nexplain how those entities become a gene-by-cell count matrix;\ninspect sparse matrices without unnecessarily converting them to dense matrices;\ncalculate library size, detected features, and sparsity manually;\nexplain why an observed zero does not reveal whether expression was biologically absent;\npredict what undersampling does to counts and detected genes; and\nidentify signatures consistent with empty droplets, ambient RNA, and doublets.\n\nSuggested time: 60–90 minutes of conceptual work plus 90 minutes of computation.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "1. Count matrices"
+    ]
+  },
+  {
+    "objectID": "modules/01-count-matrix/index.html#learning-objectives",
+    "href": "modules/01-count-matrix/index.html#learning-objectives",
+    "title": "Module 1 — What scRNA-seq data actually are",
+    "section": "",
+    "text": "By the end of this module, you should be able to:\n\ndistinguish a read, UMI, barcode, gene, droplet, and putative cell;\nexplain how those entities become a gene-by-cell count matrix;\ninspect sparse matrices without unnecessarily converting them to dense matrices;\ncalculate library size, detected features, and sparsity manually;\nexplain why an observed zero does not reveal whether expression was biologically absent;\npredict what undersampling does to counts and detected genes; and\nidentify signatures consistent with empty droplets, ambient RNA, and doublets.\n\nSuggested time: 60–90 minutes of conceptual work plus 90 minutes of computation.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "1. Count matrices"
+    ]
+  },
+  {
+    "objectID": "modules/01-count-matrix/index.html#begin-with-the-measurement-process",
+    "href": "modules/01-count-matrix/index.html#begin-with-the-measurement-process",
+    "title": "Module 1 — What scRNA-seq data actually are",
+    "section": "Begin with the measurement process",
+    "text": "Begin with the measurement process\nA count matrix is not a direct inventory of every RNA molecule that existed in each cell. It is the endpoint of a lossy measurement process:\ntissue or cell suspension\n        ↓\ncells partitioned into droplets or wells\n        ↓\ncaptured molecules receive cell barcodes and UMIs\n        ↓\ncDNA amplification and sequencing produce reads\n        ↓\nreads are assigned to genes, barcodes, and UMIs\n        ↓\nduplicate reads from the same captured molecule are collapsed\n        ↓\ngene × barcode UMI count matrix\nAt every arrow, information can be lost or distorted. Some molecules are never captured, some droplets contain no cell, some contain multiple cells, and free RNA can enter droplets from the surrounding solution.\n\nTerms that must not be conflated\n\n\n\n\n\n\n\n\nTerm\nOperational meaning\nWhat it does not guarantee\n\n\n\n\nDroplet\nA physical partition created by a droplet-based platform\nThat exactly one intact cell was captured\n\n\nBarcode\nA sequence intended to identify the partition of origin\nThat the barcode represents a viable singlet cell\n\n\nRead\nA sequenced fragment produced from amplified cDNA\nA distinct original RNA molecule\n\n\nUMI\nA molecular tag used to collapse reads likely derived from one captured molecule\nPerfect one-to-one recovery of molecules present in the cell\n\n\nGene count\nNumber of observed UMIs assigned to a gene and barcode\nAbsolute transcript abundance in the original cell\n\n\nLibrary size\nSum of observed UMI counts for one barcode\nCell size, total RNA content, or sequencing depth alone\n\n\n\nRepeated sequencing reads carrying the same gene, cell barcode, and UMI are usually treated as evidence for one captured molecule. Therefore, read count and UMI count answer different questions.\n\n\n\n\n\n\nWarningA common language error\n\n\n\nSaying “the cell has 40 transcripts of CD3D” overstates the measurement. A raw value of 40 means that 40 CD3D UMIs were observed and retained after processing under the assay’s counting rules.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "1. Count matrices"
+    ]
+  },
+  {
+    "objectID": "modules/01-count-matrix/index.html#matrix-anatomy",
+    "href": "modules/01-count-matrix/index.html#matrix-anatomy",
+    "title": "Module 1 — What scRNA-seq data actually are",
+    "section": "Matrix anatomy",
+    "text": "Matrix anatomy\nThis course stores raw counts as genes in rows and barcodes in columns, the orientation expected by CreateSeuratObject():\n             Cell_A   Cell_B   Cell_C\nCD3D             20       40        0\nNKG7              10       20       50\nMS4A1              0        0        0\nLST1                0        0       10\nOther software may present cells in rows and genes in columns. Always inspect row and column names before calculating summaries. A transposed matrix can produce plausible-looking but meaningless results.\n\nLoad the controlled matrix\nlibrary(Matrix)\n\ncounts &lt;- readRDS(\"data/synthetic_qc_counts.rds\")\n\nclass(counts)\ndim(counts)\ncounts[1:8, 1:6]\nExpected structure:\n\n260 gene rows;\n700 barcode columns; and\na dgCMatrix, which is a compressed sparse column matrix.\n\nThe 700 barcodes deliberately include cells, simulated doublets, and empty droplets. A column in a count matrix is therefore a barcode candidate, not automatically a validated cell.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "1. Count matrices"
+    ]
+  },
+  {
+    "objectID": "modules/01-count-matrix/index.html#why-sparse-matrices-matter",
+    "href": "modules/01-count-matrix/index.html#why-sparse-matrices-matter",
+    "title": "Module 1 — What scRNA-seq data actually are",
+    "section": "Why sparse matrices matter",
+    "text": "Why sparse matrices matter\nMost gene-by-cell entries are zero. A dense matrix allocates memory to every entry. A sparse matrix stores the nonzero values and their positions.\nFor \\(G\\) genes and \\(C\\) barcodes, define the observed sparsity as:\n\\[\n\\operatorname{sparsity}\n= 1 - \\frac{N_{\\mathrm{nonzero}}}{G \\times C}.\n\\]\nCalculate it without converting the matrix to dense form:\nnonzero_entries &lt;- length(counts@x)\ntotal_entries &lt;- nrow(counts) * ncol(counts)\nsparsity &lt;- 1 - nonzero_entries / total_entries\n\nc(\n  nonzero_entries = nonzero_entries,\n  total_entries = total_entries,\n  sparsity = sparsity\n)\nCompare storage for the same values:\nsparse_bytes &lt;- object.size(counts)\ndense_bytes &lt;- object.size(as.matrix(counts))\n\nc(\n  sparse = sparse_bytes,\n  dense = dense_bytes,\n  dense_over_sparse = as.numeric(dense_bytes) / as.numeric(sparse_bytes)\n)\nConverting this small matrix is safe for teaching. Converting a real matrix containing tens of thousands of genes and hundreds of thousands of cells can exhaust memory.\n\n\n\nBar charts compare memory used by sparse and dense representations and show how undersampling reduces library size and detected genes.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "1. Count matrices"
+    ]
+  },
+  {
+    "objectID": "modules/01-count-matrix/index.html#inspect-one-cell-and-one-gene",
+    "href": "modules/01-count-matrix/index.html#inspect-one-cell-and-one-gene",
+    "title": "Module 1 — What scRNA-seq data actually are",
+    "section": "Inspect one cell and one gene",
+    "text": "Inspect one cell and one gene\nA cell-oriented question examines one column:\ncell_id &lt;- \"BC0001-1\"\ncell_counts &lt;- counts[, cell_id, drop = FALSE]\n\nsum(cell_counts)\nsum(cell_counts &gt; 0)\nnamed_cell_counts &lt;- setNames(as.numeric(cell_counts), rownames(cell_counts))\nsort(named_cell_counts, decreasing = TRUE)[1:10]\nA gene-oriented question examines one row:\ngene_counts &lt;- counts[\"NKG7\", ]\n\nsummary(as.numeric(gene_counts))\nsum(gene_counts &gt; 0)\nmean(gene_counts &gt; 0)\nThe first asks what was observed in one barcode. The second asks how a gene is distributed across barcodes. These are different conditional views of the same matrix.\n\n\n\nA heatmap of selected lineage markers shows that a sparse matrix can retain coherent B-cell, T-cell, NK-cell, and monocyte structure.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "1. Count matrices"
+    ]
+  },
+  {
+    "objectID": "modules/01-count-matrix/index.html#derive-seurat-qc-fields-manually",
+    "href": "modules/01-count-matrix/index.html#derive-seurat-qc-fields-manually",
+    "title": "Module 1 — What scRNA-seq data actually are",
+    "section": "Derive Seurat QC fields manually",
+    "text": "Derive Seurat QC fields manually\nFor barcode \\(c\\), library size is:\n\\[\nL_c = \\sum_g x_{g,c},\n\\]\nwhere \\(x_{g,c}\\) is the observed UMI count for gene \\(g\\) in barcode \\(c\\).\nThe number of detected features is:\n\\[\nF_c = \\sum_g \\mathbf{1}(x_{g,c} &gt; 0).\n\\]\nHere, \\(\\mathbf{1}(\\cdot)\\) equals 1 when the condition is true and 0 otherwise.\nmanual_library_size &lt;- Matrix::colSums(counts)\nmanual_detected_features &lt;- Matrix::colSums(counts &gt; 0)\n\nsummary(manual_library_size)\nsummary(manual_detected_features)\nConfirm that Seurat stores the same calculations:\nlibrary(Seurat)\n\nmetadata &lt;- read.csv(\n  \"data/synthetic_qc_metadata.csv\",\n  na.strings = \"\"\n)\nrownames(metadata) &lt;- metadata$cell_id\n\nobj &lt;- CreateSeuratObject(\n  counts = counts,\n  meta.data = metadata,\n  min.cells = 0,\n  min.features = 0\n)\n\nstopifnot(all(manual_library_size == obj$nCount_RNA))\nstopifnot(all(manual_detected_features == obj$nFeature_RNA))\nThe RNA suffix identifies the assay. These fields are summaries of the observed matrix—not independent measurements produced by Seurat.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "1. Count matrices"
+    ]
+  },
+  {
+    "objectID": "modules/01-count-matrix/index.html#controlled-depth-comparison",
+    "href": "modules/01-count-matrix/index.html#controlled-depth-comparison",
+    "title": "Module 1 — What scRNA-seq data actually are",
+    "section": "Controlled depth comparison",
+    "text": "Controlled depth comparison\nLoad the four-cell matrix:\ntoy &lt;- read.csv(\n  \"data/toy_counts.csv\",\n  row.names = 1,\n  check.names = FALSE\n)\ntoy &lt;- as.matrix(toy)\n\ntoy\ncolSums(toy)\ncolSums(toy &gt; 0)\nCell B has exactly twice the raw counts of Cell A for every detected gene. Their relative expression compositions are identical, but their observed library sizes differ twofold.\ntoy_proportions &lt;- sweep(toy, 2, colSums(toy), \"/\")\n\ncbind(\n  Cell_A = toy_proportions[, \"Cell_A\"],\n  Cell_B = toy_proportions[, \"Cell_B\"]\n)\n\nInterpret before moving on\n\nWhich measurement changes between Cell A and Cell B: raw UMI count, gene proportion, or both?\nDoes the twofold difference prove that Cell B biologically contained twice as much RNA?\nWhat technical and biological mechanisms could produce the observed difference?",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "1. Count matrices"
+    ]
+  },
+  {
+    "objectID": "modules/01-count-matrix/index.html#why-zeros-occur",
+    "href": "modules/01-count-matrix/index.html#why-zeros-occur",
+    "title": "Module 1 — What scRNA-seq data actually are",
+    "section": "Why zeros occur",
+    "text": "Why zeros occur\nAn observed zero can arise through several mechanisms:\n\nBiological zero\nThe gene may not have been transcribed in that cell at the relevant time. For example, a B-cell marker such as MS4A1 may be biologically absent from a T cell.\n\n\nSampling zero\nThe gene may have been expressed, but no molecule was captured, amplified, sequenced, or retained. Low abundance and limited library size make this more likely.\n\n\nTechnical or structural absence\nReads may fail alignment, a transcript may be poorly captured by the assay chemistry, or a gene may have been excluded during feature definition.\n\n\n\n\n\n\nImportant\n\n\n\nOne observed zero usually does not identify its mechanism. “Dropout” is a description of incomplete observation, not a label that can be assigned confidently to each zero.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "1. Count matrices"
+    ]
+  },
+  {
+    "objectID": "modules/01-count-matrix/index.html#perturbation-exercise-simulate-undersampling",
+    "href": "modules/01-count-matrix/index.html#perturbation-exercise-simulate-undersampling",
+    "title": "Module 1 — What scRNA-seq data actually are",
+    "section": "Perturbation exercise: simulate undersampling",
+    "text": "Perturbation exercise: simulate undersampling\nSelect one high-quality barcode and retain each observed UMI with probability 0.35. This is a binomial thinning experiment:\n\\[\nx'_{g,c} \\sim \\operatorname{Binomial}(x_{g,c}, 0.35).\n\\]\nlibrary(ggplot2)\nlibrary(patchwork)\n\nset.seed(20260904)\n\nmetadata &lt;- obj[[]]\ncandidate &lt;- which(\n  metadata$truth_qc_class == \"high_quality\" &\n    metadata$nCount_RNA &gt; median(metadata$nCount_RNA)\n)[1]\n\noriginal &lt;- as.integer(counts[, candidate])\nundersampled &lt;- rbinom(\n  length(original),\n  size = original,\n  prob = 0.35\n)\n\ncomparison &lt;- data.frame(\n  representation = c(\"Original\", \"35% sampled\"),\n  library_size = c(sum(original), sum(undersampled)),\n  detected_genes = c(sum(original &gt; 0), sum(undersampled &gt; 0))\n)\n\nlibrary_plot &lt;- ggplot(\n  comparison,\n  aes(representation, library_size, fill = representation)\n) +\n  geom_col(show.legend = FALSE) +\n  labs(x = NULL, y = \"Observed UMIs\") +\n  ggtitle(\"Library size\")\n\nfeature_plot &lt;- ggplot(\n  comparison,\n  aes(representation, detected_genes, fill = representation)\n) +\n  geom_col(show.legend = FALSE) +\n  labs(x = NULL, y = \"Genes with count &gt; 0\") +\n  ggtitle(\"Detected features\")\n\nlibrary_plot + feature_plot\n\nChange one thing\nRepeat with retention probabilities 0.8, 0.5, 0.2, and 0.1. Hold the original cell fixed.\nprobabilities &lt;- c(0.8, 0.5, 0.2, 0.1)\n\nsampling_results &lt;- lapply(\n  probabilities,\n  function(probability) {\n    thinned &lt;- rbinom(\n      length(original),\n      size = original,\n      prob = probability\n    )\n\n    data.frame(\n      probability = probability,\n      library_size = sum(thinned),\n      detected_genes = sum(thinned &gt; 0),\n      newly_zero = sum(original &gt; 0 & thinned == 0)\n    )\n  }\n)\n\ndo.call(rbind, sampling_results)\n\n\nWhat changed? What did not change?\n\nThe source cell and its original biological state did not change.\nThe observed library size, detected genes, and number of zeros changed.\nRare genes are more likely than abundant genes to disappear under thinning.\nA downstream analyst seeing only the thinned matrix cannot recover which zeros were sampling zeros with certainty.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "1. Count matrices"
+    ]
+  },
+  {
+    "objectID": "modules/01-count-matrix/index.html#ambient-rna-empty-droplets-and-doublets",
+    "href": "modules/01-count-matrix/index.html#ambient-rna-empty-droplets-and-doublets",
+    "title": "Module 1 — What scRNA-seq data actually are",
+    "section": "Ambient RNA, empty droplets, and doublets",
+    "text": "Ambient RNA, empty droplets, and doublets\n\nAmbient RNA\nWhen cells lyse, RNA can enter the suspension. An otherwise empty droplet—or a droplet containing a different cell type—can acquire counts from abundant ambient transcripts. A low-level LYZ count in a T-cell barcode does not automatically prove myeloid identity.\nambient_genes &lt;- c(\"LYZ\", \"HBB\", \"HBA1\", \"HBA2\", \"ALB\")\nambient_signal &lt;- Matrix::colSums(counts[ambient_genes, , drop = FALSE])\n\naggregate(\n  ambient_signal,\n  by = list(qc_class = obj$truth_qc_class),\n  FUN = median\n)\n\n\nEmpty droplets\nEmpty droplets generally have small libraries dominated by the ambient pool. Barcode-calling methods evaluate the count distribution and expression profile rather than assuming every observed barcode is a cell.\ntable(obj$truth_qc_class)\n\naggregate(\n  cbind(obj$nCount_RNA, obj$nFeature_RNA),\n  by = list(qc_class = obj$truth_qc_class),\n  FUN = median\n)\n\n\nDoublets\nA doublet contains two captured cells under one barcode. It may show unusually high library size and feature count or incompatible marker programs. However, high counts alone do not prove a doublet, and same-lineage doublets can be subtle.\nmarkers &lt;- c(\"CD3D\", \"MS4A1\", \"NKG7\", \"LST1\")\nmarker_counts &lt;- as.matrix(counts[markers, ])\n\ndoublet_examples &lt;- Cells(obj)[obj$truth_qc_class == \"doublet\"][1:6]\nmarker_counts[, doublet_examples, drop = FALSE]",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "1. Count matrices"
+    ]
+  },
+  {
+    "objectID": "modules/01-count-matrix/index.html#four-expression-scales",
+    "href": "modules/01-count-matrix/index.html#four-expression-scales",
+    "title": "Module 1 — What scRNA-seq data actually are",
+    "section": "Four expression scales",
+    "text": "Four expression scales\n\n\n\n\n\n\n\n\nQuantity\nExample\nInterpretation\n\n\n\n\nRead count\n120 reads\nSequenced fragments; PCR duplicates may be present\n\n\nUMI count\n40 UMIs\nObserved molecule tags after collapsing reads\n\n\nNormalized expression\nNormalizeData() output\nA library-size-adjusted, transformed value relative to a chosen scale factor\n\n\nScaled expression\nScaleData() output\nA gene-centered, variance-scaled value relative to that gene’s distribution\n\n\n\nNormalization and scaling are not alternative words for the same operation. Module 3 develops normalization; scaling is intentionally not introduced as a transformation in this release.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "1. Count matrices"
+    ]
+  },
+  {
+    "objectID": "modules/01-count-matrix/index.html#biological-consequence",
+    "href": "modules/01-count-matrix/index.html#biological-consequence",
+    "title": "Module 1 — What scRNA-seq data actually are",
+    "section": "Biological consequence",
+    "text": "Biological consequence\nSuppose two samples contain the same T-cell state but differ in capture efficiency. The lower-depth sample will show more zeros, smaller libraries, and fewer detected features. If those observations are interpreted as weaker biology without considering measurement depth, the analyst can invent a false condition effect.\nConversely, treating every low-count barcode as technical failure can remove genuinely small or low-RNA populations. The matrix does not make this decision for you.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "1. Count matrices"
+    ]
+  },
+  {
+    "objectID": "modules/01-count-matrix/index.html#common-mistakes-and-limitations",
+    "href": "modules/01-count-matrix/index.html#common-mistakes-and-limitations",
+    "title": "Module 1 — What scRNA-seq data actually are",
+    "section": "Common mistakes and limitations",
+    "text": "Common mistakes and limitations\n\nTreating every barcode as a cell.\nTreating UMI counts as absolute molecule counts.\nConverting a large sparse matrix to dense form for convenience.\nAssuming every zero means “gene off” or every zero means “dropout.”\nComparing raw counts between cells without considering library size.\nInterpreting high library size as proof of a doublet.\nCalling a cell type from one low ambient-prone marker.\nForgetting that the matrix orientation can differ across tools.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "1. Count matrices"
+    ]
+  },
+  {
+    "objectID": "modules/01-count-matrix/index.html#check-your-understanding",
+    "href": "modules/01-count-matrix/index.html#check-your-understanding",
+    "title": "Module 1 — What scRNA-seq data actually are",
+    "section": "Check your understanding",
+    "text": "Check your understanding\n\nA gene has 12 reads but 3 distinct UMIs in one barcode. Which value typically enters the UMI count matrix, and why?\nDoes a matrix column necessarily represent one viable cell?\nWrite the formulas for library size and detected features in words.\nWhy does undersampling increase the number of observed zeros?\nCan you determine from one zero whether the gene was biologically absent?\nWhy can a doublet escape a simple high-count threshold?\nWhich operation changes the scientific values: converting a sparse matrix to dense form, or binomially thinning the counts?\nDistinguish raw UMI count, normalized expression, and scaled expression in one sentence each.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "1. Count matrices"
+    ]
+  },
+  {
+    "objectID": "modules/01-count-matrix/index.html#lab",
+    "href": "modules/01-count-matrix/index.html#lab",
+    "title": "Module 1 — What scRNA-seq data actually are",
+    "section": "Lab",
+    "text": "Lab\nRun the Module 1 student lab, then submit a short interpretation in which every figure is accompanied by:\n\nwhat changed;\nwhat did not change;\nwhy the change occurred; and\nwhether a biological conclusion would change.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "1. Count matrices"
+    ]
+  },
+  {
+    "objectID": "setup/index.html",
+    "href": "setup/index.html",
+    "title": "Setup and reproducibility",
+    "section": "",
+    "text": "R 4.5 or later\nRStudio Desktop or another R development environment\nQuarto 1.7 or later\nGit\n\nThe repository also includes a devcontainer for GitHub Codespaces or a compatible local container environment."
+  },
+  {
+    "objectID": "setup/index.html#required-software",
+    "href": "setup/index.html#required-software",
+    "title": "Setup and reproducibility",
+    "section": "",
+    "text": "R 4.5 or later\nRStudio Desktop or another R development environment\nQuarto 1.7 or later\nGit\n\nThe repository also includes a devcontainer for GitHub Codespaces or a compatible local container environment."
+  },
+  {
+    "objectID": "setup/index.html#restore-the-r-environment",
+    "href": "setup/index.html#restore-the-r-environment",
+    "title": "Setup and reproducibility",
+    "section": "Restore the R environment",
+    "text": "Restore the R environment\nFrom the repository root, run:\nRscript scripts/00_setup.R\nglmGamPoi is an optional speed accelerator for the SCTransform comparison. It is not required by the pinned course environment: when absent, SCTransform() uses its slower built-in fitting path and may print an informational fallback message.\nThe setup script installs renv when necessary and restores the package versions recorded in renv.lock. Do not install packages one by one unless troubleshooting a failed restore."
+  },
+  {
+    "objectID": "setup/index.html#verify-the-installation",
+    "href": "setup/index.html#verify-the-installation",
+    "title": "Setup and reproducibility",
+    "section": "Verify the installation",
+    "text": "Verify the installation\nRscript scripts/check_environment.R\nRscript scripts/generate_synthetic_data.R --check\nRscript scripts/smoke_test_modules_01_03.R\npython3 scripts/validate_repository.py\nEach command should end with an explicit success message. A warning about a package being built under a nearby R patch release is usually harmless; an absent package or failed assertion is not."
+  },
+  {
+    "objectID": "setup/index.html#preview-the-site",
+    "href": "setup/index.html#preview-the-site",
+    "title": "Setup and reproducibility",
+    "section": "Preview the site",
+    "text": "Preview the site\nquarto preview\nQuarto prints a local URL, usually beginning with http://localhost:. Keep the preview process running while working through the lessons."
+  },
+  {
+    "objectID": "setup/index.html#project-paths",
+    "href": "setup/index.html#project-paths",
+    "title": "Setup and reproducibility",
+    "section": "Project paths",
+    "text": "Project paths\nAll course code assumes the working directory is the repository root. Confirm with:\ngetwd()\nfile.exists(\"data/synthetic_qc_counts.rds\")\nfile.exists(\"labs/01-count-matrix-lab.R\")\nBoth file.exists() calls should return TRUE. If not, open the project file or set the working directory to the cloned repository—not to data/ or labs/."
+  },
+  {
+    "objectID": "setup/index.html#reproducibility-record",
+    "href": "setup/index.html#reproducibility-record",
+    "title": "Setup and reproducibility",
+    "section": "Reproducibility record",
+    "text": "Reproducibility record\nAt the end of a lab, save:\nsessionInfo()\nRecord random seeds, package versions, and any changes to provided parameters. A reproducible analysis includes the computational environment and analytical decisions, not only the final figure."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Advanced scRNA-seq Analysis Course",
+    "section": "",
+    "text": "Single-cell RNA-seq analysis is not a sequence of neutral software commands. Decisions about which barcodes to retain, how to normalize libraries, and which representation to analyze can change the apparent biology.\nThis graduate-level course teaches students to connect each computational operation to the measurement problem it addresses. Every module uses controlled data so that the consequences of an analysis choice can be observed rather than accepted on authority.\n\n\n\n\n\n\nImportantCurrent course release\n\n\n\nModules 1–3 are fully implemented and tested. Later modules have deliberately not been created yet."
+  },
+  {
+    "objectID": "index.html#learn-by-changing-one-decision",
+    "href": "index.html#learn-by-changing-one-decision",
+    "title": "Advanced scRNA-seq Analysis Course",
+    "section": "",
+    "text": "Single-cell RNA-seq analysis is not a sequence of neutral software commands. Decisions about which barcodes to retain, how to normalize libraries, and which representation to analyze can change the apparent biology.\nThis graduate-level course teaches students to connect each computational operation to the measurement problem it addresses. Every module uses controlled data so that the consequences of an analysis choice can be observed rather than accepted on authority.\n\n\n\n\n\n\nImportantCurrent course release\n\n\n\nModules 1–3 are fully implemented and tested. Later modules have deliberately not been created yet."
+  },
+  {
+    "objectID": "index.html#implemented-modules",
+    "href": "index.html#implemented-modules",
+    "title": "Advanced scRNA-seq Analysis Course",
+    "section": "Implemented modules",
+    "text": "Implemented modules\n\nModule 1 — What scRNA-seq data actually are\nDroplets, barcodes, reads, UMIs, sparse count matrices, zeros, library size, detected features, capture efficiency, ambient RNA, empty droplets, doublets, and controlled undersampling.\n\n\nModule 2 — Quality control\nCell- and sample-level QC distributions, mitochondrial and ribosomal percentages, complexity, ambient RNA, doublets, sample-aware thresholds, permissive/moderate/aggressive sensitivity analyses, and downstream biological consequences.\n\n\nModule 3 — Normalization\nLibrary-size correction, scale factors, log transformation, manual calculations, raw-versus-normalized comparisons, limitations of normalization, and an optional LogNormalize-versus-SCTransform comparison."
+  },
+  {
+    "objectID": "index.html#how-to-work-through-a-module",
+    "href": "index.html#how-to-work-through-a-module",
+    "title": "Advanced scRNA-seq Analysis Course",
+    "section": "How to work through a module",
+    "text": "How to work through a module\n\nRead the conceptual model before running code.\nReproduce the controlled example in R.\nCompare the side-by-side outputs.\nChange exactly one parameter or assumption.\nAnswer the interpretation questions in complete sentences.\nState whether the biological conclusion changes and what evidence supports that judgment."
+  },
+  {
+    "objectID": "index.html#start-here",
+    "href": "index.html#start-here",
+    "title": "Advanced scRNA-seq Analysis Course",
+    "section": "Start here",
+    "text": "Start here\n\nComplete the setup and reproducibility checks.\nOpen the student lab index.\nBegin with Module 1.\n\n\n\n\n\n\n\nNote\n\n\n\nThe bundled dataset is synthetic and intentionally simplified. Its known truth makes analytical consequences visible, but results are not biological benchmarks or clinical evidence."
+  },
+  {
+    "objectID": "modules/02-quality-control/index.html",
+    "href": "modules/02-quality-control/index.html",
+    "title": "Module 2 — Quality control",
+    "section": "",
+    "text": "By the end of this module, you should be able to:\n\nderive and interpret nCount_RNA, nFeature_RNA, mitochondrial percentage, ribosomal percentage, and a library-complexity summary;\ndistinguish low-quality/dying profiles, stressed cells, empty droplets, ambient contamination, and doublets conceptually;\nvisualize QC distributions by cell and by sample;\nexplain why universal thresholds are inappropriate;\ncompare permissive, moderate, and aggressive filtering while changing only the QC rules;\nquantify which controlled populations are preferentially lost; and\ndemonstrate how QC choices alter PCA structure and graph clusters.\n\nSuggested time: 75–90 minutes of conceptual work plus 120 minutes of computation.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "2. Quality control"
+    ]
+  },
+  {
+    "objectID": "modules/02-quality-control/index.html#learning-objectives",
+    "href": "modules/02-quality-control/index.html#learning-objectives",
+    "title": "Module 2 — Quality control",
+    "section": "",
+    "text": "By the end of this module, you should be able to:\n\nderive and interpret nCount_RNA, nFeature_RNA, mitochondrial percentage, ribosomal percentage, and a library-complexity summary;\ndistinguish low-quality/dying profiles, stressed cells, empty droplets, ambient contamination, and doublets conceptually;\nvisualize QC distributions by cell and by sample;\nexplain why universal thresholds are inappropriate;\ncompare permissive, moderate, and aggressive filtering while changing only the QC rules;\nquantify which controlled populations are preferentially lost; and\ndemonstrate how QC choices alter PCA structure and graph clusters.\n\nSuggested time: 75–90 minutes of conceptual work plus 120 minutes of computation.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "2. Quality control"
+    ]
+  },
+  {
+    "objectID": "modules/02-quality-control/index.html#qc-is-a-selection-model",
+    "href": "modules/02-quality-control/index.html#qc-is-a-selection-model",
+    "title": "Module 2 — Quality control",
+    "section": "QC is a selection model",
+    "text": "QC is a selection model\nQuality control decides which barcode profiles will define every downstream representation. It is not merely “cleaning bad cells.” A threshold can remove:\n\ntechnical failures;\nempty or ambient-dominated droplets;\ndoublets;\ndamaged or dying cells;\nstressed but viable cells;\ngenuine low-RNA cell types; and\nrare transitional states.\n\nThe same cutoff can therefore improve one analysis and bias another.\n\n\n\n\n\n\nImportantThe central question\n\n\n\nDo not ask only, “How many cells did this rule remove?” Ask, “Which barcodes were removed, from which samples and populations, and how did their removal change the biological conclusion?”",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "2. Quality control"
+    ]
+  },
+  {
+    "objectID": "modules/02-quality-control/index.html#load-the-controlled-dataset",
+    "href": "modules/02-quality-control/index.html#load-the-controlled-dataset",
+    "title": "Module 2 — Quality control",
+    "section": "Load the controlled dataset",
+    "text": "Load the controlled dataset\nThe bundled data contain known QC classes so that threshold consequences can be measured directly.\nlibrary(Seurat)\nlibrary(ggplot2)\nlibrary(patchwork)\nlibrary(dplyr)\nlibrary(tidyr)\n\nsource(\"scripts/course_helpers.R\")\n\nobj &lt;- load_teaching_object()\nobj &lt;- add_qc_metrics(obj)\n\nobj\ntable(obj$truth_qc_class)\ntable(obj$sample_id)\nIn a real study, truth_qc_class and truth_cell_type would not be available. They are included here because the goal is to learn what each measurement can and cannot detect.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "2. Quality control"
+    ]
+  },
+  {
+    "objectID": "modules/02-quality-control/index.html#core-per-barcode-measurements",
+    "href": "modules/02-quality-control/index.html#core-per-barcode-measurements",
+    "title": "Module 2 — Quality control",
+    "section": "Core per-barcode measurements",
+    "text": "Core per-barcode measurements\n\nnCount_RNA: observed library size\nFor barcode \\(c\\):\n\\[\nnCount_{c} = \\sum_g x_{g,c}.\n\\]\nThis is the total observed UMI count. A low value can reflect an empty droplet, a damaged cell, low capture efficiency, shallow sequencing, or a genuinely small/low-RNA cell. A high value can reflect a high-RNA cell, strong transcriptional activity, better capture, or a doublet.\n\n\nnFeature_RNA: detected genes\n\\[\nnFeature_{c} = \\sum_g \\mathbf{1}(x_{g,c} &gt; 0).\n\\]\nThis measures observed complexity. It usually increases with library size, so the two metrics are related rather than independent evidence.\n\n\nMitochondrial percentage\n\\[\n\\operatorname{percent.mt}_c\n= 100 \\times\n\\frac{\\sum_{g \\in \\mathcal{M}} x_{g,c}}\n{\\sum_g x_{g,c}},\n\\]\nwhere \\(\\mathcal{M}\\) is the mitochondrial gene set.\nobj[[\"percent.mt\"]] &lt;- PercentageFeatureSet(\n  obj,\n  pattern = \"^MT-\"\n)\nAn elevated mitochondrial fraction can be consistent with membrane damage and loss of cytoplasmic RNA. It can also reflect genuine mitochondrial biology, tissue dissociation, activation, or a low denominator. Gene naming conventions differ across species and references, so the pattern must be checked.\n\n\nRibosomal percentage\nobj[[\"percent.ribo\"]] &lt;- PercentageFeatureSet(\n  obj,\n  pattern = \"^RP[SL]\"\n)\nRibosomal expression can dominate low-information libraries, but high ribosomal percentage is not universally low quality. Translation programs differ by lineage, activation state, tissue, and protocol.\n\n\nA simple complexity summary\nOne descriptive summary is:\n\\[\n\\operatorname{complexity}_c\n= \\frac{\\log_{10}(nFeature_c)}\n{\\log_{10}(nCount_c)}.\n\\]\nmetadata &lt;- obj[[]]\n\nobj$log10_genes_per_umi &lt;-\n  log10(pmax(metadata$nFeature_RNA, 1)) /\n  log10(pmax(metadata$nCount_RNA, 2))\nThis is not a universal test statistic. It summarizes how quickly detected features accumulate with observed counts and should be interpreted with library size and sample context.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "2. Quality control"
+    ]
+  },
+  {
+    "objectID": "modules/02-quality-control/index.html#visualize-distributions-before-selecting-thresholds",
+    "href": "modules/02-quality-control/index.html#visualize-distributions-before-selecting-thresholds",
+    "title": "Module 2 — Quality control",
+    "section": "Visualize distributions before selecting thresholds",
+    "text": "Visualize distributions before selecting thresholds\n\nViolin plots by sample\nVlnPlot(\n  obj,\n  features = c(\n    \"nCount_RNA\",\n    \"nFeature_RNA\",\n    \"percent.mt\",\n    \"percent.ribo\",\n    \"log10_genes_per_umi\"\n  ),\n  group.by = \"sample_id\",\n  ncol = 3,\n  pt.size = 0\n)\n\n\n\nViolin and box plots show that observed library size, detected genes, and mitochondrial percentage have different distributions across four samples.\n\n\nThe sample distributions differ by design. Applying one minimum count threshold can remove more cells from a lower-depth sample even when its biological composition is valid.\n\n\nHistograms reveal tails and multimodality\nqc_metadata &lt;- obj[[]]\n\ncount_histogram &lt;- ggplot(\n  qc_metadata,\n  aes(nCount_RNA, fill = sample_id)\n) +\n  geom_histogram(bins = 45, alpha = 0.55, position = \"identity\") +\n  scale_x_log10() +\n  labs(x = \"Observed UMIs (log scale)\", y = \"Barcodes\")\n\nfeature_histogram &lt;- ggplot(\n  qc_metadata,\n  aes(nFeature_RNA, fill = sample_id)\n) +\n  geom_histogram(bins = 45, alpha = 0.55, position = \"identity\") +\n  labs(x = \"Detected genes\", y = \"Barcodes\")\n\ncount_histogram + feature_histogram\n\n\nScatterplots show joint behavior\ncount_feature_plot &lt;- ggplot(\n  qc_metadata,\n  aes(nCount_RNA, nFeature_RNA, color = percent.mt)\n) +\n  geom_point(alpha = 0.65) +\n  scale_x_log10() +\n  scale_color_viridis_c() +\n  labs(\n    x = \"Observed UMIs (log scale)\",\n    y = \"Detected genes\",\n    color = \"% mitochondrial\"\n  )\n\ncount_complexity_plot &lt;- ggplot(\n  qc_metadata,\n  aes(nCount_RNA, log10_genes_per_umi, color = sample_id)\n) +\n  geom_point(alpha = 0.65) +\n  scale_x_log10() +\n  labs(\n    x = \"Observed UMIs (log scale)\",\n    y = \"log10 genes / log10 UMIs\"\n  )\n\ncount_feature_plot + count_complexity_plot\nLook for combinations, not isolated values. For example, very low counts plus few features plus an ambient-like expression profile is more concerning than a low value on one axis alone.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "2. Quality control"
+    ]
+  },
+  {
+    "objectID": "modules/02-quality-control/index.html#sample-and-cell-type-context",
+    "href": "modules/02-quality-control/index.html#sample-and-cell-type-context",
+    "title": "Module 2 — Quality control",
+    "section": "Sample and cell-type context",
+    "text": "Sample and cell-type context\nSummarize medians by sample:\nqc_metadata |&gt;\n  group_by(sample_id) |&gt;\n  summarise(\n    cells = n(),\n    median_counts = median(nCount_RNA),\n    median_features = median(nFeature_RNA),\n    median_percent_mt = median(percent.mt),\n    .groups = \"drop\"\n  )\nThen compare controlled cell types:\nqc_metadata |&gt;\n  filter(!truth_cell_type %in% c(\"Doublet\", \"Empty droplet\")) |&gt;\n  group_by(truth_cell_type) |&gt;\n  summarise(\n    cells = n(),\n    median_counts = median(nCount_RNA),\n    median_features = median(nFeature_RNA),\n    .groups = \"drop\"\n  )\nThe synthetic NK and B profiles have lower RNA content than monocytes. A stringent universal minimum can therefore change cell-type composition even if it removes technically weak profiles overall.\nIn real data, the relevant context may include tissue, dissociation method, chemistry, sequencing run, disease state, and whether nuclei rather than whole cells were measured.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "2. Quality control"
+    ]
+  },
+  {
+    "objectID": "modules/02-quality-control/index.html#stressed-versus-dying-cells",
+    "href": "modules/02-quality-control/index.html#stressed-versus-dying-cells",
+    "title": "Module 2 — Quality control",
+    "section": "Stressed versus dying cells",
+    "text": "Stressed versus dying cells\nStress-response genes such as FOS, JUN, and heat-shock genes can increase during tissue handling. A stressed profile may still be viable and biologically relevant, or it may represent an ex vivo artifact. High stress is not synonymous with high mitochondrial percentage, and neither is a perfect death label.\nstress_genes &lt;- c(\"FOS\", \"JUN\", \"JUNB\", \"HSPA1A\", \"HSPA1B\", \"DNAJB1\")\nstress_counts &lt;- Matrix::colSums(\n  LayerData(obj, layer = \"counts\")[stress_genes, , drop = FALSE]\n)\n\naggregate(\n  stress_counts,\n  by = list(qc_class = obj$truth_qc_class),\n  FUN = median\n)\nBefore removing stressed cells, ask whether the study concerns an in vivo stress program, a processing artifact, or both. If the treatment group was processed differently from the control group, filtering can interact with confounding.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "2. Quality control"
+    ]
+  },
+  {
+    "objectID": "modules/02-quality-control/index.html#ambient-rna-and-empty-droplets",
+    "href": "modules/02-quality-control/index.html#ambient-rna-and-empty-droplets",
+    "title": "Module 2 — Quality control",
+    "section": "Ambient RNA and empty droplets",
+    "text": "Ambient RNA and empty droplets\nEmpty droplets can contain free RNA from the suspension. Ambient contamination can also add transcripts to real-cell droplets.\nambient_genes &lt;- c(\"LYZ\", \"HBB\", \"HBA1\", \"HBA2\", \"ALB\")\nambient_counts &lt;- Matrix::colSums(\n  LayerData(obj, layer = \"counts\")[ambient_genes, , drop = FALSE]\n)\n\nambient_summary &lt;- data.frame(\n  qc_class = obj$truth_qc_class,\n  ambient_counts = ambient_counts,\n  library_size = obj$nCount_RNA\n)\n\nggplot(\n  ambient_summary,\n  aes(library_size, ambient_counts, color = qc_class)\n) +\n  geom_point(alpha = 0.65) +\n  scale_x_log10() +\n  scale_y_log10() +\n  labs(x = \"Observed UMIs\", y = \"Ambient-marker UMIs\")\nLow-level LYZ in a T-cell profile may be contamination; strong coordinated LYZ, LST1, TYROBP, and FCER1G is more consistent with myeloid identity. Context and multi-gene coherence matter.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "2. Quality control"
+    ]
+  },
+  {
+    "objectID": "modules/02-quality-control/index.html#doublets",
+    "href": "modules/02-quality-control/index.html#doublets",
+    "title": "Module 2 — Quality control",
+    "section": "Doublets",
+    "text": "Doublets\nDoublets can combine incompatible lineage programs and often have high counts or features. However:\n\na high-RNA singlet can resemble a doublet by simple metrics;\na same-lineage doublet may not show conflicting markers;\na low-depth doublet may not have extreme counts; and\ndoublet rates depend on loading and platform.\n\nTherefore, thresholds and computational doublet detection provide evidence, not certainty.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "2. Quality control"
+    ]
+  },
+  {
+    "objectID": "modules/02-quality-control/index.html#controlled-threshold-sensitivity-analysis",
+    "href": "modules/02-quality-control/index.html#controlled-threshold-sensitivity-analysis",
+    "title": "Module 2 — Quality control",
+    "section": "Controlled threshold sensitivity analysis",
+    "text": "Controlled threshold sensitivity analysis\nWe will compare three explicit strategies. These values are chosen for this synthetic dataset and are not recommendations for other experiments.\nflags &lt;- qc_strategy_flags(obj)\n\nvapply(flags, sum, integer(1))\nThe helper implements:\n\n\n\nStrategy\nMinimum UMIs\nMinimum genes\nMaximum mitochondrial %\n\n\n\n\nPermissive\n50\n20\n35\n\n\nModerate\n300\n80\n20\n\n\nAggressive\n900\n130\n10\n\n\n\n\nQuantify retained barcodes\nretention &lt;- data.frame(\n  cell_id = Cells(obj),\n  truth_cell_type = obj$truth_cell_type,\n  truth_qc_class = obj$truth_qc_class,\n  permissive = flags$permissive,\n  moderate = flags$moderate,\n  aggressive = flags$aggressive\n) |&gt;\n  pivot_longer(\n    cols = c(permissive, moderate, aggressive),\n    names_to = \"strategy\",\n    values_to = \"retained\"\n  )\n\nretention |&gt;\n  group_by(strategy) |&gt;\n  summarise(\n    removed = sum(!retained),\n    retained = sum(retained),\n    .groups = \"drop\"\n  )\n\n\nWhich biological populations are lost?\nretention_by_type &lt;- retention |&gt;\n  group_by(strategy, truth_cell_type) |&gt;\n  summarise(\n    total = n(),\n    retained_fraction = mean(retained),\n    retained = sum(retained),\n    .groups = \"drop\"\n  )\n\nggplot(\n  retention_by_type,\n  aes(truth_cell_type, retained_fraction, fill = strategy)\n) +\n  geom_col(position = \"dodge\") +\n  scale_y_continuous(labels = scales::percent) +\n  labs(\n    x = \"Controlled truth label\",\n    y = \"Fraction retained\"\n  ) +\n  theme(axis.text.x = element_text(angle = 30, hjust = 1))\n\n\n\nGrouped bars compare the fraction of every controlled cell type retained by permissive, moderate, and aggressive QC strategies.\n\n\nThe aggressive strategy removes more low-RNA NK and B profiles than monocytes. It also retains simulated doublets because high counts and many detected genes satisfy its rules. Tightening thresholds is not equivalent to improving classification of every artifact.\n\n\nWhich QC classes are lost?\nretention |&gt;\n  group_by(strategy, truth_qc_class) |&gt;\n  summarise(\n    total = n(),\n    retained_fraction = mean(retained),\n    retained = sum(retained),\n    .groups = \"drop\"\n  )",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "2. Quality control"
+    ]
+  },
+  {
+    "objectID": "modules/02-quality-control/index.html#downstream-consequence-pca-and-clusters",
+    "href": "modules/02-quality-control/index.html#downstream-consequence-pca-and-clusters",
+    "title": "Module 2 — Quality control",
+    "section": "Downstream consequence: PCA and clusters",
+    "text": "Downstream consequence: PCA and clusters\nTo isolate the effect of QC, keep the preprocessing and clustering parameters fixed while changing only the retained barcodes.\nfiltered_objects &lt;- lapply(\n  flags,\n  function(keep) {\n    run_qc_pipeline(obj, keep)\n  }\n)\nThe helper normalizes, selects 180 variable genes, scales, runs 20 PCs, constructs neighbors from PCs 1–15, clusters at resolution 0.5, and calculates UMAP with one fixed seed. Those later methods are used here as diagnostic outputs; they are not fully taught in Modules 1–3.\nCompare PCA while coloring by the controlled cell label:\npca_plots &lt;- Map(\n  function(filtered, strategy) {\n    DimPlot(\n      filtered,\n      reduction = \"pca\",\n      group.by = \"truth_cell_type\"\n    ) +\n      ggtitle(paste(\"PCA:\", strategy))\n  },\n  filtered_objects,\n  names(filtered_objects)\n)\n\nwrap_plots(pca_plots, ncol = 3, guides = \"collect\")\nCompare graph clusters:\ncluster_plots &lt;- Map(\n  function(filtered, strategy) {\n    DimPlot(\n      filtered,\n      reduction = \"umap\",\n      group.by = \"seurat_clusters\",\n      label = TRUE,\n      repel = TRUE\n    ) +\n      ggtitle(paste(\"Clusters:\", strategy)) +\n      NoLegend()\n  },\n  filtered_objects,\n  names(filtered_objects)\n)\n\nwrap_plots(cluster_plots, ncol = 3)\n\n\n\nPCA and UMAP panels compare cell representations and cluster assignments after permissive, moderate, and aggressive QC.\n\n\nThese panels do not differ by one plotting choice. They differ because filtering changed which cells were used to learn variable genes, scaling parameters, PCs, neighbor graphs, clusters, and UMAP coordinates.\n\nQuantify downstream differences\ndownstream_summary &lt;- data.frame(\n  strategy = names(filtered_objects),\n  retained_cells = vapply(\n    filtered_objects,\n    ncol,\n    integer(1)\n  ),\n  clusters = vapply(\n    filtered_objects,\n    function(filtered) length(levels(Idents(filtered))),\n    integer(1)\n  )\n)\n\ndownstream_summary\nDo not declare the strategy with the most clusters “best.” More clusters may reflect retained artifacts, altered graph density, real substructure, or overpartitioning.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "2. Quality control"
+    ]
+  },
+  {
+    "objectID": "modules/02-quality-control/index.html#change-one-thing-sample-aware-thresholds",
+    "href": "modules/02-quality-control/index.html#change-one-thing-sample-aware-thresholds",
+    "title": "Module 2 — Quality control",
+    "section": "Change one thing: sample-aware thresholds",
+    "text": "Change one thing: sample-aware thresholds\nCalculate sample-specific distributions:\nsample_ranges &lt;- qc_metadata |&gt;\n  group_by(sample_id) |&gt;\n  summarise(\n    count_q01 = quantile(nCount_RNA, 0.01),\n    count_q50 = quantile(nCount_RNA, 0.50),\n    count_q99 = quantile(nCount_RNA, 0.99),\n    feature_q01 = quantile(nFeature_RNA, 0.01),\n    feature_q50 = quantile(nFeature_RNA, 0.50),\n    feature_q99 = quantile(nFeature_RNA, 0.99),\n    mt_q99 = quantile(percent.mt, 0.99),\n    .groups = \"drop\"\n  )\n\nsample_ranges\nUse these summaries to propose—not automatically accept—sample-aware rules. Quantiles describe a distribution; they do not identify which tail is biological or technical.\nThen answer:\n\nWhich sample would be most affected by a universal minimum of 900 UMIs?\nDoes that sample appear globally lower depth or selectively lower quality?\nWhat evidence beyond these metrics would help distinguish the explanations?\nWould sample-specific thresholds make cross-sample QC more defensible, or could they hide a failed sample?",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "2. Quality control"
+    ]
+  },
+  {
+    "objectID": "modules/02-quality-control/index.html#optional-advanced-exercise-scdblfinder",
+    "href": "modules/02-quality-control/index.html#optional-advanced-exercise-scdblfinder",
+    "title": "Module 2 — Quality control",
+    "section": "Optional advanced exercise: scDblFinder",
+    "text": "Optional advanced exercise: scDblFinder\nscDblFinder is a Bioconductor method that creates artificial doublets and identifies barcodes whose neighborhoods resemble them. It is optional because it adds Bioconductor dependencies and because no detector is ground truth.\nif (\n  requireNamespace(\"SingleCellExperiment\", quietly = TRUE) &&\n  requireNamespace(\"scDblFinder\", quietly = TRUE)\n) {\n  library(SingleCellExperiment)\n  library(scDblFinder)\n\n  set.seed(20260904)\n\n  sce &lt;- as.SingleCellExperiment(obj)\n  sce &lt;- scDblFinder(\n    sce,\n    samples = \"sample_id\"\n  )\n\n  doublet_comparison &lt;- table(\n    predicted = colData(sce)$scDblFinder.class,\n    controlled_truth = obj$truth_qc_class == \"doublet\"\n  )\n\n  doublet_comparison\n}\nEvaluate false positives and false negatives. A method can improve prioritization for review without proving that every classification is correct. In real data, expected doublet rate, sample multiplexing, chemistry, cell-type composition, and homotypic doublets all affect interpretation.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "2. Quality control"
+    ]
+  },
+  {
+    "objectID": "modules/02-quality-control/index.html#what-changed-what-did-not-change-why",
+    "href": "modules/02-quality-control/index.html#what-changed-what-did-not-change-why",
+    "title": "Module 2 — Quality control",
+    "section": "What changed? What did not change? Why?",
+    "text": "What changed? What did not change? Why?\nFor the three QC strategies, write a comparison table:\n\n\n\nQuestion\nPermissive vs moderate\nModerate vs aggressive\n\n\n\n\nWhat changed in retained cell number?\n\n\n\n\nWhich controlled populations changed most?\n\n\n\n\nWhich QC classes remained unexpectedly?\n\n\n\n\nWhat changed in PCA?\n\n\n\n\nWhat changed in cluster number or composition?\n\n\n\n\nWhich biological conclusion changed?\n\n\n\n\nWhat remained stable?",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "2. Quality control"
+    ]
+  },
+  {
+    "objectID": "modules/02-quality-control/index.html#common-mistakes-and-interpretation-limits",
+    "href": "modules/02-quality-control/index.html#common-mistakes-and-interpretation-limits",
+    "title": "Module 2 — Quality control",
+    "section": "Common mistakes and interpretation limits",
+    "text": "Common mistakes and interpretation limits\n\nApplying published cutoffs without examining the current samples.\nFiltering all samples jointly when their distributions or chemistries differ.\nAssuming high mitochondrial percentage always means a dying cell.\nRemoving stressed cells without considering whether stress is biological.\nTreating high counts as definitive evidence of a doublet.\nUsing only one metric when several jointly describe the profile.\nReporting only the number of retained cells, not which populations were lost.\nRecomputing an analysis after QC but attributing every visual change directly to one removed cell type.\nChoosing thresholds after looking for the result one hopes to obtain.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "2. Quality control"
+    ]
+  },
+  {
+    "objectID": "modules/02-quality-control/index.html#check-your-understanding",
+    "href": "modules/02-quality-control/index.html#check-your-understanding",
+    "title": "Module 2 — Quality control",
+    "section": "Check your understanding",
+    "text": "Check your understanding\n\nWhy are nCount_RNA and nFeature_RNA correlated?\nGive two technical and two biological explanations for high mitochondrial percentage.\nWhy might a universal minimum feature threshold preferentially remove NK cells?\nCan a doublet have an ordinary library size?\nWhy can ambient RNA create a misleading single-marker signal?\nWhat evidence distinguishes a sample-wide depth shift from a failed subset of cells?\nIf aggressive QC yields more clearly separated clusters, does that prove it is more accurate?\nWhich parts of the downstream analysis changed after filtering, even though their function parameters stayed fixed?\nWhat would you report so another analyst could reproduce and critique your QC decision?",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "2. Quality control"
+    ]
+  },
+  {
+    "objectID": "modules/02-quality-control/index.html#lab",
+    "href": "modules/02-quality-control/index.html#lab",
+    "title": "Module 2 — Quality control",
+    "section": "Lab",
+    "text": "Lab\nRun the Module 2 student lab. Your submission must include the threshold table, population-retention plot, downstream comparison, and a written defense of one strategy. Full credit requires biological reasoning, not only executable code.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "2. Quality control"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html",
+    "href": "modules/03-normalization/index.html",
+    "title": "Module 3 — Normalization",
+    "section": "",
+    "text": "By the end of this module, you should be able to:\n\nexplain why raw UMI counts are not directly comparable across cells with different observed library sizes;\ncalculate library-size-normalized and log-normalized expression manually;\nreproduce Seurat’s LogNormalize calculation in base R;\ndistinguish raw counts, counts per scale factor, and log-normalized values;\nexplain what normalization does not correct;\nevaluate how the scale factor and log transform change numerical values;\npreserve raw counts while storing normalized values in a separate Seurat layer; and\ncompare the goals and caveats of LogNormalize and SCTransform without treating either as universally superior.\n\nSuggested time: 75–90 minutes of conceptual work plus 90–120 minutes of computation.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#learning-objectives",
+    "href": "modules/03-normalization/index.html#learning-objectives",
+    "title": "Module 3 — Normalization",
+    "section": "",
+    "text": "By the end of this module, you should be able to:\n\nexplain why raw UMI counts are not directly comparable across cells with different observed library sizes;\ncalculate library-size-normalized and log-normalized expression manually;\nreproduce Seurat’s LogNormalize calculation in base R;\ndistinguish raw counts, counts per scale factor, and log-normalized values;\nexplain what normalization does not correct;\nevaluate how the scale factor and log transform change numerical values;\npreserve raw counts while storing normalized values in a separate Seurat layer; and\ncompare the goals and caveats of LogNormalize and SCTransform without treating either as universally superior.\n\nSuggested time: 75–90 minutes of conceptual work plus 90–120 minutes of computation.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#the-problem-observed-library-sizes-differ",
+    "href": "modules/03-normalization/index.html#the-problem-observed-library-sizes-differ",
+    "title": "Module 3 — Normalization",
+    "section": "The problem: observed library sizes differ",
+    "text": "The problem: observed library sizes differ\nTwo otherwise similar cells can contribute different total UMI counts because of capture efficiency, sequencing allocation, cell RNA content, cell size, damage, or other technical and biological factors.\nReturn to the controlled four-cell matrix:\ntoy &lt;- read.csv(\n  \"data/toy_counts.csv\",\n  row.names = 1,\n  check.names = FALSE\n)\ntoy &lt;- as.matrix(toy)\n\ntoy\ncolSums(toy)\nCell A has 100 observed UMIs and Cell B has 200. Every gene count in Cell B is twice the corresponding count in Cell A. Their compositions are identical, but their raw numerical values differ.\nIf raw counts are compared directly, every detected gene appears higher in Cell B. The analysis would confuse a library-wide multiplier with gene-specific regulation.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#seurat-lognormalize-step-by-step",
+    "href": "modules/03-normalization/index.html#seurat-lognormalize-step-by-step",
+    "title": "Module 3 — Normalization",
+    "section": "Seurat LogNormalize, step by step",
+    "text": "Seurat LogNormalize, step by step\nLet:\n\n\\(x_{g,c}\\) be the raw UMI count for gene \\(g\\) in cell \\(c\\);\n\\(L_c = \\sum_{g'} x_{g',c}\\) be the observed library size of cell \\(c\\); and\n\\(s\\) be a chosen scale factor, conventionally 10,000 in Seurat.\n\nFirst calculate counts per scale factor:\n\\[\nr_{g,c}\n= \\frac{x_{g,c}}{L_c} \\times s.\n\\]\nThen apply the natural logarithm after adding 1:\n\\[\ny_{g,c}\n= \\log\\left(1 + r_{g,c}\\right)\n= \\log\\left(\n1 + \\frac{x_{g,c}}{\\sum_{g'} x_{g',c}} \\times s\n\\right).\n\\]\nWith Seurat’s default \\(s = 10{,}000\\):\n\\[\n\\operatorname{LogNormalize}(x_{g,c})\n= \\log\\left(\n1 + \\frac{x_{g,c}}{\\sum_{g'} x_{g',c}} \\times 10{,}000\n\\right).\n\\]\nThe dummy index \\(g'\\) in the denominator means “sum across all genes” without reusing the focal gene index \\(g\\).",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#hand-calculation",
+    "href": "modules/03-normalization/index.html#hand-calculation",
+    "title": "Module 3 — Normalization",
+    "section": "Hand calculation",
+    "text": "Hand calculation\nFor CD3D in Cell A:\n\\[\nx_{\\mathrm{CD3D},A}=20, \\qquad L_A=100.\n\\]\nUsing \\(s=100\\) so the arithmetic remains transparent:\n\\[\nr_{\\mathrm{CD3D},A}\n= \\frac{20}{100}\\times100\n=20,\n\\]\nand:\n\\[\ny_{\\mathrm{CD3D},A}\n=\\log(1+20)\n\\approx3.045.\n\\]\nFor CD3D in Cell B:\n\\[\nr_{\\mathrm{CD3D},B}\n=\\frac{40}{200}\\times100\n=20,\n\\]\nso its log-normalized value is also approximately 3.045. Normalization removes the exact twofold library multiplier in this controlled pair.\n\nCalculate three entries yourself\nUsing \\(s=100\\), calculate:\n\nNKG7 in Cell A;\nNKG7 in Cell C; and\nMS4A1 in Cell D.\n\nFor each entry, write the raw count, library size, counts per 100, and \\(\\log(1 + \\text{counts per 100})\\).",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#reproduce-the-calculation-in-r",
+    "href": "modules/03-normalization/index.html#reproduce-the-calculation-in-r",
+    "title": "Module 3 — Normalization",
+    "section": "Reproduce the calculation in R",
+    "text": "Reproduce the calculation in R\nlibrary(ggplot2)\nlibrary(patchwork)\nlibrary(dplyr)\nlibrary(tidyr)\n\nlibrary_sizes &lt;- colSums(toy)\n\ncounts_per_100 &lt;- sweep(\n  toy,\n  MARGIN = 2,\n  STATS = library_sizes,\n  FUN = \"/\"\n) * 100\n\nlog_normalized &lt;- log1p(counts_per_100)\n\nround(counts_per_100, 3)\nround(log_normalized, 3)\nlog1p(x) computes \\(\\log(1+x)\\) accurately, including for values close to zero.\nConfirm the controlled pair:\ncbind(\n  raw_A = toy[, \"Cell_A\"],\n  raw_B = toy[, \"Cell_B\"],\n  normalized_A = counts_per_100[, \"Cell_A\"],\n  normalized_B = counts_per_100[, \"Cell_B\"]\n)",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#side-by-side-raw-relative-and-log-normalized",
+    "href": "modules/03-normalization/index.html#side-by-side-raw-relative-and-log-normalized",
+    "title": "Module 3 — Normalization",
+    "section": "Side-by-side: raw, relative, and log-normalized",
+    "text": "Side-by-side: raw, relative, and log-normalized\nmatrix_to_long &lt;- function(matrix, stage) {\n  as.data.frame(matrix) |&gt;\n    tibble::rownames_to_column(\"gene\") |&gt;\n    pivot_longer(\n      -gene,\n      names_to = \"cell\",\n      values_to = \"value\"\n    ) |&gt;\n    mutate(stage = stage)\n}\n\ncomparison_long &lt;- bind_rows(\n  matrix_to_long(toy, \"Raw UMI counts\"),\n  matrix_to_long(counts_per_100, \"Counts per 100\"),\n  matrix_to_long(log_normalized, \"log(1 + counts per 100)\")\n)\n\nggplot(\n  comparison_long,\n  aes(cell, gene, fill = value)\n) +\n  geom_tile(color = \"white\") +\n  geom_text(aes(label = round(value, 1))) +\n  facet_wrap(~stage, nrow = 1, scales = \"free\") +\n  scale_fill_viridis_c() +\n  labs(x = \"Cell\", y = \"Gene\")\n\n\n\nThree heatmaps show raw UMI counts, counts per 100, and log-transformed counts per 100 for the hand-calculation matrix.\n\n\n\nWhat changed?\n\nLibrary-size correction makes Cell A and Cell B equal because their compositions are exactly proportional.\nThe log transformation compresses large values more strongly than small values.\nValues are no longer integer molecule counts.\n\n\n\nWhat did not change?\n\nZeros remain zero because \\(\\log(1+0)=0\\).\nThe original raw count matrix should remain intact.\nCell C still has a larger relative NKG7 signal than Cells A and B.\nNormalization does not establish why a cell had a different library size.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#why-add-1-and-take-a-logarithm",
+    "href": "modules/03-normalization/index.html#why-add-1-and-take-a-logarithm",
+    "title": "Module 3 — Normalization",
+    "section": "Why add 1 and take a logarithm?",
+    "text": "Why add 1 and take a logarithm?\nThe logarithm is undefined at zero, so adding 1 retains zeros. More importantly, the log transform compresses the long right tail of relative expression.\nFor example:\nrelative_values &lt;- c(0, 1, 10, 100, 1000)\n\ndata.frame(\n  relative_value = relative_values,\n  log_normalized = log1p(relative_values)\n)\nA tenfold increase does not produce an additive tenfold increase after logging. Differences among very large values are compressed, which reduces their numerical dominance in visualization and later calculations.\n\n\n\n\n\n\nWarning\n\n\n\nA difference of 1 on the log-normalized scale does not mean one additional transcript or a one-percentage-point change. Always state which scale is being interpreted.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#reproduce-seurats-result",
+    "href": "modules/03-normalization/index.html#reproduce-seurats-result",
+    "title": "Module 3 — Normalization",
+    "section": "Reproduce Seurat’s result",
+    "text": "Reproduce Seurat’s result\nlibrary(Seurat)\n\ntoy_obj &lt;- CreateSeuratObject(\n  counts = toy,\n  min.cells = 0,\n  min.features = 0\n)\n\ntoy_obj &lt;- NormalizeData(\n  toy_obj,\n  normalization.method = \"LogNormalize\",\n  scale.factor = 100,\n  verbose = FALSE\n)\n\nseurat_counts &lt;- LayerData(\n  toy_obj,\n  assay = \"RNA\",\n  layer = \"counts\"\n)\n\nseurat_normalized &lt;- LayerData(\n  toy_obj,\n  assay = \"RNA\",\n  layer = \"data\"\n)\n\nstopifnot(all(as.matrix(seurat_counts) == toy))\nstopifnot(all.equal(\n  as.matrix(seurat_normalized),\n  log_normalized,\n  tolerance = 1e-10\n))\nIn Seurat v5, raw counts remain in the counts layer and normalized values are stored in the data layer. Preserving this separation is essential for reproducibility and for methods that require integer counts.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#perturbation-exercise-change-only-the-scale-factor",
+    "href": "modules/03-normalization/index.html#perturbation-exercise-change-only-the-scale-factor",
+    "title": "Module 3 — Normalization",
+    "section": "Perturbation exercise: change only the scale factor",
+    "text": "Perturbation exercise: change only the scale factor\nUse three scale factors while holding the raw counts and normalization method fixed:\nscale_factors &lt;- c(100, 1000, 10000)\n\nnormalized_by_scale &lt;- lapply(\n  scale_factors,\n  function(scale_factor) {\n    log1p(\n      sweep(toy, 2, colSums(toy), \"/\") *\n        scale_factor\n    )\n  }\n)\n\nnames(normalized_by_scale) &lt;- paste0(\n  \"scale_\",\n  scale_factors\n)\n\nlapply(\n  normalized_by_scale,\n  function(matrix) round(matrix[\"CD3D\", ], 3)\n)\nAnswer:\n\nWhich numerical values change?\nDo zeros change?\nDoes Cell C suddenly express CD3D at any scale factor?\nDoes the ranking of cells for a nonzero gene always remain identical after changing the scale factor and applying the log transform?\nWhy should the scale factor be reported even though it is not a biological parameter?",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#apply-normalization-to-the-controlled-immune-dataset",
+    "href": "modules/03-normalization/index.html#apply-normalization-to-the-controlled-immune-dataset",
+    "title": "Module 3 — Normalization",
+    "section": "Apply normalization to the controlled immune dataset",
+    "text": "Apply normalization to the controlled immune dataset\nsource(\"scripts/course_helpers.R\")\n\nobj &lt;- load_teaching_object()\nobj &lt;- add_qc_metrics(obj)\n\nobj_log &lt;- NormalizeData(\n  obj,\n  normalization.method = \"LogNormalize\",\n  scale.factor = 10000,\n  verbose = FALSE\n)\n\nraw_nkg7 &lt;- as.numeric(\n  LayerData(obj_log, layer = \"counts\")[\"NKG7\", ]\n)\n\nlog_nkg7 &lt;- as.numeric(\n  LayerData(obj_log, layer = \"data\")[\"NKG7\", ]\n)\n\ndepth_comparison &lt;- data.frame(\n  nCount_RNA = obj_log$nCount_RNA,\n  truth_cell_type = obj_log$truth_cell_type,\n  raw_NKG7 = raw_nkg7,\n  normalized_NKG7 = log_nkg7\n)\nCompare raw and normalized NKG7 among CD8 T and NK cells:\ndepth_long &lt;- depth_comparison |&gt;\n  filter(truth_cell_type %in% c(\"CD8 T\", \"NK\")) |&gt;\n  pivot_longer(\n    cols = c(raw_NKG7, normalized_NKG7),\n    names_to = \"expression_scale\",\n    values_to = \"NKG7\"\n  )\n\nggplot(\n  depth_long,\n  aes(nCount_RNA, NKG7, color = truth_cell_type)\n) +\n  geom_point(alpha = 0.55) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  scale_x_log10() +\n  facet_wrap(~expression_scale, scales = \"free_y\") +\n  labs(\n    x = \"Observed library size (log scale)\",\n    y = \"NKG7 value\",\n    color = \"Controlled cell type\"\n  )\n\n\n\nScatterplots compare the relationship between library size and raw or log-normalized NKG7 values in controlled CD8 T and NK cells.\n\n\nNormalization reduces a library-wide depth relationship. It does not force every depth correlation to zero because biological identity, RNA content, composition, sampling variance, and contamination remain.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#what-normalization-does-not-correct",
+    "href": "modules/03-normalization/index.html#what-normalization-does-not-correct",
+    "title": "Module 3 — Normalization",
+    "section": "What normalization does not correct",
+    "text": "What normalization does not correct\nLogNormalize() does not automatically:\n\nremove batch effects;\ncorrect donor or sample confounding;\nmake cells independent biological replicates;\nremove ambient RNA;\nidentify doublets;\nrepair low-quality cells;\nimpute sampling zeros;\nregress mitochondrial, cell-cycle, or stress programs;\nmake expression values comparable across genes in the sense required for PCA scaling; or\njustify condition-level statistical inference.\n\nNormalization addresses a defined measurement problem: unequal observed library sizes. Asking it to solve unrelated design or quality problems leads to overinterpretation.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#zeros-after-normalization",
+    "href": "modules/03-normalization/index.html#zeros-after-normalization",
+    "title": "Module 3 — Normalization",
+    "section": "Zeros after normalization",
+    "text": "Zeros after normalization\nBecause zero remains zero, log normalization does not distinguish a biological zero from a sampling zero. It also does not create information that was never observed.\nzero_check &lt;- data.frame(\n  raw_zero = raw_nkg7 == 0,\n  normalized_zero = log_nkg7 == 0\n)\n\ntable(zero_check)\nAn imputation method would be a separate model with separate assumptions. This module does not impute expression.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#biological-consequence",
+    "href": "modules/03-normalization/index.html#biological-consequence",
+    "title": "Module 3 — Normalization",
+    "section": "Biological consequence",
+    "text": "Biological consequence\nSuppose a stimulated sample has deeper observed libraries than a control sample. Raw counts may make many genes appear higher in stimulation simply because more UMIs were observed per cell. Library-size normalization can reduce that global multiplier.\nHowever, if stimulation truly increases total RNA per cell, forcing all cells to the same relative library size can obscure an absolute global shift. Standard scRNA-seq usually lacks spike-ins or absolute molecule recovery needed to identify such shifts cleanly. Normalization therefore encodes an assumption: much of the library-size difference is unwanted for the intended comparison.\n\n\n\n\n\n\nImportantState the estimand\n\n\n\nAfter library-size normalization, interpretation is primarily relative: how much of a cell’s observed library is allocated to a gene, followed by transformation. Do not silently reinterpret the result as absolute transcripts per cell.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#sctransform-a-model-based-alternative",
+    "href": "modules/03-normalization/index.html#sctransform-a-model-based-alternative",
+    "title": "Module 3 — Normalization",
+    "section": "SCTransform: a model-based alternative",
+    "text": "SCTransform: a model-based alternative\nSCTransform() fits a regularized negative-binomial model of UMI counts as a function of sequencing depth and produces a variance-stabilized representation. Its Pearson residuals emphasize deviations from the model rather than applying the same explicit divide-scale-log calculation to every gene.\nPotential advantages include:\n\nmodeling the mean–variance relationship directly;\nreducing depth-associated variance in a gene-aware manner; and\ncombining normalization and variance stabilization in one framework.\n\nCaveats include:\n\na more complex model and less transparent hand interpretation;\ndependence on model assumptions and implementation choices;\nvalues that are not log-normalized counts;\nadditional computation and dependencies; and\nthe possibility that depth is associated with real biology rather than only nuisance variation.\n\nSCTransform is not automatically superior. The choice depends on the data, analytical goal, compatibility with downstream methods, and whether the model’s assumptions are appropriate.\nThe optional glmGamPoi package can accelerate the vst.flavor = \"v2\" example below. If it is absent, SCTransform() falls back to its built-in fitting implementation; the calculation remains valid but is slower.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#optional-advanced-comparison-lognormalize-versus-sctransform",
+    "href": "modules/03-normalization/index.html#optional-advanced-comparison-lognormalize-versus-sctransform",
+    "title": "Module 3 — Normalization",
+    "section": "Optional advanced comparison: LogNormalize versus SCTransform",
+    "text": "Optional advanced comparison: LogNormalize versus SCTransform\nRun both methods on the same unfiltered controlled object:\nobj_log &lt;- NormalizeData(\n  obj,\n  normalization.method = \"LogNormalize\",\n  scale.factor = 10000,\n  verbose = FALSE\n)\n\nobj_sct &lt;- SCTransform(\n  obj,\n  assay = \"RNA\",\n  new.assay.name = \"SCT\",\n  vst.flavor = \"v2\",\n  return.only.var.genes = FALSE,\n  verbose = FALSE\n)\nExtract values for one gene. These values are on different scales and should not be compared as if their numerical magnitudes had the same meaning:\nlog_value &lt;- as.numeric(\n  LayerData(\n    obj_log,\n    assay = \"RNA\",\n    layer = \"data\"\n  )[\"GZMK\", ]\n)\n\nsct_residual &lt;- as.numeric(\n  LayerData(\n    obj_sct,\n    assay = \"SCT\",\n    layer = \"scale.data\"\n  )[\"GZMK\", ]\n)\n\nmethod_comparison &lt;- data.frame(\n  nCount_RNA = obj$nCount_RNA,\n  truth_cell_type = obj$truth_cell_type,\n  LogNormalize = log_value,\n  SCTransform_residual = sct_residual\n) |&gt;\n  filter(truth_cell_type %in% c(\"CD8 T\", \"NK\")) |&gt;\n  pivot_longer(\n    cols = c(LogNormalize, SCTransform_residual),\n    names_to = \"method\",\n    values_to = \"GZMK_value\"\n  )\n\nggplot(\n  method_comparison,\n  aes(nCount_RNA, GZMK_value, color = truth_cell_type)\n) +\n  geom_point(alpha = 0.55) +\n  scale_x_log10() +\n  facet_wrap(~method, scales = \"free_y\") +\n  labs(\n    x = \"Observed library size\",\n    y = \"Method-specific GZMK value\"\n  )\nThen compare:\n\nthe residual association with observed library size;\nseparation of the controlled CD8 T and NK groups;\nthe number and identity of variable genes selected by each workflow;\nsensitivity to retaining low-quality and empty-droplet profiles; and\nwhether a substantive biological conclusion changes.\n\nDo not choose the method whose plot looks most separated without evaluating why.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#common-mistakes-and-limitations",
+    "href": "modules/03-normalization/index.html#common-mistakes-and-limitations",
+    "title": "Module 3 — Normalization",
+    "section": "Common mistakes and limitations",
+    "text": "Common mistakes and limitations\n\nOverwriting raw counts with normalized values.\nCalling log-normalized values “counts.”\nForgetting which scale factor was used.\nAssuming normalization removes batch effects or QC problems.\nComparing values from LogNormalize and SCTransform as if they share units.\nTreating a zero after normalization as proof of no biological expression.\nInterpreting lower depth correlation as proof that every technical effect is gone.\nNormalizing before deciding whether empty droplets and clear failures should be retained.\nTreating default parameters as biological truths.\nSelecting a normalization method only because it produces preferred clusters.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#check-your-understanding",
+    "href": "modules/03-normalization/index.html#check-your-understanding",
+    "title": "Module 3 — Normalization",
+    "section": "Check your understanding",
+    "text": "Check your understanding\n\nWhy do Cell A and Cell B have equal normalized CD3D despite different raw counts?\nWhat does the scale factor control, and what biological property does it not represent?\nWhy is log1p() used instead of log()?\nDoes normalization turn a UMI count into an absolute transcript estimate?\nName four problems that NormalizeData() does not solve.\nWhich Seurat layer should retain integer raw counts?\nWhy can normalized expression still correlate with library size?\nHow does a Pearson residual from SCTransform differ conceptually from a log-normalized value?\nWhen could library-size normalization remove a biologically meaningful global RNA difference?\nWhat evidence would justify choosing SCTransform over LogNormalize for a specific analysis?",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "modules/03-normalization/index.html#lab",
+    "href": "modules/03-normalization/index.html#lab",
+    "title": "Module 3 — Normalization",
+    "section": "Lab",
+    "text": "Lab\nRun the Module 3 student lab. Submit the hand calculations, the three-stage heatmap, the scale-factor perturbation, the larger-dataset depth comparison, and a written evaluation of the optional SCTransform comparison if completed.",
+    "crumbs": [
+      "Home",
+      "Foundational modules",
+      "3. Normalization"
+    ]
+  },
+  {
+    "objectID": "schedule-quarter.html",
+    "href": "schedule-quarter.html",
+    "title": "Quarter pacing: foundational block",
+    "section": "",
+    "text": "This page schedules the currently implemented foundational block within a 10-week quarter. Later weeks are intentionally not scaffolded in this release.\n\n\n\n\n\n\n\n\n\nWeek\nPreparation (60–90 min)\nClass meeting (150–180 min)\nProduct\n\n\n\n\n1\nSetup, reproducibility checks, Module 1 concepts\nMatrix anatomy, sparse representations, manual library metrics\nCount-matrix interpretation memo\n\n\n2\nModule 1 undersampling sections; begin Module 2\nSampling zeros, ambient RNA, empty droplets, doublets; QC visualizations\nControlled undersampling comparison\n\n\n3\nModule 2 threshold sections\nPermissive/moderate/aggressive QC lab and downstream comparison\nQC sensitivity report\n\n\n4\nModule 3 conceptual and hand-calculation sections\nManual normalization, Seurat reproduction, scale-factor perturbation\nNormalization worksheet\n\n\n5\nModule 3 SCTransform section\nLogNormalize-versus-SCTransform comparison and synthesis discussion\nFoundational analysis audit\n\n\n\nWeeks 6–10 are reserved for later modules and a capstone after those modules are developed."
+  },
+  {
+    "objectID": "resources/glossary.html",
+    "href": "resources/glossary.html",
+    "title": "Glossary for Modules 1–3",
+    "section": "",
+    "text": "Barcode\nA sequence used to associate captured molecules with a droplet or putative cell.\nCapture efficiency\nThe fraction of molecules present in a cell that ultimately contributes observed counts. It is incomplete and variable.\nDetected feature\nA gene with at least one observed UMI in a barcode.\nLibrary size\nThe sum of observed UMI counts for a barcode, usually stored by Seurat as nCount_RNA.\nSampling zero\nAn observed zero caused by incomplete molecular sampling even though transcripts were present.\nBiological zero\nAn observed zero consistent with a gene truly not being expressed in the cell at the relevant moment.\nSparse matrix\nA matrix representation that stores nonzero values and their positions rather than allocating memory to every zero.\nUMI\nA unique molecular identifier used to collapse reads likely derived from the same captured molecule.\nNormalization\nA transformation intended to make expression values more comparable across cells with different observed library sizes. It does not make cells biological replicates or remove every technical effect.",
+    "crumbs": [
+      "Home",
+      "Course resources",
+      "Glossary for Modules 1–3"
+    ]
+  }
+]
