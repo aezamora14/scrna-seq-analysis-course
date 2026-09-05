@@ -1,0 +1,481 @@
+"cell_id","sample_id","donor_id","condition","truth_cell_type","truth_t_state","cell_cycle_phase","cell_cycle_score","ifn_score","stress_score","mitochondrial_technical_score"
+"RC0001-1","D3_stimulated","D3","stimulated","CD8 T","cytotoxic","G1",0,0.216231,0.305176,0.587751
+"RC0002-1","D2_stimulated","D2","stimulated","CD8 T","naive-like","S",1.67041,0.51889,0,0.850824
+"RC0003-1","D1_stimulated","D1","stimulated","B","not_T","G2M",1.540657,0.929208,0.200268,1.032219
+"RC0004-1","D1_control","D1","control","NK","not_T","S",1.090558,-0.308415,0,0.061242
+"RC0005-1","D1_stimulated","D1","stimulated","NK","not_T","G1",0.390146,0.841589,0,0.424963
+"RC0006-1","D1_control","D1","control","Monocyte","not_T","G2M",1.410898,0.237957,0.35041,0
+"RC0007-1","D1_stimulated","D1","stimulated","CD8 T","cytotoxic","G1",0.512011,0.600749,0.347866,0.392433
+"RC0008-1","D1_control","D1","control","B","not_T","G1",0.36931,-1.045826,0.543209,0
+"RC0009-1","D1_control","D1","control","CD8 T","naive-like","G1",0,-0.284807,0.374457,0.521912
+"RC0010-1","D1_control","D1","control","CD8 T","naive-like","G1",0,0.173944,0.032284,0.153541
+"RC0011-1","D3_control","D3","control","NK","not_T","G1",0.118657,-0.637604,0.233154,1.138626
+"RC0012-1","D3_stimulated","D3","stimulated","CD4 T","naive-like","G2M",1.639692,1.319113,1.211556,0.489839
+"RC0013-1","D2_control","D2","control","B","not_T","G1",0.178626,-0.589455,0.462464,1.041874
+"RC0014-1","D3_stimulated","D3","stimulated","CD4 T","memory-like","G1",0.218474,0.939045,0,0
+"RC0015-1","D1_control","D1","control","CD4 T","memory-like","G1",0,0.11387,0,0.257191
+"RC0016-1","D3_control","D3","control","CD8 T","cytotoxic","G2M",2.105295,-0.978972,0.663684,0.268173
+"RC0017-1","D1_control","D1","control","CD4 T","memory-like","G1",0,0.20781,0.390863,0
+"RC0018-1","D2_stimulated","D2","stimulated","B","not_T","G1",0.448676,0.626308,0.193089,0.632307
+"RC0019-1","D2_stimulated","D2","stimulated","B","not_T","G1",0,1.897845,0.293782,0
+"RC0020-1","D2_control","D2","control","CD8 T","cytotoxic","G1",0.752225,-0.947193,0.325136,0.235783
+"RC0021-1","D2_stimulated","D2","stimulated","CD4 T","naive-like","G1",0,1.191153,0,0.66554
+"RC0022-1","D3_stimulated","D3","stimulated","CD8 T","cytotoxic","G1",0.429755,0.770574,0,0.104289
+"RC0023-1","D3_control","D3","control","CD8 T","cytotoxic","S",1.114388,-0.618256,1.16987,0.051794
+"RC0024-1","D1_control","D1","control","CD4 T","memory-like","G1",0.198006,0.437497,0,1.5254
+"RC0025-1","D1_stimulated","D1","stimulated","Monocyte","not_T","G1",0.02201,0.975824,0,0.421602
+"RC0026-1","D1_stimulated","D1","stimulated","CD4 T","memory-like","G1",0.541839,0.705331,0.361409,0.606749
+"RC0027-1","D3_stimulated","D3","stimulated","Monocyte","not_T","G1",0,1.645194,0.836324,0.218549
+"RC0028-1","D2_stimulated","D2","stimulated","CD8 T","cytotoxic","G1",0,0.402476,0.490565,0
+"RC0029-1","D3_control","D3","control","CD8 T","naive-like","G1",0,-0.626098,0.463448,0
+"RC0030-1","D3_stimulated","D3","stimulated","CD4 T","memory-like","G1",0,1.287841,0.563243,0
+"RC0031-1","D3_control","D3","control","CD4 T","naive-like","G1",0.152628,-0.395906,0.04473,0.055849
+"RC0032-1","D3_stimulated","D3","stimulated","B","not_T","S",1.02893,0.837138,0.106915,1.257633
+"RC0033-1","D3_stimulated","D3","stimulated","B","not_T","G2M",1.635788,0.708197,0.136028,0.26064
+"RC0034-1","D1_control","D1","control","CD8 T","cytotoxic","G1",0.149138,0.116593,0.514488,0
+"RC0035-1","D3_stimulated","D3","stimulated","CD8 T","cytotoxic","G1",0,1.204704,0.029232,0.075077
+"RC0036-1","D3_stimulated","D3","stimulated","B","not_T","G1",0.19889,-0.641701,0.005401,0.226715
+"RC0037-1","D2_control","D2","control","Monocyte","not_T","G2M",2.339341,-0.568562,1.395433,0.369408
+"RC0038-1","D3_control","D3","control","CD4 T","memory-like","G1",0.562137,-0.866163,0.225637,0.008886
+"RC0039-1","D2_stimulated","D2","stimulated","B","not_T","G2M",1.786058,0.290843,0,0
+"RC0040-1","D1_control","D1","control","B","not_T","G1",0.033757,0.34066,0.180829,0.953823
+"RC0041-1","D3_stimulated","D3","stimulated","CD4 T","naive-like","G1",0,1.218371,0.258702,0.940565
+"RC0042-1","D1_control","D1","control","Monocyte","not_T","G2M",1.834947,-0.895538,0,0
+"RC0043-1","D1_control","D1","control","CD8 T","cytotoxic","G2M",1.31118,0.522208,0.144171,0.339907
+"RC0044-1","D2_stimulated","D2","stimulated","CD4 T","naive-like","G2M",1.80302,0.988492,0.049342,1.20539
+"RC0045-1","D2_control","D2","control","Monocyte","not_T","G1",0,-0.41281,0,0.217443
+"RC0046-1","D3_stimulated","D3","stimulated","Monocyte","not_T","G1",0.629223,0.637001,0.456085,0.866758
+"RC0047-1","D1_stimulated","D1","stimulated","CD8 T","cytotoxic","G1",0,0.732036,0,0.672532
+"RC0048-1","D3_stimulated","D3","stimulated","Monocyte","not_T","G1",0.716437,0.668882,0.325531,0
+"RC0049-1","D1_stimulated","D1","stimulated","CD8 T","naive-like","G1",0,0.962308,0,0.46339
+"RC0050-1","D1_control","D1","control","CD4 T","memory-like","S",1.290687,-0.210558,1.037641,0
+"RC0051-1","D2_stimulated","D2","stimulated","CD8 T","cytotoxic","G1",0.50541,-0.227326,0.743459,0.025682
+"RC0052-1","D2_control","D2","control","CD4 T","naive-like","G1",0,0.14491,0,0.230489
+"RC0053-1","D2_control","D2","control","CD4 T","naive-like","G2M",1.131085,-0.028087,0.236331,0
+"RC0054-1","D1_stimulated","D1","stimulated","CD8 T","cytotoxic","G1",0.884568,-0.054898,0.31519,0
+"RC0055-1","D2_stimulated","D2","stimulated","CD4 T","memory-like","G1",0,1.122302,0.129699,0
+"RC0056-1","D1_stimulated","D1","stimulated","CD8 T","naive-like","G1",0,0.135779,0,0
+"RC0057-1","D3_stimulated","D3","stimulated","CD4 T","memory-like","G1",0,0.286468,0.714897,1.02299
+"RC0058-1","D2_stimulated","D2","stimulated","CD8 T","cytotoxic","G1",0,1.322316,0.568215,0.490717
+"RC0059-1","D3_stimulated","D3","stimulated","CD8 T","cytotoxic","G1",0,0.611331,0.519196,0.006901
+"RC0060-1","D2_control","D2","control","CD8 T","cytotoxic","G1",0,0.265003,0.316342,0.19766
+"RC0061-1","D3_stimulated","D3","stimulated","CD8 T","naive-like","G1",0.513544,-0.481446,0,0.023678
+"RC0062-1","D1_stimulated","D1","stimulated","CD8 T","cytotoxic","G1",0,0.505498,0.889548,0
+"RC0063-1","D3_control","D3","control","Monocyte","not_T","G1",0,-0.664131,0,0.087657
+"RC0064-1","D2_stimulated","D2","stimulated","CD4 T","memory-like","G1",0,0.841316,0.738264,0.33765
+"RC0065-1","D3_stimulated","D3","stimulated","Monocyte","not_T","G1",0,1.008767,0.308808,0.726476
+"RC0066-1","D1_stimulated","D1","stimulated","CD4 T","memory-like","G1",0,1.680553,0.778913,0.5503
+"RC0067-1","D3_control","D3","control","CD4 T","memory-like","G2M",1.56658,0.08293,0.663039,0.278764
+"RC0068-1","D3_control","D3","control","CD4 T","naive-like","S",1.178289,-0.810986,0.454335,0.049522
+"RC0069-1","D2_control","D2","control","Monocyte","not_T","S",1.271106,0.05512,0.741454,0.072632
+"RC0070-1","D2_control","D2","control","CD4 T","naive-like","G1",0,0.368935,0.304451,0.299399
+"RC0071-1","D2_control","D2","control","CD8 T","cytotoxic","G1",0.072622,-0.332717,0.180151,0.610049
+"RC0072-1","D3_control","D3","control","CD4 T","naive-like","S",1.901632,-1.39911,0.289347,0.006269
+"RC0073-1","D1_control","D1","control","CD8 T","cytotoxic","G1",0,0.786157,1.542535,0.865168
+"RC0074-1","D3_stimulated","D3","stimulated","CD4 T","memory-like","S",1.795849,1.575894,0.943823,0.763314
+"RC0075-1","D2_stimulated","D2","stimulated","NK","not_T","G1",0.135884,1.554553,0,0.532949
+"RC0076-1","D1_stimulated","D1","stimulated","NK","not_T","G1",0.779042,1.789871,0.345887,0.000808
+"RC0077-1","D1_control","D1","control","CD4 T","memory-like","G1",0,-0.820195,1.410839,1.21607
+"RC0078-1","D2_control","D2","control","CD8 T","cytotoxic","G1",0,0.554946,0.188191,0.377516
+"RC0079-1","D2_control","D2","control","CD8 T","naive-like","G1",0.272757,0.670154,0,0.345736
+"RC0080-1","D3_control","D3","control","NK","not_T","S",1.618796,-0.549813,0.664187,0.078851
+"RC0081-1","D1_control","D1","control","CD8 T","naive-like","S",1.335807,-0.385303,0.769634,0.343431
+"RC0082-1","D3_control","D3","control","Monocyte","not_T","G1",0,0.22656,0.362417,1.024331
+"RC0083-1","D2_stimulated","D2","stimulated","B","not_T","G1",0.094989,1.417131,0.016741,0
+"RC0084-1","D2_stimulated","D2","stimulated","CD4 T","naive-like","G1",0.341423,0.964027,0.780146,0
+"RC0085-1","D3_control","D3","control","NK","not_T","G1",0,-0.750193,0.143889,1.055409
+"RC0086-1","D2_stimulated","D2","stimulated","Monocyte","not_T","G1",0,0.749822,0.648804,0.593842
+"RC0087-1","D2_control","D2","control","CD8 T","cytotoxic","G1",0.657796,-0.140439,0.21538,0.513802
+"RC0088-1","D3_control","D3","control","NK","not_T","S",1.015957,0.47812,0,0.440098
+"RC0089-1","D1_stimulated","D1","stimulated","CD4 T","naive-like","G1",0.430993,1.000151,0.334203,0.629794
+"RC0090-1","D1_control","D1","control","CD4 T","naive-like","G1",0.030311,0.965571,0.862743,0.469459
+"RC0091-1","D2_control","D2","control","CD8 T","cytotoxic","G1",0,-0.737881,0.863625,0.450675
+"RC0092-1","D3_stimulated","D3","stimulated","Monocyte","not_T","G2M",1.722959,1.257489,0.090778,0
+"RC0093-1","D1_stimulated","D1","stimulated","B","not_T","G1",0.043774,0.21167,0.192369,1.023962
+"RC0094-1","D2_control","D2","control","CD4 T","naive-like","S",1.653794,-1.094292,0.241009,0.776173
+"RC0095-1","D1_stimulated","D1","stimulated","CD4 T","naive-like","G1",0,1.125866,0.29831,0
+"RC0096-1","D3_stimulated","D3","stimulated","CD8 T","naive-like","G1",0,0.960394,0.625621,0
+"RC0097-1","D3_stimulated","D3","stimulated","CD8 T","naive-like","S",0.949446,0.685696,0.749217,0.281563
+"RC0098-1","D1_stimulated","D1","stimulated","CD4 T","naive-like","G1",0.168956,0.724392,0.586061,0.820083
+"RC0099-1","D1_stimulated","D1","stimulated","CD8 T","cytotoxic","S",1.555486,0.914566,0.134077,0.027368
+"RC0100-1","D1_control","D1","control","CD8 T","cytotoxic","G2M",1.113357,-0.104515,0,0.183746
+"RC0101-1","D2_stimulated","D2","stimulated","NK","not_T","G1",0.666078,1.227275,0,0
+"RC0102-1","D1_control","D1","control","NK","not_T","G1",0,-0.333573,0.386519,0
+"RC0103-1","D2_control","D2","control","CD4 T","naive-like","G1",0.437405,0.946881,0.763825,1.192354
+"RC0104-1","D1_control","D1","control","Monocyte","not_T","G1",0.089052,-0.341434,0.524086,0.217661
+"RC0105-1","D1_control","D1","control","CD4 T","naive-like","G1",0,-0.527839,0.100634,0
+"RC0106-1","D3_control","D3","control","Monocyte","not_T","G1",0,-0.140995,0.352556,0.043835
+"RC0107-1","D2_control","D2","control","NK","not_T","G1",0,0.334119,0.221645,0.528727
+"RC0108-1","D3_stimulated","D3","stimulated","NK","not_T","G1",0.288103,0.079556,0.277976,1.266775
+"RC0109-1","D3_stimulated","D3","stimulated","CD4 T","naive-like","G1",0,1.008488,0.162198,0.860408
+"RC0110-1","D2_control","D2","control","CD4 T","memory-like","G1",0.402963,-0.414524,0.107697,0.29592
+"RC0111-1","D1_stimulated","D1","stimulated","CD8 T","cytotoxic","G1",0,0.849108,0.427135,0.951619
+"RC0112-1","D2_control","D2","control","B","not_T","G1",0,-0.54634,0.50446,0.431836
+"RC0113-1","D3_stimulated","D3","stimulated","CD4 T","naive-like","G1",0,1.464309,0,1.161072
+"RC0114-1","D2_control","D2","control","NK","not_T","G1",0,0.292239,0.689886,0
+"RC0115-1","D3_control","D3","control","CD8 T","cytotoxic","G1",0,0.382887,0.304446,0.126602
+"RC0116-1","D3_control","D3","control","B","not_T","G1",0.176164,-1.228361,0.463208,1.100139
+"RC0117-1","D1_stimulated","D1","stimulated","CD4 T","naive-like","G2M",1.317243,0.929738,0.050901,0.564064
+"RC0118-1","D3_control","D3","control","CD8 T","cytotoxic","G1",0,-0.528907,0.403481,0
+"RC0119-1","D3_control","D3","control","CD4 T","naive-like","G1",0.650728,-1.500236,1.470568,0
+"RC0120-1","D3_stimulated","D3","stimulated","CD8 T","cytotoxic","G1",0.148848,0.286383,0,0
+"RC0121-1","D2_stimulated","D2","stimulated","CD8 T","naive-like","G1",0.370637,-0.204287,0.182468,0.427854
+"RC0122-1","D2_stimulated","D2","stimulated","NK","not_T","G1",0.10193,1.378294,0.967817,1.142371
+"RC0123-1","D2_control","D2","control","CD4 T","memory-like","G1",0,-0.094424,0.347833,0
+"RC0124-1","D3_control","D3","control","CD4 T","memory-like","G1",0.214957,-0.891686,0,0.338486
+"RC0125-1","D1_stimulated","D1","stimulated","CD4 T","naive-like","G1",0,0.31332,0.584159,1.2632
+"RC0126-1","D3_stimulated","D3","stimulated","CD8 T","naive-like","G1",0.053535,1.429719,0.879949,0
+"RC0127-1","D2_stimulated","D2","stimulated","B","not_T","G1",0,0.74902,0,0
+"RC0128-1","D2_control","D2","control","Monocyte","not_T","G1",0,0.009036,0.219537,0.392089
+"RC0129-1","D1_stimulated","D1","stimulated","Monocyte","not_T","G1",0,1.061301,0.908277,0
+"RC0130-1","D1_stimulated","D1","stimulated","CD4 T","naive-like","G1",0.188762,0.742901,0.437705,0.10378
+"RC0131-1","D3_control","D3","control","CD8 T","naive-like","G1",0.28716,-0.188214,0.649258,1.144334
+"RC0132-1","D1_control","D1","control","CD4 T","memory-like","G1",0,-0.418144,0,0
+"RC0133-1","D1_stimulated","D1","stimulated","Monocyte","not_T","G1",0,0.393928,0.330642,0.037312
+"RC0134-1","D2_control","D2","control","CD8 T","naive-like","G2M",1.698574,-0.256688,0,0.908181
+"RC0135-1","D2_stimulated","D2","stimulated","NK","not_T","S",0.754445,0.565978,0.338815,1.32914
+"RC0136-1","D1_control","D1","control","CD8 T","cytotoxic","G1",0.134013,-0.419778,0.426745,0
+"RC0137-1","D1_control","D1","control","NK","not_T","G1",0,-0.223788,0.439356,1.368758
+"RC0138-1","D1_control","D1","control","CD8 T","naive-like","G1",0,-0.428739,0.367501,0.442704
+"RC0139-1","D3_stimulated","D3","stimulated","B","not_T","G1",0,0.595307,0.488085,0.540761
+"RC0140-1","D1_control","D1","control","NK","not_T","S",1.546221,-0.290073,0,0
+"RC0141-1","D2_control","D2","control","B","not_T","G2M",1.288253,-0.370188,0.085522,0.465816
+"RC0142-1","D1_stimulated","D1","stimulated","CD4 T","naive-like","G1",0,1.761133,0.474301,1.190825
+"RC0143-1","D1_control","D1","control","CD4 T","memory-like","G1",0.031003,-0.118901,0.496593,0.856018
+"RC0144-1","D3_control","D3","control","CD8 T","naive-like","G1",0,0.608974,0,0.099929
+"RC0145-1","D3_control","D3","control","CD4 T","memory-like","G1",0,-0.127468,0.744405,0.144787
+"RC0146-1","D2_stimulated","D2","stimulated","CD4 T","naive-like","G1",0,0.945971,0.229874,1.045845
+"RC0147-1","D2_stimulated","D2","stimulated","CD4 T","naive-like","S",1.41859,1.249216,0.368348,0.31113
+"RC0148-1","D1_control","D1","control","NK","not_T","G1",0.119131,0.585271,0.479837,0.727327
+"RC0149-1","D2_stimulated","D2","stimulated","CD4 T","naive-like","G1",0.278717,1.437244,0,0
+"RC0150-1","D2_control","D2","control","Monocyte","not_T","G2M",1.309782,-1.1077,0.370103,0.350528
+"RC0151-1","D3_control","D3","control","CD8 T","naive-like","G1",0.017164,-0.709163,0,0.600638
+"RC0152-1","D2_control","D2","control","Monocyte","not_T","G1",0.056781,0.473367,0,1.0136
+"RC0153-1","D2_control","D2","control","B","not_T","G1",0.587712,0.072059,0.258502,0.346788
+"RC0154-1","D3_stimulated","D3","stimulated","B","not_T","G2M",1.840589,0.214252,0.461544,0
+"RC0155-1","D1_stimulated","D1","stimulated","CD8 T","cytotoxic","G2M",1.556741,0.835121,0.279244,0.251217
+"RC0156-1","D2_stimulated","D2","stimulated","CD8 T","naive-like","G1",0.21761,1.214547,0.33996,0.82945
+"RC0157-1","D3_control","D3","control","CD4 T","memory-like","G1",0.195553,-0.435448,0.73923,0.514857
+"RC0158-1","D2_control","D2","control","CD8 T","naive-like","G2M",0.940985,-0.199701,0.659466,0.031389
+"RC0159-1","D3_stimulated","D3","stimulated","NK","not_T","S",1.063653,1.173412,0.252048,0.650609
+"RC0160-1","D2_stimulated","D2","stimulated","CD8 T","naive-like","G1",0.0019,1.427324,0,0.445054
+"RC0161-1","D2_control","D2","control","B","not_T","G1",0,-0.093821,0.13921,0.550485
+"RC0162-1","D1_control","D1","control","B","not_T","G1",0.305128,0.157396,0,0
+"RC0163-1","D2_control","D2","control","CD8 T","cytotoxic","G1",0.054842,0.250142,0.17584,0
+"RC0164-1","D1_stimulated","D1","stimulated","CD8 T","naive-like","G1",0.571753,0.029563,0.152628,0.704059
+"RC0165-1","D3_stimulated","D3","stimulated","B","not_T","G1",0,1.220702,0.570645,0
+"RC0166-1","D2_stimulated","D2","stimulated","NK","not_T","G1",0,0.469369,0.706522,0
+"RC0167-1","D2_stimulated","D2","stimulated","NK","not_T","G1",0,0.552227,0.418685,0
+"RC0168-1","D2_control","D2","control","CD4 T","naive-like","G2M",1.528166,-0.682561,0.445413,0.562919
+"RC0169-1","D3_stimulated","D3","stimulated","CD8 T","cytotoxic","G2M",1.019529,0.124175,0,0.301598
+"RC0170-1","D3_control","D3","control","NK","not_T","S",1.239887,-0.476826,0.242907,0.245722
+"RC0171-1","D2_control","D2","control","CD4 T","naive-like","S",1.772174,-0.633499,0.211848,0
+"RC0172-1","D3_control","D3","control","CD4 T","memory-like","G1",0.338144,-0.012801,0,0.42196
+"RC0173-1","D2_stimulated","D2","stimulated","Monocyte","not_T","G1",0.602087,0.325564,0.2033,0.478799
+"RC0174-1","D3_control","D3","control","CD4 T","memory-like","G1",0,-0.89599,0.657354,0.50333
+"RC0175-1","D3_stimulated","D3","stimulated","CD4 T","naive-like","G1",0,0.397709,0,0.248198
+"RC0176-1","D1_stimulated","D1","stimulated","CD8 T","cytotoxic","S",1.880208,2.07355,0,0.475407
+"RC0177-1","D1_stimulated","D1","stimulated","CD4 T","naive-like","G1",0.004865,0.850029,0,0
+"RC0178-1","D2_stimulated","D2","stimulated","CD8 T","cytotoxic","S",1.743556,1.44305,0.146485,0.124963
+"RC0179-1","D1_control","D1","control","Monocyte","not_T","S",1.131725,0.904536,0.246495,0.185953
+"RC0180-1","D3_stimulated","D3","stimulated","B","not_T","G2M",1.39338,0.817441,0.517378,0.330349
+"RC0181-1","D3_control","D3","control","NK","not_T","G1",0.080525,-0.984482,0.062947,0.031891
+"RC0182-1","D1_stimulated","D1","stimulated","CD8 T","naive-like","G1",0,1.167582,0.098023,0.255679
+"RC0183-1","D2_stimulated","D2","stimulated","CD8 T","naive-like","G1",0,0.484031,0,0
+"RC0184-1","D1_stimulated","D1","stimulated","CD8 T","cytotoxic","G1",0,1.450481,0.181979,0.846752
+"RC0185-1","D1_stimulated","D1","stimulated","Monocyte","not_T","S",1.886121,0.696028,0,0.102028
+"RC0186-1","D1_stimulated","D1","stimulated","NK","not_T","G1",0,0.269077,0.647346,0
+"RC0187-1","D2_control","D2","control","NK","not_T","G1",0.102478,0.779126,0.539791,0.317828
+"RC0188-1","D1_control","D1","control","CD4 T","naive-like","G1",0.122639,-0.433824,0,0.441582
+"RC0189-1","D3_stimulated","D3","stimulated","CD4 T","naive-like","G1",0.916596,1.074177,0.183184,0.826421
+"RC0190-1","D1_control","D1","control","CD8 T","cytotoxic","G1",0.220329,0.202606,0.729655,0.1449
+"RC0191-1","D2_control","D2","control","NK","not_T","G1",0.261206,0.222747,0.599606,0.095916
+"RC0192-1","D3_control","D3","control","CD8 T","cytotoxic","G1",0.153308,-0.189519,0.497728,0
+"RC0193-1","D2_control","D2","control","CD8 T","naive-like","G2M",0.937898,-0.888483,0,0.807217
+"RC0194-1","D2_control","D2","control","CD4 T","naive-like","G2M",0.963619,-0.764716,0.53123,0
+"RC0195-1","D1_control","D1","control","CD4 T","memory-like","G1",0,-1.290958,0,0.824158
+"RC0196-1","D2_control","D2","control","CD4 T","memory-like","G1",0,-0.49341,0.20505,0.070619
+"RC0197-1","D2_control","D2","control","B","not_T","G1",0.659458,-0.254707,0.600449,0.084136
+"RC0198-1","D1_control","D1","control","CD4 T","naive-like","G1",0.139531,0.342907,0.003774,0
+"RC0199-1","D3_control","D3","control","CD4 T","memory-like","G1",0,-0.406043,0.069233,0.94623
+"RC0200-1","D3_stimulated","D3","stimulated","B","not_T","G1",0.905377,1.086906,0.073224,0
+"RC0201-1","D2_control","D2","control","NK","not_T","G2M",1.321817,-0.06327,0.712024,0.184703
+"RC0202-1","D2_stimulated","D2","stimulated","CD8 T","cytotoxic","G1",0.149864,0.423822,0,1.190429
+"RC0203-1","D2_control","D2","control","CD8 T","cytotoxic","G1",0.117909,-0.514971,0.896684,0.576253
+"RC0204-1","D2_control","D2","control","Monocyte","not_T","G1",0,0.319792,0.083755,0
+"RC0205-1","D3_control","D3","control","NK","not_T","S",1.943315,-1.005778,0.330751,0.751798
+"RC0206-1","D3_control","D3","control","NK","not_T","G1",0.03761,-0.512726,0,0.707996
+"RC0207-1","D1_stimulated","D1","stimulated","B","not_T","G1",0,0.924938,0.965544,1.16878
+"RC0208-1","D3_control","D3","control","Monocyte","not_T","G1",0,0.284712,0.803094,0.249527
+"RC0209-1","D1_stimulated","D1","stimulated","CD4 T","memory-like","G1",0,0.709974,0.758313,0.720879
+"RC0210-1","D1_control","D1","control","B","not_T","G1",0,0.462958,0.998754,0.161102
+"RC0211-1","D1_stimulated","D1","stimulated","Monocyte","not_T","G1",0.904608,0.732053,0,0.3789
+"RC0212-1","D3_stimulated","D3","stimulated","CD8 T","cytotoxic","G2M",1.536238,0.930353,0,0
+"RC0213-1","D2_control","D2","control","CD4 T","naive-like","G1",0.304392,0.102824,0,0.076533
+"RC0214-1","D1_control","D1","control","CD8 T","naive-like","G1",0.726785,0.035889,0.139665,0.439872
+"RC0215-1","D3_control","D3","control","CD4 T","naive-like","G1",0.013296,-0.4224,0.161404,0.828252
+"RC0216-1","D1_control","D1","control","CD8 T","naive-like","G1",0.496442,-0.492646,0.459459,0.193209
+"RC0217-1","D2_control","D2","control","CD8 T","cytotoxic","G1",0,-0.499272,0.146596,0.367215
+"RC0218-1","D2_stimulated","D2","stimulated","CD8 T","cytotoxic","G1",0,1.3287,0.681047,0.046704
+"RC0219-1","D2_stimulated","D2","stimulated","CD4 T","naive-like","G1",0,1.823953,0.000364,0
+"RC0220-1","D3_stimulated","D3","stimulated","CD8 T","naive-like","G1",0,1.020995,0.241799,0
+"RC0221-1","D3_control","D3","control","B","not_T","G1",0.129208,-0.731613,0.128632,1.247531
+"RC0222-1","D1_stimulated","D1","stimulated","NK","not_T","G1",0.005153,0.345169,0,0.399237
+"RC0223-1","D2_control","D2","control","CD4 T","memory-like","S",1.786157,-0.151592,0,0.143326
+"RC0224-1","D1_stimulated","D1","stimulated","CD8 T","cytotoxic","G1",0,1.965304,0.460637,0.210436
+"RC0225-1","D2_stimulated","D2","stimulated","B","not_T","G1",0.225064,0.789119,0,0.498396
+"RC0226-1","D1_stimulated","D1","stimulated","CD4 T","memory-like","G1",0,1.014553,0,0.858087
+"RC0227-1","D1_stimulated","D1","stimulated","NK","not_T","G2M",0.983141,1.07011,0.05444,0.940547
+"RC0228-1","D2_stimulated","D2","stimulated","CD8 T","naive-like","G1",0,-0.069132,0.544487,0
+"RC0229-1","D3_stimulated","D3","stimulated","CD4 T","naive-like","G2M",1.078942,1.032516,0.787193,1.238244
+"RC0230-1","D3_control","D3","control","NK","not_T","G1",0.320663,-0.931512,0,0.905326
+"RC0231-1","D1_stimulated","D1","stimulated","CD8 T","cytotoxic","G1",0.196336,1.13817,0,0.826157
+"RC0232-1","D1_stimulated","D1","stimulated","NK","not_T","G1",0,1.086281,0,0.259796
+"RC0233-1","D1_control","D1","control","CD8 T","naive-like","G1",0.150742,0.504788,0.436273,0.500994
+"RC0234-1","D2_control","D2","control","CD4 T","memory-like","G1",0,-0.497806,0.425873,0.916474
+"RC0235-1","D2_control","D2","control","CD4 T","naive-like","G1",0,0.622546,0,0.06478
+"RC0236-1","D1_stimulated","D1","stimulated","CD8 T","cytotoxic","G1",0,0.633867,0.578615,0
+"RC0237-1","D1_control","D1","control","Monocyte","not_T","S",1.611029,-0.570578,0.465603,1.206112
+"RC0238-1","D3_control","D3","control","B","not_T","G1",0,-0.031163,0,0.453371
+"RC0239-1","D1_stimulated","D1","stimulated","NK","not_T","S",1.118184,1.623977,0.90495,0
+"RC0240-1","D1_stimulated","D1","stimulated","CD4 T","naive-like","G1",0,0.809776,0.357289,0.549854
+"RC0241-1","D3_control","D3","control","NK","not_T","G1",0,-0.54837,0,0
+"RC0242-1","D1_stimulated","D1","stimulated","CD8 T","naive-like","G1",0,1.001185,0.894432,0
+"RC0243-1","D1_stimulated","D1","stimulated","CD4 T","memory-like","S",1.389884,0.365315,0,0.451705
+"RC0244-1","D1_control","D1","control","CD4 T","memory-like","G1",0,0.212974,0.168139,0.938778
+"RC0245-1","D1_stimulated","D1","stimulated","CD8 T","cytotoxic","G1",0.253264,0.612113,1.293242,0.265893
+"RC0246-1","D1_stimulated","D1","stimulated","NK","not_T","G1",0,0.296696,0,0.474992
+"RC0247-1","D2_stimulated","D2","stimulated","CD4 T","naive-like","G1",0,0.362899,0.64408,0
+"RC0248-1","D2_stimulated","D2","stimulated","NK","not_T","G1",0.214842,1.774372,0.466483,0.543655
+"RC0249-1","D2_control","D2","control","CD4 T","memory-like","G1",0,-0.65427,0,0
+"RC0250-1","D3_control","D3","control","CD4 T","memory-like","G1",0.65309,-0.565445,0.81962,0.905931
+"RC0251-1","D3_control","D3","control","NK","not_T","G1",0.709573,-0.42413,1.043381,0
+"RC0252-1","D2_control","D2","control","CD4 T","memory-like","G1",0,-0.348284,0,0.412078
+"RC0253-1","D3_stimulated","D3","stimulated","NK","not_T","G1",0.076729,0.465664,0.05296,0
+"RC0254-1","D2_stimulated","D2","stimulated","CD8 T","cytotoxic","G1",0.054183,1.381396,0.452079,0.614113
+"RC0255-1","D1_stimulated","D1","stimulated","CD4 T","naive-like","G1",0.021585,0.131373,0.66579,0.359595
+"RC0256-1","D1_control","D1","control","B","not_T","S",2.115844,0.106993,0.148034,0
+"RC0257-1","D1_stimulated","D1","stimulated","CD8 T","cytotoxic","G2M",1.556654,0.338354,0.157091,0
+"RC0258-1","D3_control","D3","control","CD4 T","naive-like","G1",0.588173,-0.606078,0.838492,0.268409
+"RC0259-1","D2_control","D2","control","B","not_T","G1",0.150826,0.876313,0,0.227262
+"RC0260-1","D3_stimulated","D3","stimulated","B","not_T","G1",0.12258,1.441173,0,0
+"RC0261-1","D1_stimulated","D1","stimulated","CD4 T","memory-like","G2M",2.236689,0.491582,0.121034,1.00641
+"RC0262-1","D2_control","D2","control","CD4 T","memory-like","S",1.824312,-0.471105,0,0.47649
+"RC0263-1","D3_control","D3","control","CD4 T","naive-like","G1",0.134161,-1.355534,0.189533,0.07433
+"RC0264-1","D1_control","D1","control","Monocyte","not_T","G1",0,-0.602787,0,0.818001
+"RC0265-1","D2_stimulated","D2","stimulated","CD8 T","naive-like","G1",0.165159,0.458557,0.03138,0
+"RC0266-1","D3_stimulated","D3","stimulated","B","not_T","G1",0.021761,0.991953,0.727756,0
+"RC0267-1","D3_stimulated","D3","stimulated","B","not_T","G1",0,1.131491,0.2108,0.145023
+"RC0268-1","D2_control","D2","control","CD8 T","naive-like","G1",0.301991,-0.211785,0.709353,0.006721
+"RC0269-1","D2_control","D2","control","NK","not_T","S",1.48774,0.593583,0.695114,0.663274
+"RC0270-1","D2_stimulated","D2","stimulated","CD4 T","naive-like","G1",0,1.532103,0,0.219505
+"RC0271-1","D2_control","D2","control","CD4 T","memory-like","G1",0,0.011699,0.274555,0.035654
+"RC0272-1","D2_stimulated","D2","stimulated","CD8 T","cytotoxic","G1",0,1.179784,0.320404,0.282139
+"RC0273-1","D2_stimulated","D2","stimulated","CD4 T","naive-like","G1",0.923868,-0.307622,0.559676,0.799058
+"RC0274-1","D3_stimulated","D3","stimulated","B","not_T","G1",0.305807,1.560908,0.01382,0.25204
+"RC0275-1","D3_control","D3","control","CD8 T","cytotoxic","G1",0,-0.359136,0.720229,0.153734
+"RC0276-1","D1_stimulated","D1","stimulated","CD8 T","cytotoxic","G1",0,1.692757,0.511034,0
+"RC0277-1","D2_control","D2","control","CD4 T","naive-like","G1",0,-0.401591,0.955895,0.463276
+"RC0278-1","D1_stimulated","D1","stimulated","CD4 T","memory-like","G1",0,0.446298,0.742607,1.904554
+"RC0279-1","D3_stimulated","D3","stimulated","B","not_T","G1",0,1.393608,1.158832,0.411048
+"RC0280-1","D1_control","D1","control","CD8 T","naive-like","G1",0.068893,-0.715632,0.524696,0.753754
+"RC0281-1","D3_control","D3","control","CD4 T","naive-like","G2M",1.658555,0.309699,0,0
+"RC0282-1","D3_stimulated","D3","stimulated","B","not_T","G1",0,0.493421,0,0
+"RC0283-1","D2_stimulated","D2","stimulated","Monocyte","not_T","G1",0,-0.163353,0.033668,0.082916
+"RC0284-1","D1_stimulated","D1","stimulated","CD8 T","cytotoxic","G1",0.121848,1.088432,0,0.22478
+"RC0285-1","D3_control","D3","control","Monocyte","not_T","G1",0,0.349039,0,0.768841
+"RC0286-1","D2_stimulated","D2","stimulated","NK","not_T","G1",0.018671,1.446849,0.449329,1.011543
+"RC0287-1","D3_control","D3","control","CD4 T","memory-like","G1",0,-0.045261,0.36453,1.044569
+"RC0288-1","D2_control","D2","control","NK","not_T","G1",0.137073,-0.673339,0.126026,1.040655
+"RC0289-1","D1_stimulated","D1","stimulated","CD8 T","cytotoxic","G1",0,0.935423,0.272,0.582997
+"RC0290-1","D2_stimulated","D2","stimulated","Monocyte","not_T","G1",0.580535,0.916653,0.598806,0
+"RC0291-1","D2_stimulated","D2","stimulated","NK","not_T","G1",0.154394,1.409926,0.616253,0.037691
+"RC0292-1","D3_control","D3","control","B","not_T","G1",0,-0.778227,0.069402,0
+"RC0293-1","D3_stimulated","D3","stimulated","B","not_T","G1",0,0.698564,0.621423,0.365855
+"RC0294-1","D3_control","D3","control","CD4 T","memory-like","G1",0,-0.486347,0.734038,0.70897
+"RC0295-1","D3_stimulated","D3","stimulated","CD4 T","naive-like","G2M",1.653351,0.518051,0,0.913739
+"RC0296-1","D2_control","D2","control","CD4 T","naive-like","G1",0,0.274185,0.41877,0.275311
+"RC0297-1","D3_stimulated","D3","stimulated","CD8 T","naive-like","G1",0.579893,1.133876,0.587122,0.312897
+"RC0298-1","D1_stimulated","D1","stimulated","Monocyte","not_T","G1",0,1.177046,0,1.470725
+"RC0299-1","D3_control","D3","control","B","not_T","S",1.148769,-0.284595,0.325829,0.037956
+"RC0300-1","D2_control","D2","control","NK","not_T","G1",0,-1.063774,0.820529,0.64101
+"RC0301-1","D1_control","D1","control","CD8 T","cytotoxic","G2M",1.504336,-0.300624,0,0
+"RC0302-1","D3_stimulated","D3","stimulated","NK","not_T","G2M",1.656967,0.584843,0.884112,0.354367
+"RC0303-1","D2_stimulated","D2","stimulated","Monocyte","not_T","G1",0,0.607863,0.248347,1.462243
+"RC0304-1","D2_stimulated","D2","stimulated","CD4 T","memory-like","G1",0,1.10771,0.38622,0
+"RC0305-1","D1_stimulated","D1","stimulated","NK","not_T","G1",0.007901,1.327637,0.022947,0.984493
+"RC0306-1","D1_control","D1","control","NK","not_T","G1",0,-1.258249,0.215403,0.597844
+"RC0307-1","D1_stimulated","D1","stimulated","Monocyte","not_T","G1",0.116766,1.628856,0.292145,0.26348
+"RC0308-1","D2_stimulated","D2","stimulated","NK","not_T","G1",0.181668,0.768891,0,0.604769
+"RC0309-1","D3_control","D3","control","CD8 T","naive-like","G1",0,-0.623766,0.318661,1.103916
+"RC0310-1","D3_stimulated","D3","stimulated","CD4 T","naive-like","G1",0,0.945702,0.51269,0.410159
+"RC0311-1","D2_stimulated","D2","stimulated","Monocyte","not_T","G1",0,0.599213,0,0.356915
+"RC0312-1","D3_stimulated","D3","stimulated","CD4 T","memory-like","S",1.537568,1.937615,0.814727,0.247632
+"RC0313-1","D3_control","D3","control","B","not_T","G2M",1.770002,-1.019382,0.015144,0
+"RC0314-1","D2_stimulated","D2","stimulated","CD4 T","memory-like","S",1.356635,0.638799,0.002404,0.560231
+"RC0315-1","D3_stimulated","D3","stimulated","B","not_T","G1",0,1.201625,0,1.295812
+"RC0316-1","D1_stimulated","D1","stimulated","CD4 T","memory-like","G2M",1.710322,0.311842,0,0.412591
+"RC0317-1","D2_control","D2","control","CD8 T","cytotoxic","S",1.456787,-1.162156,0,0
+"RC0318-1","D1_stimulated","D1","stimulated","B","not_T","G1",0.188539,0.647417,0,0.819729
+"RC0319-1","D3_control","D3","control","NK","not_T","G1",0.040067,-0.143182,0.132755,0.297572
+"RC0320-1","D3_control","D3","control","B","not_T","G2M",1.978885,0.40844,0.249736,0
+"RC0321-1","D2_stimulated","D2","stimulated","CD4 T","naive-like","G1",0,1.338845,0.480098,0
+"RC0322-1","D3_control","D3","control","NK","not_T","G2M",1.811704,-0.180189,0.20448,0.782623
+"RC0323-1","D2_stimulated","D2","stimulated","CD8 T","naive-like","G1",0,0.325782,0.951497,0.432713
+"RC0324-1","D3_control","D3","control","Monocyte","not_T","G1",0,0.195077,0,1.267698
+"RC0325-1","D2_control","D2","control","B","not_T","S",1.822915,-0.563513,0,0
+"RC0326-1","D1_stimulated","D1","stimulated","Monocyte","not_T","G1",0,1.657358,0.496056,0
+"RC0327-1","D3_stimulated","D3","stimulated","Monocyte","not_T","G1",0,0.347826,0.685991,0.138942
+"RC0328-1","D2_control","D2","control","Monocyte","not_T","G1",0,0.186366,0.753935,0.507236
+"RC0329-1","D2_stimulated","D2","stimulated","CD8 T","cytotoxic","S",1.937473,1.22552,0.051758,0
+"RC0330-1","D1_control","D1","control","B","not_T","G1",0.140754,-0.807784,0,0.562874
+"RC0331-1","D2_stimulated","D2","stimulated","Monocyte","not_T","G1",0.070251,1.79193,0.035367,0
+"RC0332-1","D1_control","D1","control","CD8 T","cytotoxic","G1",0.05832,0.006824,0.459007,1.972999
+"RC0333-1","D3_control","D3","control","CD8 T","cytotoxic","S",0.793425,-1.052653,0.668382,1.243516
+"RC0334-1","D2_stimulated","D2","stimulated","CD4 T","memory-like","G1",0.469931,1.1108,1.2e-05,0.022418
+"RC0335-1","D2_stimulated","D2","stimulated","CD4 T","naive-like","G1",0,1.413699,0.745867,0
+"RC0336-1","D3_control","D3","control","CD8 T","cytotoxic","G1",0.100826,-0.083157,0,1.446691
+"RC0337-1","D1_control","D1","control","CD8 T","naive-like","G1",0,-0.275216,0.03689,0
+"RC0338-1","D2_stimulated","D2","stimulated","CD8 T","cytotoxic","G1",0,-0.036296,0.072813,0.406629
+"RC0339-1","D3_stimulated","D3","stimulated","CD8 T","cytotoxic","G1",0,0.879146,0,0.365772
+"RC0340-1","D1_control","D1","control","CD8 T","naive-like","G1",0.116169,-0.193189,0.313794,0.361333
+"RC0341-1","D3_stimulated","D3","stimulated","NK","not_T","G1",0,0.316408,0,0.632521
+"RC0342-1","D1_stimulated","D1","stimulated","NK","not_T","S",1.53602,0.882338,0,0.473746
+"RC0343-1","D2_stimulated","D2","stimulated","CD4 T","naive-like","G1",0.333681,0.940877,0.264786,0.276838
+"RC0344-1","D3_control","D3","control","NK","not_T","G1",0.633287,-0.00882,0.778089,1.145511
+"RC0345-1","D1_stimulated","D1","stimulated","CD4 T","memory-like","G1",0,1.601544,0.169506,0
+"RC0346-1","D2_control","D2","control","CD4 T","memory-like","G1",0.680146,-1.477539,0.414297,0.300513
+"RC0347-1","D2_stimulated","D2","stimulated","CD4 T","memory-like","G1",0,0.440727,0.644725,0.96161
+"RC0348-1","D3_control","D3","control","B","not_T","G2M",1.069571,-0.164105,0,0.645796
+"RC0349-1","D1_stimulated","D1","stimulated","CD8 T","naive-like","G1",0.168881,1.129656,0.079943,0
+"RC0350-1","D3_stimulated","D3","stimulated","B","not_T","G1",0.178261,0.357598,0.233773,0.147519
+"RC0351-1","D1_control","D1","control","CD4 T","memory-like","S",1.155124,-0.578761,0.145837,0
+"RC0352-1","D2_control","D2","control","CD8 T","cytotoxic","S",1.31773,0.359101,0.281369,0.077872
+"RC0353-1","D3_stimulated","D3","stimulated","Monocyte","not_T","G1",0.038656,0.7895,0.48927,0.735
+"RC0354-1","D1_control","D1","control","CD4 T","memory-like","S",2.125309,0.428105,0.088847,0.986158
+"RC0355-1","D3_control","D3","control","Monocyte","not_T","S",2.248068,-0.103233,0.391223,0.779732
+"RC0356-1","D1_control","D1","control","Monocyte","not_T","G1",0.485719,-0.19122,0.461481,0
+"RC0357-1","D3_stimulated","D3","stimulated","B","not_T","G1",0,0.167065,0.260231,0.19973
+"RC0358-1","D2_stimulated","D2","stimulated","B","not_T","G1",0,0.853849,0.708707,0.451402
+"RC0359-1","D2_control","D2","control","NK","not_T","G1",0,0.265424,0,0.23464
+"RC0360-1","D1_control","D1","control","CD4 T","memory-like","S",1.487388,-0.049717,0.389334,0.661882
+"RC0361-1","D1_control","D1","control","CD4 T","naive-like","G1",0,0.289893,0,0
+"RC0362-1","D1_control","D1","control","CD8 T","naive-like","G1",0,0.124698,0.534389,0.293647
+"RC0363-1","D2_control","D2","control","CD8 T","cytotoxic","G1",0.421739,-0.99162,0.643255,0
+"RC0364-1","D3_control","D3","control","B","not_T","S",0.846825,-1.482077,0.433461,0.772091
+"RC0365-1","D3_control","D3","control","CD8 T","naive-like","G1",0.012534,-0.544167,0.112542,0.82182
+"RC0366-1","D1_control","D1","control","CD4 T","naive-like","G1",0.302429,0.722689,0,0
+"RC0367-1","D1_stimulated","D1","stimulated","NK","not_T","G1",0.824738,-0.144725,0,0
+"RC0368-1","D3_stimulated","D3","stimulated","CD4 T","naive-like","G1",0,1.593632,0.153548,0.000887
+"RC0369-1","D2_control","D2","control","CD4 T","memory-like","G1",0.241798,0.459633,0.90792,0.906009
+"RC0370-1","D1_stimulated","D1","stimulated","Monocyte","not_T","G1",0,1.440212,0.68664,0.658864
+"RC0371-1","D2_control","D2","control","CD8 T","cytotoxic","G1",0,-0.254791,0,0.956779
+"RC0372-1","D3_control","D3","control","Monocyte","not_T","G1",0.362477,-0.164724,0.189928,0.02834
+"RC0373-1","D3_stimulated","D3","stimulated","Monocyte","not_T","S",1.673617,1.133646,0,0.349273
+"RC0374-1","D2_stimulated","D2","stimulated","B","not_T","G1",0.019418,1.477052,0.201712,0
+"RC0375-1","D2_control","D2","control","Monocyte","not_T","G1",0.098677,-0.927169,0,0.638442
+"RC0376-1","D2_stimulated","D2","stimulated","B","not_T","G2M",1.153922,0.753464,0.890933,0.359664
+"RC0377-1","D1_stimulated","D1","stimulated","CD4 T","naive-like","S",1.349398,0.89821,0.531394,0.597236
+"RC0378-1","D3_control","D3","control","NK","not_T","G1",0.238686,0.031713,0.19619,0.865286
+"RC0379-1","D2_stimulated","D2","stimulated","Monocyte","not_T","G1",0,2.112591,0.048123,0.269016
+"RC0380-1","D3_stimulated","D3","stimulated","CD4 T","naive-like","G2M",1.488727,1.82055,0.149013,0
+"RC0381-1","D3_stimulated","D3","stimulated","CD8 T","naive-like","S",1.874632,0.863035,0.452795,1.256803
+"RC0382-1","D2_stimulated","D2","stimulated","CD8 T","cytotoxic","G1",0.642284,1.184489,0,0.892268
+"RC0383-1","D3_control","D3","control","CD8 T","cytotoxic","G1",0,-0.082322,0,0.560383
+"RC0384-1","D2_control","D2","control","CD4 T","naive-like","G1",0,-0.812985,0.97283,0.620682
+"RC0385-1","D1_stimulated","D1","stimulated","CD4 T","memory-like","G1",0.265445,1.307443,0,0
+"RC0386-1","D1_control","D1","control","CD8 T","cytotoxic","G1",0,-0.783963,0.322741,0.354862
+"RC0387-1","D1_control","D1","control","NK","not_T","G1",0.230869,0.109911,0.565085,0.795069
+"RC0388-1","D2_stimulated","D2","stimulated","B","not_T","S",1.887278,0.538945,0,0.908123
+"RC0389-1","D3_control","D3","control","CD8 T","cytotoxic","G2M",1.715337,0.828201,0.30699,0
+"RC0390-1","D3_control","D3","control","B","not_T","G2M",2.099295,0.029817,0,0.329206
+"RC0391-1","D2_control","D2","control","CD4 T","memory-like","G1",0,0.240281,0,0
+"RC0392-1","D3_control","D3","control","Monocyte","not_T","G2M",1.801163,-1.038557,0,0.025
+"RC0393-1","D1_control","D1","control","CD8 T","cytotoxic","G1",0,-0.128824,0.822414,1.157783
+"RC0394-1","D1_control","D1","control","CD4 T","naive-like","G1",0.007515,-0.355319,0.783822,0.501055
+"RC0395-1","D3_stimulated","D3","stimulated","CD4 T","naive-like","G2M",1.999707,0.773147,0.569876,0.633844
+"RC0396-1","D3_control","D3","control","CD8 T","cytotoxic","G1",0,-0.738993,0.267763,0
+"RC0397-1","D2_control","D2","control","CD4 T","memory-like","G1",0.252185,-0.002674,0.411091,0.829076
+"RC0398-1","D1_control","D1","control","B","not_T","G2M",1.542185,-0.071286,0,0.055416
+"RC0399-1","D1_control","D1","control","NK","not_T","G1",0,0.154871,0.055873,0.777044
+"RC0400-1","D1_stimulated","D1","stimulated","CD8 T","cytotoxic","G1",0,1.568072,0.508662,0.448045
+"RC0401-1","D1_stimulated","D1","stimulated","CD8 T","cytotoxic","G1",0.103,1.11457,0,0.437208
+"RC0402-1","D3_stimulated","D3","stimulated","CD8 T","cytotoxic","S",1.363934,1.236865,1.067674,0.128052
+"RC0403-1","D1_control","D1","control","CD8 T","cytotoxic","S",1.380366,-0.441739,0.363728,0.336923
+"RC0404-1","D2_stimulated","D2","stimulated","Monocyte","not_T","G1",0,1.810671,0,0.655824
+"RC0405-1","D2_control","D2","control","NK","not_T","G1",0,0.742614,0.348034,0.289778
+"RC0406-1","D2_stimulated","D2","stimulated","CD4 T","memory-like","G1",0,0.577845,0.210968,0.151598
+"RC0407-1","D1_control","D1","control","Monocyte","not_T","G1",0,-1.042271,0.416476,0.266773
+"RC0408-1","D3_control","D3","control","CD8 T","naive-like","G1",0.71236,0.036862,0.076962,0.036569
+"RC0409-1","D3_stimulated","D3","stimulated","Monocyte","not_T","G1",0,1.525705,0.383253,0.862946
+"RC0410-1","D3_stimulated","D3","stimulated","NK","not_T","G1",0,0.670698,0.020196,0
+"RC0411-1","D2_stimulated","D2","stimulated","CD8 T","naive-like","G1",0,1.678501,0.593833,0.749292
+"RC0412-1","D2_control","D2","control","CD4 T","naive-like","G1",0,0.571472,0.8221,0.493299
+"RC0413-1","D3_control","D3","control","CD8 T","naive-like","G1",0.160486,-0.645362,0.458098,0.314704
+"RC0414-1","D2_stimulated","D2","stimulated","NK","not_T","G1",0,1.250881,0,0.075115
+"RC0415-1","D2_stimulated","D2","stimulated","B","not_T","G1",0,0.57275,0.437513,0
+"RC0416-1","D1_stimulated","D1","stimulated","CD4 T","naive-like","G1",0.907875,0.975339,0.132827,0.451754
+"RC0417-1","D1_control","D1","control","Monocyte","not_T","G1",0.404634,-1.053529,0.43839,0.389616
+"RC0418-1","D2_control","D2","control","Monocyte","not_T","G1",0,0.043935,0.276278,0.367532
+"RC0419-1","D3_stimulated","D3","stimulated","Monocyte","not_T","G1",0.066138,1.291119,0.703679,0.041881
+"RC0420-1","D3_stimulated","D3","stimulated","CD4 T","naive-like","G2M",1.470674,0.997244,0.322156,0.478632
+"RC0421-1","D3_stimulated","D3","stimulated","CD4 T","memory-like","G2M",1.446488,0.870408,0,1.339121
+"RC0422-1","D3_stimulated","D3","stimulated","CD4 T","naive-like","G1",0,0.186739,0,0.437464
+"RC0423-1","D3_stimulated","D3","stimulated","CD4 T","naive-like","G1",0.219584,0.914759,0.631069,0.30049
+"RC0424-1","D3_stimulated","D3","stimulated","Monocyte","not_T","G2M",1.674941,1.595377,0.807931,1.073147
+"RC0425-1","D2_control","D2","control","CD4 T","naive-like","S",0.976596,-0.5442,0,0
+"RC0426-1","D3_stimulated","D3","stimulated","CD8 T","cytotoxic","G1",0,0.901947,0.47673,0.586088
+"RC0427-1","D1_control","D1","control","NK","not_T","G1",0,-0.171452,0.891878,1.217196
+"RC0428-1","D3_stimulated","D3","stimulated","NK","not_T","G1",0.555398,1.042957,0,0.035044
+"RC0429-1","D2_stimulated","D2","stimulated","B","not_T","G1",0.756264,0.770518,1.042465,0
+"RC0430-1","D3_control","D3","control","NK","not_T","S",1.176344,0.714296,0.123616,0.142166
+"RC0431-1","D2_control","D2","control","CD8 T","cytotoxic","G2M",1.63343,0.556579,0.305213,0.494115
+"RC0432-1","D1_control","D1","control","CD8 T","naive-like","G1",0.021782,0.404777,0.608801,0
+"RC0433-1","D1_stimulated","D1","stimulated","NK","not_T","G1",0.502251,0.430651,0.466924,0.488527
+"RC0434-1","D3_stimulated","D3","stimulated","Monocyte","not_T","G1",0.169933,-0.024326,1.180632,0.143055
+"RC0435-1","D1_control","D1","control","Monocyte","not_T","G1",0.179286,-0.23302,0.620218,0.641543
+"RC0436-1","D1_stimulated","D1","stimulated","NK","not_T","G1",0,0.879889,0.271043,0.179727
+"RC0437-1","D1_control","D1","control","NK","not_T","G1",0,-0.586293,0.159283,0.439922
+"RC0438-1","D3_control","D3","control","B","not_T","S",2.198039,0.788053,0.198624,0
+"RC0439-1","D3_control","D3","control","Monocyte","not_T","G1",0.046744,0.434612,0.815527,0.206848
+"RC0440-1","D3_control","D3","control","B","not_T","G1",0,0.002173,0,0.3986
+"RC0441-1","D1_control","D1","control","NK","not_T","S",1.828682,0.046006,0.027784,1.365099
+"RC0442-1","D2_stimulated","D2","stimulated","Monocyte","not_T","G1",0,0.54904,0.253624,0
+"RC0443-1","D2_stimulated","D2","stimulated","CD8 T","cytotoxic","G1",0,0.566626,0,0.6007
+"RC0444-1","D1_control","D1","control","CD4 T","naive-like","S",1.682246,-0.191601,0,1.217665
+"RC0445-1","D2_stimulated","D2","stimulated","CD4 T","naive-like","G1",0.072689,1.424725,0,0.389908
+"RC0446-1","D3_control","D3","control","CD8 T","naive-like","S",1.610784,-0.34901,0.499191,0.497823
+"RC0447-1","D2_stimulated","D2","stimulated","B","not_T","G1",0.247486,0.91415,0,0.790548
+"RC0448-1","D1_stimulated","D1","stimulated","CD4 T","memory-like","G1",0.15889,0.728751,0.411447,0.398688
+"RC0449-1","D2_control","D2","control","CD8 T","cytotoxic","G1",0,0.228372,0.177368,0.083151
+"RC0450-1","D2_control","D2","control","CD8 T","cytotoxic","G1",0.730697,-0.54346,0.208019,0.174812
+"RC0451-1","D2_control","D2","control","CD4 T","naive-like","G1",0.612689,0.457148,0.518796,0
+"RC0452-1","D1_control","D1","control","CD8 T","cytotoxic","G1",0.115154,-1.171436,0,0
+"RC0453-1","D2_stimulated","D2","stimulated","CD8 T","cytotoxic","G1",0.087546,0.252854,0,0
+"RC0454-1","D1_stimulated","D1","stimulated","CD4 T","naive-like","G1",0,1.318699,0.498473,0.097016
+"RC0455-1","D2_stimulated","D2","stimulated","CD8 T","naive-like","G2M",0.9711,0.577768,0,0.313982
+"RC0456-1","D2_stimulated","D2","stimulated","Monocyte","not_T","G1",0.090643,1.354321,0.882593,0.66021
+"RC0457-1","D1_control","D1","control","CD4 T","naive-like","G1",0.220393,-0.104451,0.819105,0
+"RC0458-1","D3_control","D3","control","CD8 T","cytotoxic","G1",0.061844,-0.628181,0.266707,0
+"RC0459-1","D1_control","D1","control","CD8 T","cytotoxic","G1",0,-0.968167,0.374025,0.424292
+"RC0460-1","D2_control","D2","control","CD8 T","naive-like","G1",0,-1.237167,1.051573,0
+"RC0461-1","D1_control","D1","control","B","not_T","G1",0.562514,-0.511044,0.174587,0.339811
+"RC0462-1","D1_stimulated","D1","stimulated","CD8 T","naive-like","G1",0.350064,0.846839,0.614871,0.411835
+"RC0463-1","D3_control","D3","control","CD8 T","cytotoxic","G1",0.326711,-0.171265,0,1.338341
+"RC0464-1","D1_control","D1","control","CD4 T","naive-like","S",2.072912,-0.263285,0,0.707226
+"RC0465-1","D1_control","D1","control","B","not_T","G1",0,-0.097503,0,1.019073
+"RC0466-1","D3_control","D3","control","Monocyte","not_T","G1",0.177269,0.003434,0.921623,0.518732
+"RC0467-1","D1_control","D1","control","NK","not_T","G1",0,-0.567397,0.242524,0.827688
+"RC0468-1","D1_stimulated","D1","stimulated","CD4 T","naive-like","G1",0,0.461891,0.168443,0.949905
+"RC0469-1","D3_stimulated","D3","stimulated","Monocyte","not_T","G2M",1.339225,0.940354,0.809487,0.739964
+"RC0470-1","D3_stimulated","D3","stimulated","CD4 T","memory-like","G1",0.168178,0.208108,1.341155,0.783374
+"RC0471-1","D1_control","D1","control","CD4 T","memory-like","G1",0,-0.104393,0,0.682441
+"RC0472-1","D3_stimulated","D3","stimulated","CD8 T","naive-like","S",1.734427,0.108632,0.178615,1.359327
+"RC0473-1","D1_stimulated","D1","stimulated","CD4 T","naive-like","G2M",1.908458,1.401961,0.960035,0.4757
+"RC0474-1","D3_stimulated","D3","stimulated","NK","not_T","G1",0.125868,1.662547,0.145276,0.341584
+"RC0475-1","D1_control","D1","control","B","not_T","G1",0,0.023007,0.052729,0.313636
+"RC0476-1","D1_stimulated","D1","stimulated","CD8 T","cytotoxic","G2M",0.862566,1.28472,1.005411,0.497952
+"RC0477-1","D3_stimulated","D3","stimulated","CD8 T","naive-like","S",1.256843,1.838494,0.179949,0.454591
+"RC0478-1","D1_stimulated","D1","stimulated","CD8 T","cytotoxic","G1",0.365432,0.464518,0,0.266753
+"RC0479-1","D2_control","D2","control","Monocyte","not_T","G1",0,-0.915927,0.602399,0.046228
+"RC0480-1","D2_stimulated","D2","stimulated","CD8 T","cytotoxic","G1",0.000998,1.246647,0.232303,0
