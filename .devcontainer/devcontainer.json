@@ -1,0 +1,39 @@
+{
+  "name": "Advanced scRNA-seq analysis course",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".",
+    "args": {
+      "VARIANT": "4.5.1"
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {},
+    "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {},
+    "ghcr.io/rocker-org/devcontainer-features/r-rig:1": {
+      "version": "none",
+      "installREnv": true,
+      "installRMarkdown": false,
+      "installRadian": false,
+      "installDevTools": true,
+      "vscodeRSupport": "lsp"
+    },
+    "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+      "packages": "git curl libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev libfreetype6-dev libpng-dev libtiff-dev libjpeg-dev libharfbuzz-dev libfribidi-dev libgit2-dev libglpk-dev"
+    }
+  },
+  "postCreateCommand": "Rscript scripts/00_setup.R && Rscript scripts/check_environment.R && Rscript scripts/generate_synthetic_data.R --check",
+  "remoteUser": "rstudio",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "REditorSupport.r",
+        "quarto.quarto"
+      ],
+      "settings": {
+        "r.bracketedPaste": true,
+        "files.eol": "\n"
+      }
+    }
+  }
+}

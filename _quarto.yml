@@ -1,0 +1,67 @@
+project:
+  type: website
+  render:
+    - index.qmd
+    - setup/
+    - modules/
+    - labs/index.qmd
+    - schedule-quarter.qmd
+    - schedule-semester.qmd
+    - resources/
+    - references/
+
+website:
+  title: "Advanced scRNA-seq Analysis Course"
+  description: "Graduate-level computational training in scRNA-seq analysis"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: setup/index.qmd
+        text: Setup
+      - href: labs/index.qmd
+        text: Labs
+      - text: Pacing
+        menu:
+          - href: schedule-quarter.qmd
+            text: Quarter foundation block
+          - href: schedule-semester.qmd
+            text: Semester foundation block
+    right:
+      - icon: github
+        href: https://github.com/aezamora14/scrna-seq-analysis-course
+        aria-label: GitHub repository
+  sidebar:
+    style: docked
+    search: true
+    contents:
+      - section: "Foundational modules"
+        contents:
+          - href: modules/01-count-matrix/index.qmd
+            text: "1. Count matrices"
+          - href: modules/02-quality-control/index.qmd
+            text: "2. Quality control"
+          - href: modules/03-normalization/index.qmd
+            text: "3. Normalization"
+      - section: "Course resources"
+        contents:
+          - labs/index.qmd
+          - resources/glossary.qmd
+          - references/index.qmd
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: darkly
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    code-overflow: wrap
+    html-math-method: mathjax
+    css: styles.css
+
+execute:
+  enabled: false
+
+link-external-newwindow: true

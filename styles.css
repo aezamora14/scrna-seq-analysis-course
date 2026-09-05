@@ -1,0 +1,27 @@
+:root {
+  --course-accent: #26547c;
+  --course-soft: #eef5f9;
+}
+
+.navbar-brand {
+  font-weight: 700;
+}
+
+.course-question {
+  border-left: 0.3rem solid var(--course-accent);
+  background: var(--course-soft);
+  padding: 0.9rem 1.1rem;
+  margin: 1rem 0;
+}
+
+pre.text {
+  line-height: 1.35;
+}
+
+table {
+  font-size: 0.95rem;
+}
+
+.callout-important strong:first-child {
+  color: #8b1e1e;
+}

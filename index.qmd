@@ -1,0 +1,47 @@
+---
+title: "Advanced scRNA-seq Analysis Course"
+page-layout: full
+---
+
+## Learn by changing one decision
+
+Single-cell RNA-seq analysis is not a sequence of neutral software commands. Decisions about which barcodes to retain, how to normalize libraries, and which representation to analyze can change the apparent biology.
+
+This graduate-level course teaches students to connect each computational operation to the measurement problem it addresses. Every module uses controlled data so that the consequences of an analysis choice can be observed rather than accepted on authority.
+
+::: {.callout-important title="Current course release"}
+Modules 1–3 are fully implemented and tested. Later modules have deliberately not been created yet.
+:::
+
+## Implemented modules
+
+### [Module 1 — What scRNA-seq data actually are](modules/01-count-matrix/index.qmd)
+
+Droplets, barcodes, reads, UMIs, sparse count matrices, zeros, library size, detected features, capture efficiency, ambient RNA, empty droplets, doublets, and controlled undersampling.
+
+### [Module 2 — Quality control](modules/02-quality-control/index.qmd)
+
+Cell- and sample-level QC distributions, mitochondrial and ribosomal percentages, complexity, ambient RNA, doublets, sample-aware thresholds, permissive/moderate/aggressive sensitivity analyses, and downstream biological consequences.
+
+### [Module 3 — Normalization](modules/03-normalization/index.qmd)
+
+Library-size correction, scale factors, log transformation, manual calculations, raw-versus-normalized comparisons, limitations of normalization, and an optional LogNormalize-versus-SCTransform comparison.
+
+## How to work through a module
+
+1. Read the conceptual model before running code.
+2. Reproduce the controlled example in R.
+3. Compare the side-by-side outputs.
+4. Change exactly one parameter or assumption.
+5. Answer the interpretation questions in complete sentences.
+6. State whether the biological conclusion changes and what evidence supports that judgment.
+
+## Start here
+
+- Complete the [setup and reproducibility checks](setup/index.qmd).
+- Open the [student lab index](labs/index.qmd).
+- Begin with [Module 1](modules/01-count-matrix/index.qmd).
+
+::: {.callout-note}
+The bundled dataset is synthetic and intentionally simplified. Its known truth makes analytical consequences visible, but results are not biological benchmarks or clinical evidence.
+:::

@@ -1,0 +1,30 @@
+---
+title: "Glossary for Modules 1–3"
+---
+
+**Barcode**  
+A sequence used to associate captured molecules with a droplet or putative cell.
+
+**Capture efficiency**  
+The fraction of molecules present in a cell that ultimately contributes observed counts. It is incomplete and variable.
+
+**Detected feature**  
+A gene with at least one observed UMI in a barcode.
+
+**Library size**  
+The sum of observed UMI counts for a barcode, usually stored by Seurat as `nCount_RNA`.
+
+**Sampling zero**  
+An observed zero caused by incomplete molecular sampling even though transcripts were present.
+
+**Biological zero**  
+An observed zero consistent with a gene truly not being expressed in the cell at the relevant moment.
+
+**Sparse matrix**  
+A matrix representation that stores nonzero values and their positions rather than allocating memory to every zero.
+
+**UMI**  
+A unique molecular identifier used to collapse reads likely derived from the same captured molecule.
+
+**Normalization**  
+A transformation intended to make expression values more comparable across cells with different observed library sizes. It does not make cells biological replicates or remove every technical effect.

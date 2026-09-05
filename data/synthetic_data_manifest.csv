@@ -1,0 +1,4 @@
+"file","bytes","sha256","rows","columns"
+"data/toy_counts.csv",153,"392e66ad9c3e7bd7ace08ffed3a6ba95400bc8e53b4407d2862b54eacc663477",6,4
+"data/synthetic_qc_counts.rds",136671,"df5ef82a4ae76f35656818e6b185407bf643d071cb305525b90606abceb49c75",260,700
+"data/synthetic_qc_metadata.csv",36611,"f80acc308443e8213c1d5ce83b41dc41fbe564be899f5a35155ebf71288dae93",700,7

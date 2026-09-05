@@ -1,0 +1,13 @@
+---
+title: "Student labs"
+---
+
+Run each lab from the repository root. The scripts are complete and executable; the assessed work is the interpretation you add to your own Quarto notebook or course submission.
+
+1. [Module 1 lab: count matrices](01-count-matrix-lab.R)
+2. [Module 2 lab: quality control](02-quality-control-lab.R)
+3. [Module 3 lab: normalization](03-normalization-lab.R)
+
+::: {.callout-important}
+Code execution is necessary but not sufficient. For every comparison, document what changed, what did not change, why, and whether the biological conclusion changed.
+:::

@@ -1,0 +1,19 @@
+---
+title: "Semester pacing: foundational block"
+---
+
+This page schedules the currently implemented material within a 14–16 week semester. It does not create placeholder lessons for future modules.
+
+| Week | Preparation (60–90 min) | Class meeting (150–180 min) | Product |
+|---|---|---|---|
+| 1 | Setup and reproducibility reading | Environment clinic; R sparse-matrix refresher | Verified local environment |
+| 2 | Module 1 through matrix anatomy | Droplets, barcodes, reads, UMIs, cell/gene access patterns | Matrix anatomy worksheet |
+| 3 | Module 1 zeros and artifacts | Undersampling lab; ambient RNA, empty droplets, doublets | Sampling-zero explanation |
+| 4 | Module 2 metrics | QC plots by cell and sample; complexity interpretation | QC figure set |
+| 5 | Module 2 thresholds | Threshold sensitivity lab; population retention analysis | QC decision table |
+| 6 | Module 2 downstream consequences | PCA/clustering comparison and biological discussion | QC sensitivity report |
+| 7 | Module 3 through hand calculations | Library-size correction and log transformation | Hand-calculation worksheet |
+| 8 | Module 3 perturbations | Raw/normalized comparison and scale-factor exercise | Normalization interpretation memo |
+| 9 | Module 3 model-based section | Optional SCTransform comparison; foundational synthesis | Foundational analysis audit |
+
+Remaining semester weeks are intentionally left for later development rather than linked to empty modules.

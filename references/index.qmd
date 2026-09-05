@@ -1,0 +1,22 @@
+---
+title: "References and software documentation"
+---
+
+## Core methods and software
+
+- Hao Y, et al. Dictionary learning for integrative, multimodal and scalable single-cell analysis. *Nature Biotechnology*. 2024.
+- Hafemeister C, Satija R. Normalization and variance stabilization of single-cell RNA-seq data using regularized negative binomial regression. *Genome Biology*. 2019.
+- Lun ATL, et al. EmptyDrops: distinguishing cells from empty droplets in droplet-based single-cell RNA sequencing data. *Genome Biology*. 2019.
+- McGinnis CS, Murrow LM, Gartner ZJ. DoubletFinder: doublet detection in single-cell RNA sequencing data using artificial nearest neighbors. *Cell Systems*. 2019.
+- Germain P-L, et al. Doublet identification in single-cell sequencing data using scDblFinder. *F1000Research*. 2021.
+
+## Documentation used by the exercises
+
+- [Seurat reference documentation](https://satijalab.org/seurat/reference/)
+- [Seurat `NormalizeData()` documentation](https://satijalab.org/seurat/reference/normalizedata)
+- [Seurat `PercentageFeatureSet()` documentation](https://satijalab.org/seurat/reference/percentagefeatureset)
+- [SCTransform documentation](https://www.rdocumentation.org/packages/Seurat/)
+- [scDblFinder Bioconductor documentation](https://bioconductor.org/packages/scDblFinder/)
+- [Matrix package documentation](https://cran.r-project.org/package=Matrix)
+
+Software APIs are tested by the repository smoke tests against the versions recorded in `renv.lock`.

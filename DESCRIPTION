@@ -1,0 +1,27 @@
+Package: scrnaseqcourse
+Type: Project
+Title: Advanced Single-Cell RNA-Seq Analysis Course
+Version: 0.1.0
+Authors@R: person("Alejandro", "Zamora", role = c("aut", "cre"),
+    email = "64265565+aezamora14@users.noreply.github.com")
+Description: Reproducible teaching materials and controlled synthetic data for
+    graduate-level instruction in count matrices, quality control, and
+    normalization with R and Seurat.
+License: CC BY-NC 4.0
+Encoding: UTF-8
+Depends:
+    R (>= 4.5.0)
+Imports:
+    digest,
+    dplyr,
+    ggplot2,
+    Matrix,
+    patchwork,
+    scales,
+    Seurat (>= 5.4.0),
+    SeuratObject (>= 5.3.0),
+    SingleCellExperiment,
+    scDblFinder,
+    sctransform,
+    tibble,
+    tidyr

@@ -1,0 +1,68 @@
+---
+title: "Setup and reproducibility"
+---
+
+## Required software
+
+- R 4.5 or later
+- RStudio Desktop or another R development environment
+- Quarto 1.7 or later
+- Git
+
+The repository also includes a devcontainer for GitHub Codespaces or a compatible local container environment.
+
+## Restore the R environment
+
+From the repository root, run:
+
+```bash
+Rscript scripts/00_setup.R
+```
+
+`glmGamPoi` is an optional speed accelerator for the SCTransform comparison.
+It is not required by the pinned course environment: when absent,
+`SCTransform()` uses its slower built-in fitting path and may print an
+informational fallback message.
+
+The setup script installs `renv` when necessary and restores the package versions recorded in `renv.lock`. Do not install packages one by one unless troubleshooting a failed restore.
+
+## Verify the installation
+
+```bash
+Rscript scripts/check_environment.R
+Rscript scripts/generate_synthetic_data.R --check
+Rscript scripts/smoke_test_modules_01_03.R
+python3 scripts/validate_repository.py
+```
+
+Each command should end with an explicit success message. A warning about a package being built under a nearby R patch release is usually harmless; an absent package or failed assertion is not.
+
+## Preview the site
+
+```bash
+quarto preview
+```
+
+Quarto prints a local URL, usually beginning with `http://localhost:`. Keep the preview process running while working through the lessons.
+
+## Project paths
+
+All course code assumes the working directory is the repository root. Confirm with:
+
+```r
+getwd()
+file.exists("data/synthetic_qc_counts.rds")
+file.exists("labs/01-count-matrix-lab.R")
+```
+
+Both `file.exists()` calls should return `TRUE`. If not, open the project file or set the working directory to the cloned repository—not to `data/` or `labs/`.
+
+## Reproducibility record
+
+At the end of a lab, save:
+
+```r
+sessionInfo()
+```
+
+Record random seeds, package versions, and any changes to provided parameters. A reproducible analysis includes the computational environment and analytical decisions, not only the final figure.

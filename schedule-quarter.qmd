@@ -1,0 +1,15 @@
+---
+title: "Quarter pacing: foundational block"
+---
+
+This page schedules the currently implemented foundational block within a 10-week quarter. Later weeks are intentionally not scaffolded in this release.
+
+| Week | Preparation (60–90 min) | Class meeting (150–180 min) | Product |
+|---|---|---|---|
+| 1 | Setup, reproducibility checks, Module 1 concepts | Matrix anatomy, sparse representations, manual library metrics | Count-matrix interpretation memo |
+| 2 | Module 1 undersampling sections; begin Module 2 | Sampling zeros, ambient RNA, empty droplets, doublets; QC visualizations | Controlled undersampling comparison |
+| 3 | Module 2 threshold sections | Permissive/moderate/aggressive QC lab and downstream comparison | QC sensitivity report |
+| 4 | Module 3 conceptual and hand-calculation sections | Manual normalization, Seurat reproduction, scale-factor perturbation | Normalization worksheet |
+| 5 | Module 3 SCTransform section | LogNormalize-versus-SCTransform comparison and synthesis discussion | Foundational analysis audit |
+
+Weeks 6–10 are reserved for later modules and a capstone after those modules are developed.
